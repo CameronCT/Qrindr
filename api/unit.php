@@ -1,5 +1,5 @@
 <?php
 
-require('core/autoload.php');
+require('autoload.php');
 
 ?>
