@@ -27,7 +27,7 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
     };
 
     $rootScope.fuckNavigation = false;
-    $rootScope.news = "A new update has been released, some lobbies may or may not be broken!";
+    $rootScope.news = false;
 
     $http.get('api/session.php')
         .then(function(response) {
