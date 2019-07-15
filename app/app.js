@@ -1,4 +1,4 @@
-var app = angular.module('MyQrindr', ['ngRoute', 'ngAnimate', 'ngCookies', 'toastr']);
+var app = angular.module('MyQrindr', ['ngRoute', 'ngAnimate', 'ngCookies', 'toastr', 'angular-md5']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -25,6 +25,9 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
         'name':       'Qrindr',
         'year':       '2019',
     };
+
+    $rootScope.fuckNavigation = false;
+    $rootScope.news = "A new update has been released, some lobbies may or may not be broken!";
 
     $http.get('api/session.php')
         .then(function(response) {

@@ -1,4 +1,4 @@
-app.controller('HomeController', ['$scope', '$location', '$http', 'toastr', function($scope, $location, $http, toastr) {
+app.controller('HomeController', ['$scope', '$location', '$http', 'toastr', 'md5', function($scope, $location, $http, toastr, md5) {
 
 	$scope.date = new Date();
 	$scope.formData = {};
@@ -42,7 +42,7 @@ app.controller('HomeController', ['$scope', '$location', '$http', 'toastr', func
 			function(response) {
 				console.log(response.data);
 				if (response.data.success != null) {
-					$location.url('match/' + response.data.success + '/' + $scope.formData.pwd + '/' + youPlayer);
+					$location.url('match/' + response.data.success + '/' + md5.createHash($scope.formData.pwd) + '/' + youPlayer);
 				} 
 				if (response.data.error != null) {
 					toastr.error(response.data.error);
