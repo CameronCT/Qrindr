@@ -1,5 +1,3 @@
-# Qrindr ![Travis](https://travis-ci.com/CameronCT/Qrindr.svg?branch=master)
-
 <p align="center">
   <img src="http://qrindr.com/static/img/logo_dark.png" alt="Qrindr"/>
 </p>
