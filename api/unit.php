@@ -1,5 +1,5 @@
 <?php
 
-require('autoload.php');
+// Just here for now
 
 ?>
