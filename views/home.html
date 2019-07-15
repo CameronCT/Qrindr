@@ -1,0 +1,70 @@
+<div class="container mt-5">
+    <div class="row my-5">
+    	<div class="col-md-6">
+			<div class="card">
+				<div class="card-body mb-2">
+					<h2 class="my-3 text-center">
+						Create a Match
+					</h2>
+					<form method="post" name="createMatch" ng-submit="onSubmit()">
+						<label for="player1_">Name</label>
+						<input id="player1_" type="text" class="form-control mb-3" name="player1" ng-model="formData.player1" placeholder="Liquid rapha" required />
+
+						<label for="player2_">Opponent</label>
+						<input id="player2_" type="text" class="form-control mb-3" name="player2" ng-model="formData.player2" placeholder="AMD.COOLLERZ" required />
+
+						<label for="bestof_">Best of</label>
+						<select id="bestof_" class="form-control mb-3" name="bestof" ng-model="formData.bestof" ng-options="key as value for (key, value) in optionsBO" required></select>
+
+						<label for="pwd_">Passphrase <small>(do not use a real password)</small></label>
+						<input id="pwd_" type="password" class="form-control mb-3" name="pwd" ng-model="formData.pwd" placeholder="***********" required />
+
+						<input type="submit" class="btn btn-outline-primary w-100" value="Start Match" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="row">
+				<div class="col-12" ng-repeat="match in getMatches">
+					<a ng-href="#!/match/{{ match.uuid }}">
+						<div class="banner mb-2" ng-href="#!/match/{{ match.uuid }}"></divclass>
+							<span class="strong">{{ match.player1 }}</span>
+							vs
+							<span class="strong">{{ match.player2 }}</span>
+							<div class="float-right text-muted">
+								{{ match.jsDatetime | date:'dd-MM-yyyy' }}
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="text-center mx-auto">
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({
+							google_ad_client: "ca-pub-3822393833826597",
+							enable_page_level_ads: true
+					});
+				</script>
+				<!-- OrangeJolt -->
+				<ins class="adsbygoogle"
+					 style="display:block"
+					 data-ad-client="ca-pub-3822393833826597"
+					 data-ad-slot="1078846179"
+					 data-ad-format="auto"
+					 data-full-width-responsive="true"></ins>
+				<script>
+					 (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+
+		<div class="py-4 mx-auto" style="opacity: 0.3">
+			{{ getStatistics.games_today }} matches in the last 24 hours, {{ getStatistics.games_all }} created since 7/7/2019.
+		</div>
+		
+    </div>
+</div>

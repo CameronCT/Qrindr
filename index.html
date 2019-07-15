@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Cameron">
+        <link rel="icon" href="../../favicon.ico">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+        <link rel="manifest" href="static/favicon/site.webmanifest">
+
+        <title>Qrindr</title>
+
+        <!-- BootStrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- App -->
+        <link href="static/css/app.css?v=0.1.7" rel="stylesheet">
+
+        <!-- Toastr -->
+        <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css">
+
+        <!-- Adsense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-3822393833826597",
+                enable_page_level_ads: true
+            });
+        </script>
+
+        <!-- Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143630446-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-143630446-1');
+        </script>
+
+    </head>
+
+    <body ng-app="MyQrindr">
+
+        <navigation></navigation>
+
+        <main class="container">
+            <div ng-view></div>
+        </main>
+
+        <footer></footer>
+
+        <!-- jQuery, BootStrap & Tether -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://use.fontawesome.com/349b9724e7.js"></script>
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-cookies.min.js"></script>
+        <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+        <!-- App -->
+        <script src="app/app.js?v=0.1.3"></script>
+
+        <!-- Directives -->
+        <script src="app/components/base.js"></script>
+
+        <!-- Controllers -->
+        <script src="app/controllers/Home.js?v=0.2.0"></script>
+        <script src="app/controllers/Match.js?v=0.1.5"></script>
+
+    </body>
+</html>

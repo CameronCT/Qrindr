@@ -1,0 +1,47 @@
+<!-- Champion Ban #5 -->
+<div ng-if="match.bestof == 5 && match.champ_pick_8 != 0">
+        <div class="banner mb-3" ng-if="match.champ_ban_5 == 0"><i class="fa fa-info-circle"></i> <span class="strong">{{ match.player1 }}</span> has not banned champion #5 yet.</div>
+        <div class="banner mb-3" ng-if="match.champ_ban_5 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has banned <span class="strong"><span ng-bind="champions_banned[match.champ_ban_5]"></span></span>.</div>
+        <div class="card mb-3" ng-if="player == match.player1 && match.champ_ban_5 == 0">
+            <div class="card-body">
+                <h6>Select a champion to ban</h6>
+                <form method="post" name="postUpdate" ng-submit="onSubmit(5, 'ban', 'champ')">
+                    <select class="form-control mb-3" name="pick" ng-model="formData.pick" ng-options="key as value for (key, value) in champions" required></select>
+
+                    <input type="submit" class="btn btn-outline-secondary" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Champion Pick #9 -->
+    <div ng-if="match.champ_ban_5 != 0">
+        <div class="banner mb-3" ng-if="match.champ_pick_9 == 0"><i class="fa fa-info-circle"></i> <span class="strong">{{ match.player2 }}</span> has not picked champion #9 yet.</div>
+        <div class="banner mb-3" ng-if="match.champ_pick_9 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="champions_picked[match.champ_pick_9]"></span></span>.</div>
+        <div class="card mb-3" ng-if="player == match.player2 && match.champ_pick_9 == 0">
+            <div class="card-body">
+                <h6>Select a champion to use</h6>
+                <form method="post" name="postUpdate" ng-submit="onSubmit(9, 'pick', 'champ')">
+                    <select class="form-control mb-3" name="pick" ng-model="formData.pick" ng-options="key as value for (key, value) in champions" required></select>
+
+                    <input type="submit" class="btn btn-outline-secondary" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Champion Pick #10 -->
+    <div ng-if="match.champ_pick_9 != 0">
+        <div class="banner mb-3" ng-if="match.champ_pick_10 == 0"><i class="fa fa-info-circle"></i> <span class="strong">{{ match.player1 }}</span> has not picked champion #10 yet.</div>
+        <div class="banner mb-3" ng-if="match.champ_pick_10 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has picked <span class="strong"><span ng-bind="champions_picked[match.champ_pick_10]"></span></span>.</div>
+        <div class="card mb-3" ng-if="player == match.player1 && match.champ_pick_10 == 0">
+            <div class="card-body">
+                <h6>Select a champion to use</h6>
+                <form method="post" name="postUpdate" ng-submit="onSubmit(10, 'pick', 'champ')">
+                    <select class="form-control mb-3" name="pick" ng-model="formData.pick" ng-options="key as value for (key, value) in champions" required></select>
+
+                    <input type="submit" class="btn btn-outline-secondary" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </div>
