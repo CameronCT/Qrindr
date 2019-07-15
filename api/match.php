@@ -31,7 +31,7 @@ $updated =      time();
     
 $string = $type . "_" . $status . "_" . $id;
 $updateMatch = $conn->prepare("UPDATE quakechampions SET $string = ?, updated = ? WHERE uuid = ? AND `password` = ?");
-$updateMatch->execute(array($pick, $updated, $_POST['uuid'], $_POST['pwd']));
+$updateMatch->execute(array($pick, $updated, $_POST['uuid'], $_POST['pwd'] ));
 
 if ($updateMatch->rowCount() > 0)
     $msg = "Success";

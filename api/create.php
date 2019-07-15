@@ -30,7 +30,7 @@ if ($checkExists->fetchColumn() > 0)
 
 if (!$err || $err == null) {
     $create = $conn->prepare("INSERT INTO quakechampions ( uuid, player1, player2, `password`, bestof ) VALUES ( ?, ?, ?, ?, ? )");
-    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], $_POST['pwd'], $_POST['bestof']));
+    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], md5($_POST['pwd']), $_POST['bestof']));
 
     if ($create->rowCount() > 0)
         $msg = $_SESSION['unique'];

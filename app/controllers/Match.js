@@ -8,6 +8,8 @@ function playChatSound() {
 
 app.controller('MatchController', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'toastr', function($scope, $cookieStore, $routeParams, $http, $location, toastr) {
 
+
+
     var firstLoad       = true;
     var firstLoadChat   = true;
 
@@ -32,13 +34,9 @@ app.controller('MatchController', ['$scope', '$cookieStore', '$routeParams', '$h
                         oldUpdated = $scope.updated;
                         $scope.match = response.data.data;
                         $scope.champions = response.data.champions;
-                        $scope.champions_ab = response.data.champions_ab;
-                        $scope.champions_picked = response.data.champions_picked;
-                        $scope.champions_banned = response.data.champions_banned;
+                        $scope.champions_veto = response.data.champions_veto;
                         $scope.maps = response.data.maps;
-                        $scope.maps_ab = response.data.maps_ab;
-                        $scope.maps_picked = response.data.maps_picked;
-                        $scope.maps_banned = response.data.maps_banned;
+                        $scope.maps_veto = response.data.maps_veto;
                         $scope.updated = response.data.data.updated;
 
                         if (firstLoad == false && $scope.player && oldUpdated != $scope.updated && $cookieStore.get('Speakers') == true) {

@@ -1,66 +1,127 @@
 <?php session_start(); require('core/autoload.php');
 
-$MAPS_PICKED = [];
-$CHAMPIONS_PICKED = [];
-$MAPS_BANNED = [];
-$CHAMPIONS_BANNED = [];
+$MAPS_VETO          = [];
+$CHAMPIONS_VETO     = [];
 
 $MAPS = [
-    1 => 'Awoken',
-    2 => 'Blood Covenant',
-    3 => 'Blood Run',
-    4 => 'Corrupted Keep', 
-    5 => 'Ruins of Sarnath',
-    6 => 'Molten Falls',
-    7 => 'Vale of Pnath',
-];
-
-$MAPS_AB = [
-    1 => 'Awoken',
-    2 => 'BC/DM6',
-    3 => 'BR/ZTN',
-    4 => 'CK', 
-    5 => 'Ruins',
-    6 => 'Molten',
-    7 => 'Vale',
+    1 => [
+        'ID'            => 1,
+        'Name'          => 'Awoken',
+        'Abbreviation'  => 'Awoken'
+    ],
+    2 => [
+        'ID'            => 2,
+        'Name'          => 'Blood Covenant',
+        'Abbreviation'  => 'BC/DM6'
+    ],
+    3 => [
+        'ID'            => 3,
+        'Name'          => 'Blood Run',
+        'Abbreviation'  => 'BR/ZTN'
+    ],
+    4 => [
+        'ID'            => 4,
+        'Name'          => 'Corrupted Keep',
+        'Abbreviation'  => 'CK'
+    ],
+    5 => [
+        'ID'            => 5,
+        'Name'          => 'Ruins of Sarnath',
+        'Abbreviation'  => 'Ruins'
+    ],
+    6 => [
+        'ID'            => 6,
+        'Name'          => 'Molten Falls',
+        'Abbreviation'  => 'Molten'
+    ],
+    7 => [
+        'ID'            => 7,
+        'Name'          => 'Vale of Pnath',
+        'Abbreviation'  => 'Vale'
+    ],
 ];
 
 $CHAMPIONS = [
-    1 => 'Nyx',
-    2 => 'Anarki',
-    3 => 'Slash',
-    4 => 'Visor',
-    5 => 'Ranger',
-    6 => 'Galena', 
-    7 => 'B.J. Blazkowicz',
-    8 => 'Doom Slayer',
-    9 => 'Strogg & Peeker',
-    10 => 'Death Knight',
-    11 => 'Eisen',
-    12 => 'Scalebearer',
-    13 => 'Clutch',
-    14 => 'Sorlag',
-    15 => 'Keel',
-    16 => 'Athena'
-];
-
-$CHAMPIONS_AB = [
-    1 => 'Nyx',
-    2 => 'Anarki',
-    3 => 'Slash',
-    4 => 'Visor',
-    5 => 'Ranger',
-    6 => 'Galena', 
-    7 => 'BJ',
-    8 => 'Doom Slayer',
-    9 => 'Strogg',
-    10 => 'DK',
-    11 => 'Eisen',
-    12 => 'Scale',
-    13 => 'Clutch',
-    14 => 'Sorlag',
-    15 => 'Keel',
-    16 => 'Athena'
+    1 => [
+        'ID'            => 1,
+        'Name'          => 'Nyx',
+        'Abbreviation'  => 'Nyx',
+    ],
+    2 => [
+        'ID'            => 2,
+        'Name'          => 'Anarki',
+        'Abbreviation'  => 'Anarki',
+    ],
+    3 => [
+        'ID'            => 3,
+        'Name'          => 'Slash',
+        'Abbreviation'  => 'Slash',
+    ],
+    4 => [
+        'ID'            => 4,
+        'Name'          => 'Visor',
+        'Abbreviation'  => 'Visor',
+    ],
+    5 => [
+        'ID'            => 5,
+        'Name'          => 'Ranger',
+        'Abbreviation'  => 'Ranger',
+    ],
+    6 => [
+        'ID'            => 6,
+        'Name'          => 'Galena',
+        'Abbreviation'  => 'Galena',
+    ],
+    7 => [
+        'ID'            => 7,
+        'Name'          => 'B.J. Blazkowicz',
+        'Abbreviation'  => 'BJ Blazk',
+    ],
+    8 => [
+        'ID'            => 8,
+        'Name'          => 'Doom Slayer',
+        'Abbreviation'  => 'Doom',
+    ],
+    9 => [
+        'ID'            => 9,
+        'Name'          => 'Strogg & Peeker',
+        'Abbreviation'  => 'Strogg',
+    ],
+    10 => [
+        'ID'            => 10,
+        'Name'          => 'Death Knight',
+        'Abbreviation'  => 'DK',
+    ],
+    11 => [
+        'ID'            => 11,
+        'Name'          => 'Eisen',
+        'Abbreviation'  => 'Eisen',
+    ],
+    12 => [
+        'ID'            => 12,
+        'Name'          => 'Scalebearer',
+        'Abbreviation'  => 'Scalebearer',
+    ],
+    13 => [
+        'ID'            => 13,
+        'Name'          => 'Clutch',
+        'Abbreviation'  => 'Clutch',
+    ],
+    14 => [
+        'ID'            => 14,
+        'Name'          => 'Sorlag',
+        'Abbreviation'  => 'Sorlag',
+    ],
+    15 => [
+        'ID'            => 15,
+        'Name'          => 'Keel',
+        'Abbreviation'  => 'Keel',
+    ],
+    16 => [
+        'ID'            => 16,
+        'Name'          => 'Athena',
+        'Abbreviation'   => 'Athena',
+    ],
 ];
 
 arsort($CHAMPIONS);
@@ -70,6 +131,8 @@ $err = null;
 $pull = $conn->prepare("SELECT * FROM quakechampions WHERE uuid = ?");
 $pull->execute(array($_GET['id']));
 $data = $pull->fetch(PDO::FETCH_ASSOC);
+
+$data['map_pick_5'] = 0;
 
 if (empty($data))
     $err = "Invalid match!";
@@ -87,29 +150,41 @@ if (isset($_GET['pwd']) && isset($_GET['player'])) {
 /* Maps */
 for ($i = 1; $i <= 4; $i++) {
     if ($data['map_ban_' . $i] != 0) {
-        $MAPS_BANNED[$data['map_ban_' . $i]] = $MAPS[$data['map_ban_' . $i]];
+        $MAPS_VETO['Ban'][$data['map_ban_' . $i]] = $MAPS[$data['map_ban_' . $i]];
         unset($MAPS[$data['map_ban_' . $i]]);
     }
 }
 
 for ($i = 1; $i <= 4; $i++) {
     if ($data['map_pick_' . $i] != 0) {
-        $MAPS_PICKED[$data['map_pick_' . $i]] = $MAPS[$data['map_pick_' . $i]];
+        $MAPS_VETO['Pick'][$data['map_pick_' . $i]] = $MAPS[$data['map_pick_' . $i]];
         unset($MAPS[$data['map_pick_' . $i]]);
     }
+}
+
+/* Map Tiebreaker */
+if (count($MAPS) == 1) {
+    if ($data['bestof'] == 3)
+        $data['map_pick_3'] = end($MAPS)['ID'];
+
+    if ($data['bestof'] == 5)
+        $data['map_pick_5'] = end($MAPS)['ID'];
+    
+    $MAPS_VETO['Pick'][end($MAPS)['ID']] = $MAPS[end($MAPS)['ID']];
+    unset($MAPS[end($MAPS)['ID']]);
 }
 
 /* Champions */
 for ($i = 1; $i <= 5; $i++) {
     if ($data['champ_ban_' . $i] != 0) {
-        $CHAMPIONS_BANNED[$data['champ_ban_' . $i]] = $CHAMPIONS[$data['champ_ban_' . $i]];
+        $CHAMPIONS_VETO['Ban'][$data['champ_ban_' . $i]] = $CHAMPIONS[$data['champ_ban_' . $i]];
         unset($CHAMPIONS[$data['champ_ban_' . $i]]);
     }
 }
 
 for ($i = 1; $i <= 10; $i++) {
     if ($data['champ_pick_' . $i] != 0) {
-        $CHAMPIONS_PICKED[$data['champ_pick_' . $i]] = $CHAMPIONS[$data['champ_pick_' . $i]];
+        $CHAMPIONS_VETO['Pick'][$data['champ_pick_' . $i]] = $CHAMPIONS[$data['champ_pick_' . $i]];
         unset($CHAMPIONS[$data['champ_pick_' . $i]]);
     }
 }
@@ -121,12 +196,8 @@ echo json_encode([
     'data'   => $data,
     'champions' => $CHAMPIONS,
     'maps' => $MAPS,
-    'champions_ab' => $CHAMPIONS_AB,
-    'maps_ab' => $MAPS_AB,
-    'champions_picked' => $CHAMPIONS_PICKED,
-    'champions_banned' => $CHAMPIONS_BANNED,
-    'maps_picked' => $MAPS_PICKED,
-    'maps_banned' => $MAPS_BANNED
+    'champions_veto' => $CHAMPIONS_VETO,
+    'maps_veto' => $MAPS_VETO,
 ]);
 exit;
 ?>
