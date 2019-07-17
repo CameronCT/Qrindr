@@ -7,8 +7,14 @@ $msg = null;
 if (!isset($_POST['uuid']) || empty($_POST['uuid'])) exit;
 if (!isset($_POST['pwd']) || empty($_POST['pwd'])) exit;
 
+$getReset = $conn->prepare("SELECT player1, player2 FROM quakechampions WHERE uuid = ? AND `password` = ?");
+$getReset->execute(array($_POST['uuid'], $_POST['pwd']));
+$fetchPlayers = $getReset->fetch(PDO::FETCH_ASSOC);
+
 $reset = $conn->prepare("
     UPDATE quakechampions SET
+        player1 = ?,
+        player2 = ?,
         map_ban_1 = 0,
         map_ban_2 = 0,
         map_ban_3 = 0,
@@ -36,7 +42,7 @@ $reset = $conn->prepare("
     WHERE
         uuid = ? AND password = ?
 ");
-$reset->execute(array(time(), $_POST['uuid'], $_POST['pwd']));
+$reset->execute(array($fetchPlayers['player2'], $fetchPlayers['player1'], time(), $_POST['uuid'], $_POST['pwd']));
 
 if ($reset->rowCount() > 0)
     $msg = "Match reset!";
