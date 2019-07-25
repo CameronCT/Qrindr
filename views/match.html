@@ -23,7 +23,7 @@
 							
 							<form method="post" name="postUpdate" ng-submit="onSubmit(1, 'ban', 'map')">
 								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-								<input type="submit" class="btn btn-outline-danger w-100" value="Pick" />
+								<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
 							</form>
 						</div>
 					</div>
@@ -348,7 +348,7 @@
 
 					<!-- Champion Pick #8 -->
 					<div ng-if="match.champ_pick_7 != 0">
-						<div class="banner banner-inverse mb-2" ng-if="match.champ_pick_8 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to ban a champion.</div>
+						<div class="banner banner-inverse mb-2" ng-if="match.champ_pick_8 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to pick a champion.</div>
 						<div class="banner banner-inverse mb-2" ng-if="match.champ_pick_8 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="champions_veto['Pick'][match.champ_pick_8]['Name']"></span></span>.</div>
 						<div class="card border-green mb-2" ng-if="player == match.player2 && match.champ_pick_8 == 0">
 							<div class="card-body">
