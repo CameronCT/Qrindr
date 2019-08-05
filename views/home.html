@@ -1,5 +1,49 @@
 <div class="container mt-5">
     <div class="row my-5">
+
+		<!-- Matchmaking -->
+		<div class="col-12">
+			<div class="card card-border mb-4">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6 my-auto">
+							<div ng-show="$root.session.inQueue">
+								You are currently in queue with <strong>{{ getMatchmakingStatistics.count }}</strong> players in your region!
+							</div>
+							<div ng-show="!$root.session.inQueue">
+								There are currently <strong>{{ getMatchmakingStatistics.count }}</strong> players searching for a game!
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="float-right">
+								<div ng-show="$root.session.inQueue">
+									<i class="fa fa-circle-o-notch fa-spin"></i> Searching
+									<button type="button" class="btn btn-outline-info btn-sm ml-2" ng-click="exitQueue()">Leave Queue</button>
+								</div>
+								<div ng-show="!$root.session.inQueue">
+									<form method="post" name="createMatch" ng-submit="onQueue()">
+										<div class="input-group">
+											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="rapha" required />
+											<div class="input-group-append">
+												<select class="form-control" ng-model="formData.queueRegion">
+													<option value="NA">NA</option>
+													<option value="EU">EU</option>
+													<option value="OCE">OCE</option>
+												</select>
+											</div>
+											<div class="input-group-append">
+												<input type="submit" class="btn btn-outline-info float-right" value="Join Queue" />
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
     	<div class="col-md-6">
 			<div class="card">
 				<div class="card-body mb-2">
