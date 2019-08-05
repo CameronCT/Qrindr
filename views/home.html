@@ -18,12 +18,12 @@
 							<div class="float-right">
 								<div ng-show="$root.session.inQueue">
 									<i class="fa fa-circle-o-notch fa-spin"></i> Searching
-									<button type="button" class="btn btn-outline-info btn-sm ml-2" ng-click="exitQueue()">Leave Queue</button>
+									<button type="button" class="btn btn-outline-default btn-sm ml-2" ng-click="exitQueue()">Leave Queue</button>
 								</div>
 								<div ng-show="!$root.session.inQueue">
 									<form method="post" name="createMatch" ng-submit="onQueue()">
 										<div class="input-group">
-											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="rapha" required />
+											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="IGN or PIN" required />
 											<div class="input-group-append">
 												<select class="form-control" ng-model="formData.queueRegion">
 													<option value="NA">NA</option>
@@ -32,7 +32,7 @@
 												</select>
 											</div>
 											<div class="input-group-append">
-												<input type="submit" class="btn btn-outline-info float-right" value="Join Queue" />
+												<input type="submit" class="btn btn-outline-default btn-outline-default-left btn-sm float-right" value="Join Queue" />
 											</div>
 										</div>
 									</form>
