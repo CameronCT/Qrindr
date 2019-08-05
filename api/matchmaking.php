@@ -137,7 +137,7 @@ if (isset($_POST['remove'])) {
         unset($_SESSION['queueRegion']);
         unset($_SESSION['inQueue']);
 
-        $msg = "You have successfully been removed from the queue!";
+        $msg = "You have left the queue!";
     }
 
 }
@@ -186,7 +186,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
             $_SESSION['queueName'] = $_POST['add'];
             $_SESSION['queueRegion'] = $_POST['region'];
 
-            $msg = "You have succcessfully been added to the queue!";
+            $msg = "You are now in queue!";
         }
     }
 }
