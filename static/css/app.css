@@ -52,7 +52,10 @@ a > .banner:hover, a > .banner:focus { opacity: 0.7; }
     color: #ccc;
     border-color: #0d2738;
     border-width: 3px;
-    border-left: none;
+}
+
+.btn-outline-default-left { 
+    border-left: 0;
 }
 
 .btn-normal {
