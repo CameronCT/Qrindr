@@ -46,6 +46,8 @@ a > .banner:hover, a > .banner:focus { opacity: 0.7; }
 
 .chatbox-form { border-top: 3px solid #122d42; }
 
+.card-border { border: 2px solid #ccc; }
+
 .btn-outline-default {
     color: #ccc;
     border-color: #0d2738;
