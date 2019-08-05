@@ -1,10 +1,68 @@
-app.controller('HomeController', ['$scope', '$location', '$http', 'toastr', 'md5', function($scope, $location, $http, toastr, md5) {
+app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 'toastr', 'md5', function($rootScope, $scope, $location, $http, toastr, md5) {
 
 	$scope.date = new Date();
 	$scope.formData = {};
 
 	$scope.getCurrentURL = $location.protocol() + '://' + $location.host();
 
+	/* --------------- Matchmaking --------------- */
+
+	/* Update */
+	$scope.getMatchmaking = function() {
+		$http.get('api/matchmaking.php?update=true').then(
+			function(response) {
+				$scope.getMatchmaking = response.data;
+			}
+		);
+	};
+	$scope.getMatchmaking();
+	setInterval(function() { $scope.getMatchmaking(); }, 5000);
+
+	/* Statistics */
+	$scope.getMatchmakingStatistics = function() {
+		$http.get('api/matchmaking.php?stats=true').then(
+			function(response) {
+				$scope.getMatchmakingStatistics = response.data.stats;
+			}
+		);
+	};
+	$scope.getMatchmakingStatistics();
+
+	/* Leave Queue */
+	$scope.exitQueue = function() {
+		console.log('sdf');
+        $http.post('api/matchmaking.php', { remove: $rootScope.session.queueName }).then(
+            function(response) {
+                if (response.data.error == null) {
+					toastr.success(response.data.success);
+					$rootScope.getSession();
+                } else if (response.data.success == null) {
+                    toastr.error(response.data.error);
+                }
+            }
+        );
+	};
+	
+	/* Join Queue */
+	$scope.onQueue = function() {
+        $http.post('api/matchmaking.php', { add: $scope.formData.queuePlayer, region: $scope.formData.queueRegion }).then(
+            function(response) {
+                if (response.data.error == null) {
+					toastr.success(response.data.success);
+					$rootScope.getSession();
+                } else if (response.data.success == null) {
+                    toastr.error(response.data.error);
+                }
+            }
+        );
+	};
+
+
+
+	/* ------------------------------------------- */
+
+
+	/* get Matches and Create */
 	$scope.optionsBO = {
 		3: 'Best of 3',
 		5: 'Best of 5'

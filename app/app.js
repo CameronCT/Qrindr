@@ -6,6 +6,10 @@ app.config(function ($routeProvider) {
             controller: 'HomeController', 
             templateUrl: 'views/home.html'
         })
+        .when('/play', {
+            controller: 'PlayController', 
+            templateUrl: 'views/play.html'
+        })
         .when('/match/:id/:pwd/:player', {
             controller: 'MatchController', 
             templateUrl: 'views/match.html'
@@ -29,13 +33,16 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
     $rootScope.fuckNavigation = false;
     $rootScope.news = false;
 
-    $http.get('api/session.php')
-        .then(function(response) {
-            $rootScope.session = response.data;
-        }).catch(function(response) {
-            console.log('err');
-        }
-    );
+    $rootScope.getSession = function() {
+        $http.get('api/session.php')
+            .then(function(response) {
+                $rootScope.session = response.data;
+            }).catch(function(response) {
+                console.log('err');
+            }
+        );
+    };
+    $rootScope.getSession();
 
     if ($cookieStore.get('Speakers') == undefined)
         $cookieStore.put('Speakers', true);
