@@ -8,29 +8,43 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 	/* --------------- Matchmaking --------------- */
 
 	/* Update */
-	$scope.getMatchmaking = function() {
+	$scope.getMatchmakingUpdate = function() {
 		$http.get('api/matchmaking.php?update=true').then(
 			function(response) {
 				$scope.getMatchmaking = response.data;
+
+				if (response.data.error != null) 
+					toastr.error(response.data.error);
+				if (response.data.success != null)
+					toastr.success(response.data.success);
+				if (response.data.redirect != null)
+					$location.url('match/' + response.data.redirect);
 			}
 		);
 	};
-	$scope.getMatchmaking();
-	setInterval(function() { $scope.getMatchmaking(); }, 5000);
+	$scope.getMatchmakingUpdate();
 
 	/* Statistics */
-	$scope.getMatchmakingStatistics = function() {
+	$scope.getMatchMakingStats = function() {
 		$http.get('api/matchmaking.php?stats=true').then(
 			function(response) {
 				$scope.getMatchmakingStatistics = response.data.stats;
 			}
 		);
 	};
-	$scope.getMatchmakingStatistics();
+	$scope.getMatchMakingStats();
+
+	/* Timers */
+	setInterval(
+		function() { 
+			$scope.getMatchmakingUpdate(); 
+			$scope.getMatchMakingStats();
+			$rootScope.getSession();
+		}, 
+	10000);
 
 	/* Leave Queue */
 	$scope.exitQueue = function() {
-		console.log('sdf');
         $http.post('api/matchmaking.php', { remove: $rootScope.session.queueName }).then(
             function(response) {
                 if (response.data.error == null) {
