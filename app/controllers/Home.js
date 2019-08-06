@@ -6,6 +6,7 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 
 	$scope.date = new Date();
 	$scope.formData = {};
+	$scope.getQueueTime = 0;
 
 	$scope.getCurrentURL = $location.protocol() + '://' + $location.host();
 
@@ -29,10 +30,14 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 						$location.url('match/' + response.data.redirect); 
 					}, 2000);
 				}
+				if (response.data.queue != 0) {
+					$scope.getQueueTime = response.data.queue;
+				}
 			}
 		);
 	};
 	$scope.getMatchmakingUpdate();
+	
 
 	/* Statistics */
 	$scope.getMatchMakingStats = function() {
