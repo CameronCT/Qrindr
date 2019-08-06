@@ -34,7 +34,7 @@ function searchQueue($conn, $queueName, $queueRegion) {
         ORDER BY m_id DESC
         LIMIT 1
     ");
-    $searchQueue->execute(array($queueName, $queueRegion, ($sessionRating + 100), ($sessionRating - 400) ));
+    $searchQueue->execute(array($queueName, $queueRegion, ($sessionRating + 100), ($sessionRating - 300) ));
     $useMatch = $searchQueue->fetch(PDO::FETCH_ASSOC);
 
     /* Check if Match Exists */
@@ -60,28 +60,48 @@ if (isset($_GET['stats'])) {
 
 if (isset($_GET['update'])) {
 
-    /* Remove everyone that's been inactive for more than 15 seconds */
-    $getQueue = $conn->query("SELECT m_id, m_name, m_updated, m_datetime FROM quakechampions_matchmaking");
-    foreach ($getQueue->fetchAll(PDO::FETCH_ASSOC) as $v) {
-        if ( ($v['m_updated'] + 15) < time())
-            $removeQueue = $conn->query("DELETE FROM quakechampions_matchmaking WHERE (m_updated + 15) < NOW()");
+    /* Remove Queue after 15 seconds */
+    $removeQueueSelect = $conn->query("SELECT m_id, m_updated FROM quakechampions_matchmaking");
+    foreach ($removeQueueSelect->fetchAll(PDO::FETCH_ASSOC) as $value) {
+        
+        if ($value['m_updated'] < (time() - 15)) {
+            $remove = $conn->prepare("DELETE FROM quakechampions_matchmaking WHERE m_id = ?");
+            $remove->execute(array($value['m_id']));
+        }
     }
-    
-    /* Remove Generates Matchmakings that's been inactive for more than 1 minute */
-    $getMatching = $conn->query("DELETE FROM quakechampions_grindr WHERE g_datetime < (NOW() - 15)");
+
+    /* Remove Queue Grindrs after 15 seconds */
+    $removeGrindrSelect = $conn->query("SELECT g_id, g_datetime FROM quakechampions_grindr");
+    foreach ($removeGrindrSelect->fetchAll(PDO::FETCH_ASSOC) as $value) {
+        if ( time() - (strtotime($value['g_datetime'])) > 15) {
+            $remove = $conn->prepare("DELETE FROM quakechampions_grindr WHERE g_id = ?");
+            $remove->execute(array($value['g_id']));
+        }
+    } 
     
     /* if Player is inQueue == true */
     if (isset($_SESSION['inQueue']) && $_SESSION['inQueue'] == true) {
 
+        /* Checks if Player's Session is in Queue, but was Removed */
+        $checkQueue = $conn->prepare("SELECT COUNT(m_id) FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
+        $checkQueue->execute(array($_SESSION['queueName'], $_SESSION['queueRegion']));
+
+        if ($checkQueue->fetchColumn() == 0) {
+            /* Unset Session Variables */
+            unset($_SESSION['queueName']);
+            unset($_SESSION['queueRegion']);
+            unset($_SESSION['inQueue']);
+        }    
+
         /* get Queue Timer */
-        $getQueueTime = $conn->prepare("SELECT m_updated FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
+        $getQueueTime = $conn->prepare("SELECT UNIX_TIMESTAMP(m_datetime) FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
         $getQueueTime->execute(array($_SESSION['queueName'], $_SESSION['queueRegion']));
         if ($fetchQueueTime = $getQueueTime->fetchColumn())
             $queue = (time() - $fetchQueueTime);
 
         /* Update Queue Timers if player is active */
-        $updateQueue = $conn->prepare("UPDATE quakechampions_matchmaking SET m_updated = ? WHERE m_name = ?");
-        $updateQueue->execute(array(time(), $_SESSION['queueName']));
+        $updateQueue = $conn->prepare("UPDATE quakechampions_matchmaking SET m_updated = ? WHERE m_name = ? AND m_region = ?");
+        $updateQueue->execute(array(time(), $_SESSION['queueName'], $_SESSION['queueRegion']));
 
         /* if Match Exists */
         $findMatch = $conn->prepare("SELECT COUNT(g_id) AS rowCount, g_player1, g_player2, g_serial FROM quakechampions_grindr WHERE g_player1 = ? OR g_player2 = ?");
@@ -130,7 +150,7 @@ if (isset($_GET['update'])) {
                 $queueAndMatch->execute(array($_SESSION['queueName'], $getPossibleMatch['m_name'], $serial, md5($serial), $_SESSION['queueName'], $getPossibleMatch['m_name'], 3, md5(rand(1, 999999)) ));
             } 
         }
-    }
+    } 
 
 } 
 
@@ -189,7 +209,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
         $alias = $NAMES[1][rand(0, count($NAMES[1]) - 1)] . $NAMES[2][rand(0, count($NAMES[2]) - 1)] . $NAMES[3][rand(0, count($NAMES[3]) - 1)];
 
         /* Skillrating, make highest Skill Rating max out at 2200 */
-        if ($res['playerRatings']['duel']['rating'] > 2300)
+        if (($res['playerRatings']['duel']['rating'] + $res['playerRatings']['duel']['deviation']) > 2300)
             $skillRating = 2300;
         else
             $skillRating = ($res['playerRatings']['duel']['rating'] + $res['playerRatings']['duel']['deviation']);
