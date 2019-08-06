@@ -8,13 +8,13 @@
 					<div class="row">
 						<div class="col-md-6 my-auto">
 							<div ng-show="$root.session.inQueue">
-								You are currently in queue with <strong>{{ getMatchmakingStatistics.count }}</strong> players in your region!
+								You are currently in queue with <strong>{{ getMatchmakingStatistics.count }}</strong> players!
 							</div>
 							<div ng-show="!$root.session.inQueue">
 								There are currently <strong>{{ getMatchmakingStatistics.count }}</strong> players searching for a game!
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div id="MatchMaking" class="col-md-6">
 							<div class="float-right">
 								<div ng-show="$root.session.inQueue">
 									<i class="fa fa-circle-o-notch fa-spin"></i> Searching
@@ -26,17 +26,23 @@
 											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="IGN or PIN" required />
 											<div class="input-group-append">
 												<select class="form-control" ng-model="formData.queueRegion">
-													<option value="NA">NA</option>
-													<option value="EU">EU</option>
-													<option value="OCE">OCE</option>
+													<option value="">Region</option>
+													<option value="NA">North America</option>
+													<option value="EU">Europe</option>
+													<option value="OCE">Oceania</option>
 												</select>
 											</div>
 											<div class="input-group-append">
-												<input type="submit" class="btn btn-outline-default btn-outline-default-left btn-sm float-right" value="Join Queue" />
+												<input type="submit" class="btn btn-outline-default btn-sm float-right" value="Join Queue" />
 											</div>
 										</div>
 									</form>
 								</div>
+							</div>
+						</div>
+						<div id="MatchMakingFound" class="col-md-6" style="display: none;">
+							<div class="float-right">
+								<i class="fa fa-circle-o-notch fa-spin"></i> Match found, creating your lobby!
 							</div>
 						</div>
 					</div>
@@ -112,3 +118,5 @@
 		
     </div>
 </div>
+
+<audio id="notification_sound" src="static/sounds/chat.wav" preload="auto"></audio>
