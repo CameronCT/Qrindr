@@ -1,3 +1,7 @@
+function playNotificationSound() {
+    document.getElementById('notification_sound').play();
+}
+
 app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 'toastr', 'md5', function($rootScope, $scope, $location, $http, toastr, md5) {
 
 	$scope.date = new Date();
@@ -17,8 +21,14 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 					toastr.error(response.data.error);
 				if (response.data.success != null)
 					toastr.success(response.data.success);
-				if (response.data.redirect != null)
-					$location.url('match/' + response.data.redirect);
+				if (response.data.redirect != null) {
+					document.getElementById('MatchMaking').style.display = "none";
+					document.getElementById('MatchMakingFound').style.display = "block";
+					playNotificationSound();
+					setTimeout(function() { 
+						$location.url('match/' + response.data.redirect); 
+					}, 2000);
+				}
 			}
 		);
 	};
@@ -41,7 +51,7 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 			$scope.getMatchMakingStats();
 			$rootScope.getSession();
 		}, 
-	10000);
+	3000);
 
 	/* Leave Queue */
 	$scope.exitQueue = function() {
