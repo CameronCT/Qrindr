@@ -4,6 +4,7 @@ $err = null;
 $msg = null;
 $redirect = null;
 $stats = null;
+$queue = 0;
 $prefix = "[G]";
 $qcapi = "https://stats.quake.com/api/v2/Player/Stats?name=";
 
@@ -71,6 +72,12 @@ if (isset($_GET['update'])) {
     
     /* if Player is inQueue == true */
     if (isset($_SESSION['inQueue']) && $_SESSION['inQueue'] == true) {
+
+        /* get Queue Timer */
+        $getQueueTime = $conn->prepare("SELECT m_updated FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
+        $getQueueTime->execute(array($_SESSION['queueName'], $_SESSION['queueRegion']));
+        if ($fetchQueueTime = $getQueueTime->fetchColumn())
+            $queue = (time() - $fetchQueueTime);
 
         /* Update Queue Timers if player is active */
         $updateQueue = $conn->prepare("UPDATE quakechampions_matchmaking SET m_updated = ? WHERE m_name = ?");
@@ -146,6 +153,17 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
 
     $_POST['add'] = filter_var($_POST['add'], FILTER_SANITIZE_STRING);
 
+    /* Check if Reserved - Entering Name */
+    $checkReserved = $conn->prepare("SELECT COUNT(r_id) FROM quakechampions_reserved WHERE r_name = ?");
+    $checkReserved->execute(array($_POST['add']));
+    if ($checkReserved->fetchColumn() > 0) $err = "The name you have entered is reserved and cannot be used publicly. If you are one of these players, please contact GNiK!";
+
+    /* Check if Reserved - Entering PIN */
+    $checkReservedB = $conn->prepare("SELECT COUNT(r_id) as rowCount, r_name FROM quakechampions_reserved WHERE r_pin = ?");
+    $checkReservedB->execute(array((int) $_POST['add']));
+    $getReservedB = $checkReservedB->fetch(PDO::FETCH_ASSOC);
+    if ($getReservedB['rowCount'] > 0) { $err = null; $_POST['add'] = $getReservedB['r_name']; }
+    
     /* Check if Name Exists */
     $checkName = $conn->prepare("SELECT COUNT(m_id) FROM quakechampions_matchmaking WHERE m_name = ?");
     $checkName->execute(array($_POST['add']));
@@ -162,7 +180,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
     }
 
     /* Check if Region is correctly */
-    if (!in_array($_POST['region'], ['NA', 'EU', 'OCE'])) $err = "Invalid region!";
+    if (!isset($_POST['region']) || !in_array($_POST['region'], ['NA', 'EU', 'OCE'])) $err = "Invalid region!";
 
     if (!$err || $err == null) {
 
@@ -193,7 +211,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
 
 /* JSON */
 header('Content-Type: application/json');
-echo json_encode(['error' => $err, 'success' => $msg, 'redirect' => $redirect, 'stats' => $stats]);
+echo json_encode(['error' => $err, 'success' => $msg, 'redirect' => $redirect, 'stats' => $stats, 'queue' => $queue]);
 exit;
 
 ?>
