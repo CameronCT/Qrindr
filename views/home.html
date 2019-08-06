@@ -8,16 +8,16 @@
 					<div class="row">
 						<div class="col-md-6 my-auto">
 							<div ng-show="$root.session.inQueue">
-								You are currently in queue with <strong>{{ getMatchmakingStatistics.count }}</strong> players!
+								You are currently in queue with <strong>{{ getMatchmakingStatistics.count }}</strong> player(s)!
 							</div>
 							<div ng-show="!$root.session.inQueue">
-								There are currently <strong>{{ getMatchmakingStatistics.count }}</strong> players searching for a game!
+								There are currently <strong>{{ getMatchmakingStatistics.count }}</strong> player(s) searching for a game!
 							</div>
 						</div>
 						<div id="MatchMaking" class="col-md-6">
 							<div class="float-right">
 								<div ng-show="$root.session.inQueue">
-									<i class="fa fa-circle-o-notch fa-spin"></i> Searching
+									<i class="fa fa-circle-o-notch fa-spin"></i> Searching ({{ getQueueTime }}s)
 									<button type="button" class="btn btn-outline-default btn-sm ml-2" ng-click="exitQueue()">Leave Queue</button>
 								</div>
 								<div ng-show="!$root.session.inQueue">
