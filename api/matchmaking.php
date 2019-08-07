@@ -70,10 +70,10 @@ if (isset($_GET['update'])) {
         }
     }
 
-    /* Remove Queue Grindrs after 15 seconds */
+    /* Remove Queue Grindrs after 30 seconds */
     $removeGrindrSelect = $conn->query("SELECT g_id, g_datetime FROM quakechampions_grindr");
     foreach ($removeGrindrSelect->fetchAll(PDO::FETCH_ASSOC) as $value) {
-        if ( time() - (strtotime($value['g_datetime'])) > 15) {
+        if ( time() - (strtotime($value['g_datetime'])) > 30) {
             $remove = $conn->prepare("DELETE FROM quakechampions_grindr WHERE g_id = ?");
             $remove->execute(array($value['g_id']));
         }
