@@ -1,4 +1,5 @@
 <?php session_start(); require('core/autoload.php'); if (isset($_POST)) $_POST = json_decode(file_get_contents('php://input'),true);
+date_default_timezone_set('UTC');
 
 $err = null;
 $msg = null;
@@ -31,7 +32,7 @@ function searchQueue($conn, $queueName, $queueRegion) {
             m_id, m_name, m_alias, m_updated FROM quakechampions_matchmaking 
         WHERE 
             m_name != ? AND m_region = ? AND m_skillrating < ? AND m_skillrating > ?
-        ORDER BY m_id DESC
+        ORDER BY m_id ASC
         LIMIT 1
     ");
     $searchQueue->execute(array($queueName, $queueRegion, ($sessionRating + 100), ($sessionRating - 300) ));
@@ -70,10 +71,10 @@ if (isset($_GET['update'])) {
         }
     }
 
-    /* Remove Queue Grindrs after 30 seconds */
+    /* Remove Queue Grindrs after 15 seconds */
     $removeGrindrSelect = $conn->query("SELECT g_id, g_datetime FROM quakechampions_grindr");
     foreach ($removeGrindrSelect->fetchAll(PDO::FETCH_ASSOC) as $value) {
-        if ( time() - (strtotime($value['g_datetime'])) > 30) {
+        if ( time() - (strtotime($value['g_datetime'])) > 15) {
             $remove = $conn->prepare("DELETE FROM quakechampions_grindr WHERE g_id = ?");
             $remove->execute(array($value['g_id']));
         }
@@ -81,17 +82,6 @@ if (isset($_GET['update'])) {
     
     /* if Player is inQueue == true */
     if (isset($_SESSION['inQueue']) && $_SESSION['inQueue'] == true) {
-
-        /* Checks if Player's Session is in Queue, but was Removed */
-        $checkQueue = $conn->prepare("SELECT COUNT(m_id) FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
-        $checkQueue->execute(array($_SESSION['queueName'], $_SESSION['queueRegion']));
-
-        if ($checkQueue->fetchColumn() == 0) {
-            /* Unset Session Variables */
-            unset($_SESSION['queueName']);
-            unset($_SESSION['queueRegion']);
-            unset($_SESSION['inQueue']);
-        }    
 
         /* get Queue Timer */
         $getQueueTime = $conn->prepare("SELECT UNIX_TIMESTAMP(m_datetime) FROM quakechampions_matchmaking WHERE m_name = ? AND m_region = ?");
@@ -108,7 +98,7 @@ if (isset($_GET['update'])) {
         $findMatch->execute(array($_SESSION['queueName'], $_SESSION['queueName']));
         $findMatched = $findMatch->fetch(PDO::FETCH_ASSOC);
 
-        if ($findMatched['rowCount'] == 1) {
+        if ($findMatched['rowCount'] >= 1) {
 
             $getMatchURL = $conn->prepare("SELECT uuid, `password` FROM quakechampions WHERE uuid = ? AND player1 = ? AND player2 = ? OR uuid = ? AND player1 = ? AND player2 = ?");
             $getMatchURL->execute(array(md5($findMatched['g_serial']), $findMatched['g_player1'], $findMatched['g_player2'], md5($findMatched['g_serial']), $findMatched['g_player2'], $findMatched['g_player1']));
@@ -132,7 +122,7 @@ if (isset($_GET['update'])) {
 
             if ($getPossibleMatch != false) {
                 /* Start the Process of Creating a Match */
-                $serial = rand(1, 999999);
+                $serial = rand(1, 499999) + rand(1, 499999) + rand(1, 2);
 
                 $queueAndMatch = $conn->prepare("
                     INSERT INTO 
@@ -146,8 +136,18 @@ if (isset($_GET['update'])) {
                     ( uuid, player1, player2, bestof, password )
                         VALUES
                     ( ?, ?, ?, ?, ? );
+
+                    DELETE FROM
+                        quakechampions_matchmaking
+                    WHERE
+                        m_name = ? AND m_id > 0;
+
+                    DELETE FROM
+                        quakechampions_matchmaking
+                    WHERE
+                        m_name = ? AND m_id > 0;
                 ");
-                $queueAndMatch->execute(array($_SESSION['queueName'], $getPossibleMatch['m_name'], $serial, md5($serial), $_SESSION['queueName'], $getPossibleMatch['m_name'], 3, md5(rand(1, 999999)) ));
+                $queueAndMatch->execute(array($_SESSION['queueName'], $getPossibleMatch['m_name'], $serial, md5($serial), $_SESSION['queueName'], $getPossibleMatch['m_name'], 3, md5(rand(1, 999999)), $_SESSION['queueName'], $getPossibleMatch['m_name']));
             } 
         }
     } 
@@ -200,7 +200,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
     }
 
     /* Check if Region is correctly */
-    if (!isset($_POST['region']) || !in_array($_POST['region'], ['NA', 'EU', 'OCE'])) $err = "Invalid region!";
+    if (!$_POST['region'] || empty($_POST['region']) || !isset($_POST['region']) || !in_array($_POST['region'], ['NA', 'EU', 'OCE'])) $err = "Invalid region!";
 
     if (!$err || $err == null) {
 

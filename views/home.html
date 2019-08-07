@@ -23,9 +23,9 @@
 								<div ng-show="!$root.session.inQueue">
 									<form method="post" name="createMatch" ng-submit="onQueue()">
 										<div class="input-group">
-											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="IGN or PIN" required />
+											<input id="queuePlayer1" type="text" class="form-control" name="queuePlayer" ng-model="formData.queuePlayer" placeholder="IGN or PIN" ng-trim="false" required />
 											<div class="input-group-append">
-												<select class="form-control" ng-model="formData.queueRegion">
+												<select class="form-control" ng-model="formData.queueRegion" required>
 													<option value="">Region</option>
 													<option value="NA">North America</option>
 													<option value="EU">Europe</option>
