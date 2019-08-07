@@ -2,7 +2,11 @@ function playNotificationSound() {
     document.getElementById('notification_sound').play();
 }
 
-app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 'toastr', 'md5', function($rootScope, $scope, $location, $http, toastr, md5) {
+function playReadySound() {
+    document.getElementById('ready_sound').play();
+}
+
+app.controller('HomeController', ['$rootScope', '$cookieStore', '$scope', '$location', '$http', 'toastr', 'md5', function($rootScope, $cookieStore, $scope, $location, $http, toastr, md5) {
 
 	$scope.date = new Date();
 	$scope.formData = {};
@@ -25,7 +29,10 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
 				if (response.data.redirect != null) {
 					document.getElementById('MatchMaking').style.display = "none";
 					document.getElementById('MatchMakingFound').style.display = "block";
-					playNotificationSound();
+					
+					if ($cookieStore.get('Speakers') == true)
+						playReadySound();
+
 					setTimeout(function() { 
 						$location.url('match/' + response.data.redirect); 
 					}, 2000);
@@ -64,6 +71,10 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
             function(response) {
                 if (response.data.error == null) {
 					toastr.success(response.data.success);
+
+					if ($cookieStore.get('Speakers') == true)
+						playNotificationSound();
+
 					$rootScope.getSession();
                 } else if (response.data.success == null) {
                     toastr.error(response.data.error);
@@ -78,6 +89,10 @@ app.controller('HomeController', ['$rootScope', '$scope', '$location', '$http', 
             function(response) {
                 if (response.data.error == null) {
 					toastr.success(response.data.success);
+
+					if ($cookieStore.get('Speakers') == true)
+						playNotificationSound();
+
 					$rootScope.getSession();
                 } else if (response.data.success == null) {
                     toastr.error(response.data.error);
