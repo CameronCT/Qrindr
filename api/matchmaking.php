@@ -200,7 +200,7 @@ if (isset($_POST['add']) && isset($_POST['region'])) {
     }
 
     /* Check if Region is correctly */
-    if (!$_POST['region'] || empty($_POST['region']) || !isset($_POST['region']) || !in_array($_POST['region'], ['NA', 'EU', 'OCE'])) $err = "Invalid region!";
+    if (!$_POST['region'] || empty($_POST['region']) || !isset($_POST['region']) || !in_array($_POST['region'], ['NA', 'EU', 'ASIA', 'SA', 'OCE'])) $err = "Invalid region!";
 
     if (!$err || $err == null) {
 
