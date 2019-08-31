@@ -133,9 +133,14 @@ app.controller('HomeController', ['$rootScope', '$cookieStore', '$scope', '$loca
 	$scope.onSubmit = function() {
 
 		youPlayer = $scope.formData.player1;
-		cointoss = Math.floor(Math.random() * 2);
 
-		if (cointoss == 1) {
+		if ($scope.formData.seedings == 0) {
+			cointoss = Math.floor(Math.random() * 2);
+			if (cointoss == 1) {
+				$scope.formData.player1 = $scope.formData.player2;
+				$scope.formData.player2 = youPlayer;
+			}
+		} else if ($scope.formData.seedings == 2) { 
 			$scope.formData.player1 = $scope.formData.player2;
 			$scope.formData.player2 = youPlayer;
 		}
