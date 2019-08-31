@@ -59,7 +59,7 @@
 						Create a Match
 					</h2>
 					<form method="post" name="createMatch" ng-submit="onSubmit()">
-						<label for="player1_">Name</label>
+						<label for="player1_">You</label>
 						<input id="player1_" type="text" class="form-control mb-3" name="player1" ng-model="formData.player1" placeholder="Liquid rapha" required />
 
 						<label for="player2_">Opponent</label>
@@ -67,6 +67,14 @@
 
 						<label for="bestof_">Best of</label>
 						<select id="bestof_" class="form-control mb-3" name="bestof" ng-model="formData.bestof" ng-options="key as value for (key, value) in optionsBO" required></select>
+
+						<label for="seedings_">Seedings</label>
+						<select id="seedings_" class="form-control mb-3" ng-model="formData.seedings" required>
+							<option value="">Seedings</option>
+							<option value="0">Random</option>
+							<option value="1">You</option>
+							<option value="2">Opponent</option>
+						</select>
 
 						<label for="pwd_">Passphrase <small>(do not use a real password)</small></label>
 						<input id="pwd_" type="password" class="form-control mb-3" name="pwd" ng-model="formData.pwd" placeholder="***********" required />
