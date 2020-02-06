@@ -1,17 +1,22 @@
-<div class="container my-5">
+<div class="container-fluid px-5 my-5">
+		<div ng-show="player && pwd">
+			<div ng-if="match.bestof == 5 && match.champ_pick_10 != 0 || match.bestof == 3 && match.champ_pick_6 != 0">
+				<div class="banner card-border text-center mb-2"><i class="fa fa-info-circle"></i> Your match has been finalized, if you would like to restart the match then please <button class="btn-normal" ng-click="resetMatch()"><span class="strong">click here</span></button>.</div>
+			</div>
+		</div>
+		<div ng-show="!player && !pwd">
+			<div ng-if="match.bestof == 5 && match.champ_pick_10 != 0 || match.bestof == 3 && match.champ_pick_6 != 0">
+				<div class="banner card-border text-center mb-2"><i class="fa fa-info-circle"></i> This match has been finalized.</div>
+			</div>
+		</div>
+
+		<!-- Seeding -->
+		<div class="banner text-center mb-2"><i class="fa fa-info-circle"></i> The <span ng-if="match.decider == 0">cointoss</span><span ng-if="match.decider != 0">creator</span> has determined that <span class="strong">{{ match.player1 }}</span> will be first seed for this <span class="strong">Best of {{ match.bestof }}</span>.</div>
+	
 	<div class="row">
 
-		<div class="col-md-8">
-
-			<div ng-show="player && pwd">
-				<div ng-if="match.bestof == 5 && match.champ_pick_10 != 0 || match.bestof == 3 && match.champ_pick_6 != 0">
-					<div class="banner mb-2"><i class="fa fa-info-circle"></i> This match has now finished, if you would like to restart the match then please <button class="btn-normal" ng-click="resetMatch()"><span class="strong">click here</span></button>.</div>
-				</div>
-			</div>
-
-			<div ng-if="match.bestof == 5 && match.map_pick_4 == 0 || match.bestof == 3 && match.map_ban_4 == 0">
-				<!-- Seeding -->
-				<div class="banner mb-2"><i class="fa fa-info-circle"></i> The cointoss has determined that <span class="strong">{{ match.player1 }}</span> will be first seed for this <span class="strong">Best of {{ match.bestof }}</span>.</div>
+		<div class="col-md-3">
+			<div>
 
 				<!-- Map Ban #1 -->
 				<div>
@@ -147,7 +152,15 @@
 					</div>
 				</div>
 			</div>
-
+		</div>
+		<div class="col-md-6">
+			<div class="card mb-2" ng-if="match.bestof == 3 && match.map_ban_4 == 0 || match.bestof == 5 && match.map_pick_4 == 0">
+				<div class="card-body qc-map">
+					<h3 class="text-center py-5 px-5">
+						<i class="fa fa-spinner fa-spin"></i> Waiting on Map Vetos
+					</h3>
+				</div>
+			</div>
 			<div class="card mb-2" ng-if="match.bestof == 3 && match.map_ban_4 != 0 || match.bestof == 5 && match.map_pick_4 != 0">
 				<div class="card-body qc-map">
 					<h3 class="text-center mt-2 mb-4" ng-bind="maps_veto['Pick'][match.map_pick_1]['Name']"></h3>
@@ -420,7 +433,7 @@
 			<!-- Final -->
 			<div ng-if="match.bestof == 3 && match.champ_pick_6 != 0 || match.bestof == 5 && match.champ_pick_10 != 0" class="card mb-2">
 				<div class="card-body">
-					<h3 class="text-center mt-2 mb-4">Copy Pasta</h3 >
+					<h3 class="text-center mt-2 mb-4">Copy & Paste</h3 >
 					<div class="copypasta">
 						<div>
 							[{{ match.player1 }}/{{ match.player2 }}] --
@@ -438,14 +451,14 @@
 			</div> 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 		
 			<!-- Invite -->
 			<div ng-if="player && pwd" class="card mb-2">
 				<div class="card-body">
 					<h6 class="text-center mt-2 mb-4">Invite</h6>
-					<input ng-if="match.player1 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player2 }}" class="form-control" readonly />
-					<input ng-if="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 }}" class="form-control" readonly />
+					<input ng-if="match.player1 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player2 | urlencode }}" class="form-control" readonly />
+					<input ng-if="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 | urlencode }}" class="form-control" readonly />
 				</div>
 			</div>
 

@@ -29,8 +29,8 @@ if ($checkExists->fetchColumn() > 0)
     $err = "You already have a match that exists, please close it before starting a new one!";
 
 if (!$err || $err == null) {
-    $create = $conn->prepare("INSERT INTO quakechampions ( uuid, player1, player2, `password`, bestof ) VALUES ( ?, ?, ?, ?, ? )");
-    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], md5($_POST['pwd']), $_POST['bestof']));
+    $create = $conn->prepare("INSERT INTO quakechampions ( uuid, player1, player2, `password`, decider, bestof ) VALUES ( ?, ?, ?, ?, ?, ? )");
+    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], md5($_POST['pwd']), $_POST['decider'], $_POST['bestof']));
 
     if ($create->rowCount() > 0)
         $msg = $_SESSION['unique'];

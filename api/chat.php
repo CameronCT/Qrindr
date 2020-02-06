@@ -40,7 +40,7 @@ if ($_GET['type'] == "post") {
 
     $countMessages = $conn->prepare("SELECT COUNT(q_id) FROM quakechampions_chat WHERE q_uuid = ? AND q_player = ? AND q_datetime > DATE_SUB(NOW(), INTERVAL 1 MINUTE)");
     $countMessages->execute(array($_GET['uuid'], $_POST['player']));
-
+ 
     if ($countMessages->fetchColumn() >= 10)
         $err = "You have sent too many messages, try again in 60 seconds!";
 
