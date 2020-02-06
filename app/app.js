@@ -55,3 +55,9 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
     }
 
 }]);
+
+app.filter('urlencode', function() {
+    return function(input) {
+        return window.encodeURIComponent(input);
+    }
+});
