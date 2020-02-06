@@ -16,143 +16,142 @@
 	<div class="row">
 
 		<div class="col-md-3">
-			<div>
 
-				<!-- Map Ban #1 -->
-				<div>
-					<div class="banner mb-2" ng-if="match.map_ban_1 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to ban a map.</div>
+			<div style="padding-top: 0.10rem;"></div>
+
+			<!-- Map Ban #1 -->
+			<div class="banner mb-2" ng-if="match.map_ban_1 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to ban a map.</div>
+			
+			<div class="banner mb-2" ng-if="match.map_ban_1 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_1]['Name']"></span></span>.</div>
+			<div class="card border-red mb-2" ng-if="player == match.player1 && match.map_ban_1 == 0">
+				<div class="card-body">
 					
-					<div class="banner mb-2" ng-if="match.map_ban_1 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_1]['Name']"></span></span>.</div>
-					<div class="card border-red mb-2" ng-if="player == match.player1 && match.map_ban_1 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(1, 'ban', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-								<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
-							</form>
-						</div>
-					</div>
+					<form method="post" name="postUpdate" ng-submit="onSubmit(1, 'ban', 'map')">
+						<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+						<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
+					</form>
 				</div>
+			</div>
 
-				<!-- Map Ban #2 -->
-				<div ng-if="match.map_ban_1 != 0">
-					<div class="banner mb-2" ng-if="match.map_ban_2 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to ban a map.</div>
-					<div class="banner mb-2" ng-if="match.map_ban_2 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player2 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_2]['Name']"></span></span>.</div>
-					<div class="card border-red mb-2" ng-if="player == match.player2 && match.map_ban_2 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(2, 'ban', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-								<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Pick #1 -->
-				<div ng-if="match.map_ban_2 != 0">
-					<div class="banner mb-2" ng-if="match.map_pick_1 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to pick a map.</div>
-					<div class="banner mb-2" ng-if="match.map_pick_1 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player1 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_1]['Name']"></span></span>.</div>
-					<div class="card border-green mb-2" ng-if="player == match.player1 && match.map_pick_1 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(1, 'pick', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Pick #2 -->
-				<div ng-if="match.map_pick_1 != 0">
-					<div class="banner mb-2" ng-if="match.map_pick_2 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to pick a map.</div>
-					<div class="banner mb-2" ng-if="match.map_pick_2 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_2]['Name']"></span></span>.</div>
-					<div class="card border-green mb-2" ng-if="player == match.player2 && match.map_pick_2 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(2, 'pick', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Pick #3 -->
-				<div ng-if="match.bestof == 5 && match.map_pick_2 != 0">
-					<div class="banner mb-2" ng-if="match.map_pick_3 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to pick a map.</div>
-					<div class="banner mb-2" ng-if="match.map_pick_3 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player1 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_3]['Name']"></span></span>.</div>
-					<div class="card border-green mb-2" ng-if="player == match.player1 && match.map_pick_3 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(3, 'pick', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Pick #4 -->
-				<div ng-if="match.bestof == 5 && match.map_pick_3 != 0">
-					<div class="banner mb-2" ng-if="match.map_pick_4 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to pick a map.</div>
-					<div class="banner mb-2" ng-if="match.map_pick_4 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_4]['Name']"></span></span>.</div>
-					<div class="card border-green mb-2" ng-if="player == match.player2 && match.map_pick_4 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(4, 'pick', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Ban #3 -->
-				<div ng-if="match.bestof == 3 && match.map_ban_2 != 0 && match.map_pick_2 != 0">
-					<div class="banner mb-2" ng-if="match.map_ban_3 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to ban a map.</div>
-					<div class="banner mb-2" ng-if="match.map_ban_3 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_3]['Name']"></span></span>.</div>
-					<div class="card border-red mb-2" ng-if="player == match.player1 && match.map_ban_3 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(3, 'ban', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Ban #4 -->
-				<div ng-if="match.bestof == 3 && match.map_ban_3 != 0">
-					<div class="banner mb-2" ng-if="match.map_ban_4 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to ban a map.</div>					
-					<div class="banner mb-2" ng-if="match.map_ban_4 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player2 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_4]['Name']"></span></span>.</div>
-					<div class="card border-red mb-2" ng-if="player == match.player2 && match.map_ban_4 == 0">
-						<div class="card-body">
-							
-							<form method="post" name="postUpdate" ng-submit="onSubmit(4, 'ban', 'map')">
-								<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
-
-								<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tiebreaker Map -->
-				<div ng-if="match.map_ban_4 != 0 || match.map_pick_4 != 0">
-					<div class="banner mb-2" ng-repeat="map in maps" ng-if="$last">
-						<i class="fa fa-check"></i> The tiebreaker map will be <span class="strong"><span ng-bind="map"></span></span>.
+			<!-- Map Ban #2 -->
+			<div ng-if="match.map_ban_1 != 0">
+				<div class="banner mb-2" ng-if="match.map_ban_2 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to ban a map.</div>
+				<div class="banner mb-2" ng-if="match.map_ban_2 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player2 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_2]['Name']"></span></span>.</div>
+				<div class="card border-red mb-2" ng-if="player == match.player2 && match.map_ban_2 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(2, 'ban', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+							<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
+						</form>
 					</div>
 				</div>
 			</div>
+
+			<!-- Map Pick #1 -->
+			<div ng-if="match.map_ban_2 != 0">
+				<div class="banner mb-2" ng-if="match.map_pick_1 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to pick a map.</div>
+				<div class="banner mb-2" ng-if="match.map_pick_1 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player1 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_1]['Name']"></span></span>.</div>
+				<div class="card border-green mb-2" ng-if="player == match.player1 && match.map_pick_1 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(1, 'pick', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Pick #2 -->
+			<div ng-if="match.map_pick_1 != 0">
+				<div class="banner mb-2" ng-if="match.map_pick_2 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to pick a map.</div>
+				<div class="banner mb-2" ng-if="match.map_pick_2 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_2]['Name']"></span></span>.</div>
+				<div class="card border-green mb-2" ng-if="player == match.player2 && match.map_pick_2 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(2, 'pick', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Pick #3 -->
+			<div ng-if="match.bestof == 5 && match.map_pick_2 != 0">
+				<div class="banner mb-2" ng-if="match.map_pick_3 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to pick a map.</div>
+				<div class="banner mb-2" ng-if="match.map_pick_3 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player1 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_3]['Name']"></span></span>.</div>
+				<div class="card border-green mb-2" ng-if="player == match.player1 && match.map_pick_3 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(3, 'pick', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Pick #4 -->
+			<div ng-if="match.bestof == 5 && match.map_pick_3 != 0">
+				<div class="banner mb-2" ng-if="match.map_pick_4 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to pick a map.</div>
+				<div class="banner mb-2" ng-if="match.map_pick_4 != 0"><i class="fa fa-check"></i> <span class="strong">{{ match.player2 }}</span> has picked <span class="strong"><span ng-bind="maps_veto['Pick'][match.map_pick_4]['Name']"></span></span>.</div>
+				<div class="card border-green mb-2" ng-if="player == match.player2 && match.map_pick_4 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(4, 'pick', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-success w-100" value="Pick" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Ban #3 -->
+			<div ng-if="match.bestof == 3 && match.map_ban_2 != 0 && match.map_pick_2 != 0">
+				<div class="banner mb-2" ng-if="match.map_ban_3 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player1 }}</span> to ban a map.</div>
+				<div class="banner mb-2" ng-if="match.map_ban_3 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player1 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_3]['Name']"></span></span>.</div>
+				<div class="card border-red mb-2" ng-if="player == match.player1 && match.map_ban_3 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(3, 'ban', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Ban #4 -->
+			<div ng-if="match.bestof == 3 && match.map_ban_3 != 0">
+				<div class="banner mb-2" ng-if="match.map_ban_4 == 0"><i class="fa fa-spinner fa-spin"></i> Waiting on <span class="strong">{{ match.player2 }}</span> to ban a map.</div>					
+				<div class="banner mb-2" ng-if="match.map_ban_4 != 0"><i class="fa fa-times"></i> <span class="strong">{{ match.player2 }}</span> has banned <span class="strong"><span ng-bind="maps_veto['Ban'][match.map_ban_4]['Name']"></span></span>.</div>
+				<div class="card border-red mb-2" ng-if="player == match.player2 && match.map_ban_4 == 0">
+					<div class="card-body">
+						
+						<form method="post" name="postUpdate" ng-submit="onSubmit(4, 'ban', 'map')">
+							<select class="form-control mb-2" name="pick" ng-model="formData.pick" ng-init="formData.pick = maps[0]" ng-options="key as value['Name'] for (key, value) in maps" required></select>
+
+							<input type="submit" class="btn btn-outline-danger w-100" value="Ban" />
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tiebreaker Map -->
+			<div ng-if="match.map_ban_4 != 0 || match.map_pick_4 != 0">
+				<div class="banner mb-2" ng-repeat="map in maps" ng-if="$last">
+					<i class="fa fa-check"></i> The tiebreaker map will be <span class="strong"><span ng-bind="map"></span></span>.
+				</div>
+			</div>
 		</div>
+
 		<div class="col-md-6">
 			<div class="card mb-2" ng-if="match.bestof == 3 && match.map_ban_4 == 0 || match.bestof == 5 && match.map_pick_4 == 0">
 				<div class="card-body qc-map">
