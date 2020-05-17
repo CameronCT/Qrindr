@@ -18,6 +18,9 @@ app.config(function ($routeProvider) {
             controller: 'MatchController', 
             templateUrl: 'views/match.html'
         })
+        .when('/about', { 
+            templateUrl: 'views/about.html'
+        })
         .otherwise({
             redirectTo: '/'
         });
