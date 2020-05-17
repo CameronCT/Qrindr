@@ -1,3 +1,4 @@
+<!-- 
 <div ng-show="$root.news != false" class="bg-primary text-center">{{ $root.news }}</div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <div class="container">
@@ -29,7 +30,6 @@
     </div>
 </nav>
 
-<!-- About -->
 <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -49,3 +49,42 @@
         </div>
     </div>
 </div>
+-->
+<!-- Navigation -->
+<nav class="border-t-4 border-gray-600 w-full z-10">
+    <div class="flex items-center p-4 justify-between flex-wrap container mx-auto">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <a href="/">
+                <img class="h-16" src="static/img/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white" onclick="toggle()">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            </button>
+        </div>
+        <div id="collapseMenu" class="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div id="menu-content" class="text-md ml-auto">
+                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    Home
+                </a>
+                <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    About
+                </a>
+                <a href="https://discord.gg/BAEkm58" target="_blank" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    Discord
+                </a>
+                <a href="https://github.com/CameronCT/Qrindr/" target="_blank" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    GitHub
+                </a>
+                <a href="https://streamlabs.com/gnikgg" target="_blank" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                    Donate
+                </a>
+                <a class="block pl-4 mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                    <button ng-if="$root.getSpeaker" class="btn-normal nav-link active" ng-click="$root.setSpeakers(false)"><span class="nav-link active"><i class="fa fa-volume-up" aria-hidden="true"></i></span></button>
+                    <button ng-if="!$root.getSpeaker" class="btn-normal nav-link active" ng-click="$root.setSpeakers(true)"><span class="nav-link active"><i class="fa fa-volume-off" aria-hidden="true"></i></span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
