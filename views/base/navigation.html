@@ -1,55 +1,4 @@
-<!-- 
-<div ng-show="$root.news != false" class="bg-primary text-center">{{ $root.news }}</div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#!">
-            <img src="static/img/logo.png" class="img-fluid" alt="Logo" />
-        </a>
-
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="#about" data-toggle="modal" data-target="#aboutModal">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="https://discord.gg/BAEkm58">Discord</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="https://github.com/CameronCT/Qrindr/">GitHub</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="https://streamlabs.com/gnikgg">Donate</a>
-            </li>
-            <li class="nav-item">
-                <button ng-if="$root.getSpeaker" class="btn-normal nav-link active" ng-click="$root.setSpeakers(false)"><span class="nav-link active"><i class="fa fa-volume-up" aria-hidden="true"></i></span></button>
-                <button ng-if="!$root.getSpeaker" class="btn-normal nav-link active" ng-click="$root.setSpeakers(true)"><span class="nav-link active"><i class="fa fa-volume-off" aria-hidden="true"></i></span></button>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="aboutModalLabel">About</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                With the upcoming QuakeCon and Quake Pro League, players have been emulating the formats used by professional players on their streams.  For many, this is still being manually done and oftentimes leads to confusion and forgetfulness. 
-                <br/><br/>
-                Qrindr is designed as a userfriendly system that walks players through both map and champion selection processes. Accounts are unnecessary and player names used are simply for show.            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
+<div ng-show="$root.news != false" class="bg-yellow-300 text-gray-700 p-1 font-semibold text-center">{{ $root.news }}</div>
 <!-- Navigation -->
 <nav class="border-t-4 border-gray-600 w-full z-10">
     <div class="flex items-center p-4 justify-between flex-wrap container mx-auto">
@@ -79,6 +28,10 @@
                 </a>
                 <a href="https://streamlabs.com/gnikgg" target="_blank" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                     Donate
+                </a>
+                <a class="block pl-4 mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                    <button ng-if="$root.getMusic" class="btn-normal nav-link active" ng-click="$root.setMusic(false)"><span class="nav-link active"><i class="fas fa-music"></i></span></button>
+                    <button ng-if="!$root.getMusic" class="btn-normal nav-link active" ng-click="$root.setMusic(true)"><span class="nav-link active"><i class="fas fa-music" style="opacity: 0.35;"></i></span></button>
                 </a>
                 <a class="block pl-4 mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                     <button ng-if="$root.getSpeaker" class="btn-normal nav-link active" ng-click="$root.setSpeakers(false)"><span class="nav-link active"><i class="fa fa-volume-up" aria-hidden="true"></i></span></button>
