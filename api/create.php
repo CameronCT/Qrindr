@@ -3,7 +3,7 @@
 $err = null;
 $msg = null;
 
-$FIELDS = ['player1', 'player2', 'bestof', 'pwd'];
+$FIELDS = ['player1', 'player2', 'pwd'];
 
 foreach ($FIELDS as $value) {
     if (!isset($_POST[$value]) || empty($_POST[$value]))
@@ -12,6 +12,12 @@ foreach ($FIELDS as $value) {
 
 if ($_POST['bestof'] != 3 && $_POST['bestof'] != 5 || $_POST['bestof'] == "??")
     $_POST['bestof'] = 3;
+
+if (!isset($_POST['format']) || empty($_POST['format']))
+    $_POST['format'] = 0;
+
+if (!isset($_POST['decider']) || empty($_POST['decider']))
+    $_POST['decider'] = 0;
 
 if (strlen($_POST['pwd']) > 32)
     $err = "Your password cannot be greater than 32 characters!";
@@ -29,8 +35,8 @@ if ($checkExists->fetchColumn() > 0)
     $err = "You already have a match that exists, please close it before starting a new one!";
 
 if (!$err || $err == null) {
-    $create = $conn->prepare("INSERT INTO quakechampions ( uuid, player1, player2, `password`, decider, bestof ) VALUES ( ?, ?, ?, ?, ?, ? )");
-    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], md5($_POST['pwd']), $_POST['decider'], $_POST['bestof']));
+    $create = $conn->prepare("INSERT INTO quakechampions ( uuid, player1, player2, `password`, decider, bestof, `format` ) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
+    $create->execute(array($_SESSION['unique'], $_POST['player1'], $_POST['player2'], md5($_POST['pwd']), $_POST['decider'], $_POST['bestof'], $_POST['format']));
 
     if ($create->rowCount() > 0)
         $msg = $_SESSION['unique'];
