@@ -34,7 +34,7 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
     };
 
     $rootScope.fuckNavigation = false;
-    $rootScope.news = 'Qrindr will have an update soon!s';
+    $rootScope.news = 'Welcome to the new update, if there is any bugs feel free to contact GNiK on Discord directly or create an issue in GitHub!';
 
     $rootScope.getSession = function() {
         $http.get('api/session.php')
@@ -51,7 +51,7 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
         $cookieStore.put('Speakers', true);
 
     if ($cookieStore.get('Music') == undefined)
-        $cookieStore.put('Music', true);
+        $cookieStore.put('Music', false);
 
     $rootScope.getSpeaker = $cookieStore.get('Speakers');
     $rootScope.getMusic = $cookieStore.get('Music');
