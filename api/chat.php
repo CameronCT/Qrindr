@@ -1,4 +1,4 @@
-<?php session_start(); require('core/autoload.php'); $_POST = json_decode(file_get_contents('php://input'),true);
+<?php /*session_start(); require('core/autoload.php'); $_POST = json_decode(file_get_contents('php://input'),true);
 
 $err = null;
 $msg = null;
@@ -21,7 +21,7 @@ if ($_GET['type'] == "view") {
         $data[$i]['q_message'] = str_replace("&#34;", "\"", $data[$i]['q_message']);
     }
 
-    /* JSON headers */
+
     header('Content-Type: application/json');
     echo json_encode([
         'error'  => null,
@@ -54,7 +54,7 @@ if ($_GET['type'] == "post") {
             $err = "You are not a part of this match!";
     }
 
-    /* JSON headers */
+
     header('Content-Type: application/json');
     echo json_encode([
         'error'     => $err,
@@ -63,5 +63,5 @@ if ($_GET['type'] == "post") {
     exit;
 
 }
-
+*/
 ?>
