@@ -6,9 +6,11 @@ function playChatSound() {
     document.getElementById('chat_sound').play();
 }
 
+function playWaitingSound() {
+    document.getElementById('waiting_sound').play();
+}
+
 app.controller('MatchController', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'toastr', function($scope, $cookieStore, $routeParams, $http, $location, toastr) {
-
-
 
     var firstLoad       = true;
     var firstLoadChat   = true;
@@ -21,6 +23,10 @@ app.controller('MatchController', ['$scope', '$cookieStore', '$routeParams', '$h
     var oldUpdated = 0;
 
     $scope.getMatch = function() {
+
+        if ($scope.getMusic == true)
+            playWaitingSound();
+
         UUID = $routeParams.id;
 
         newString = "";
