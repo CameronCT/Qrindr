@@ -40,11 +40,11 @@ function searchQueue($conn, $queueName, $queueRegion) {
 
     /* Check if Match Exists */
     $matchExists = $conn->prepare("SELECT COUNT(g_id) FROM quakechampions_grindr WHERE g_player1 = ? AND g_player2 = ? OR g_player1 = ? AND g_player2 = ?");
-    $matchExists->execute(array($queueName, $useMatch['m_name'], $useMatch['m_name'], $queueName));
+    @$matchExists->execute(array($queueName, $useMatch['m_name'], $useMatch['m_name'], $queueName));
 
     /* Make Sure Opponent Doesn't Have a Match */
     $opponentMatchExists = $conn->prepare("SELECT COUNT(g_id) AS rowCount FROM quakechampions_grindr WHERE g_player1 = ? OR g_player2 = ?");
-    $opponentMatchExists->execute(array($useMatch['m_name'], $useMatch['m_name']));
+    @$opponentMatchExists->execute(array($useMatch['m_name'], $useMatch['m_name']));
 
     if ($matchExists->fetchColumn() == 0 && $opponentMatchExists->fetchColumn() == 0)
         return $useMatch;
