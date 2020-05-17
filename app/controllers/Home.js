@@ -1,11 +1,3 @@
-function playNotificationSound() {
-    document.getElementById('notification_sound').play();
-}
-
-function playReadySound() {
-    document.getElementById('ready_sound').play();
-}
-
 app.controller('HomeController', ['$rootScope', '$cookieStore', '$scope', '$location', '$http', 'toastr', 'md5', function($rootScope, $cookieStore, $scope, $location, $http, toastr, md5) {
 
 	$scope.date = new Date();
