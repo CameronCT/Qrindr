@@ -145,7 +145,7 @@ app.controller('HomeController', ['$rootScope', '$cookieStore', '$scope', '$loca
 			$scope.formData.player2 = youPlayer;
 		}
 
-		$http.post('api/create.php', { player1: $scope.formData.player1, player2: $scope.formData.player2, decider: $scope.formData.seedings, bestof: $scope.formData.bestof, pwd: $scope.formData.pwd }).then(
+		$http.post('api/create.php', { player1: $scope.formData.player1, player2: $scope.formData.player2, decider: $scope.formData.seedings, bestof: $scope.formData.bestof, format: $scope.formData.format, pwd: $scope.formData.pwd }).then(
 			function(response) {
 				console.log(response.data);
 				if (response.data.success != null) {
