@@ -1,0 +1,21 @@
+version: '3'
+services:
+    web:
+        build: ./
+        depends_on:
+            - db
+        volumes:
+            - ./:/var/www/html/
+        ports:
+            - 80:80
+    db:
+        image: mysql:8
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: mydb
+            MYSQL_ROOT_PASSWORD: ''
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - ./api/_SQL/:/docker-entrypoint-initdb.d
+        ports:
+            - 3306:3306
