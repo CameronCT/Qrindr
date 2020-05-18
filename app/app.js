@@ -33,7 +33,7 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
     };
 
     $rootScope.fuckNavigation = false;
-    $rootScope.news = 'Welcome to the new update, if there are any bugs feel free to contact GNiK on Discord directly or create an issue in GitHub!';
+    $rootScope.news = false;
 
     $rootScope.getSession = function() {
         $http.get('api/session.php')
