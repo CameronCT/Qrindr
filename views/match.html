@@ -394,8 +394,12 @@
 
 			<!-- Final -->
 			<div ng-if="player && pwd">
+				<div id="displayClipboardFinalMatchup" class="hidden bg-green-300 text-green-900 font-semibold p-2 border-green-500 border-t-4 shadow mb-2 text-center">
+					Copied to Clipboard
+				</div>
+
 				<div class="bg-gray-700 p-4 text-gray-100 border border-gray-800 shadow-lg mb-2" ng-if="match.bestof == 3 && match.champ_pick_6 != 0 || match.bestof == 5 && match.champ_pick_10 != 0">
-					<h3 class="text-center font-semibold text-xl mt-2 mb-4">Copy & Paste</h3>
+					<h3 class="text-center font-semibold text-xl mt-2 mb-4">Final Matchup</h3>
 					<div id="copyPasta" class="copypasta text-center bg-gray-800 p-3">
 						<div>
 							[{{ match.player1 }}/{{ match.player2 }}] --
@@ -407,6 +411,9 @@
 								[{{ maps_veto['Pick'][match.map_pick_4]['Abbreviation'] }}] {{ champions_veto['Pick'][match.champ_pick_7]['Abbreviation'] }}/{{ champions_veto['Pick'][match.champ_pick_8]['Abbreviation'] }} --
 								[{{ maps_veto['Pick'][match.map_pick_5]['Abbreviation'] }}] {{ champions_veto['Pick'][match.champ_pick_10]['Abbreviation'] }}/{{ champions_veto['Pick'][match.champ_pick_9]['Abbreviation'] }}
 							</span>
+							<div class="float-right">
+								<button onclick="copyFinalMatchup()"><i class="fas fa-clipboard"></i></button>
+							</div>
 						</div>
 					</div>
 				</div> 
@@ -642,7 +649,7 @@
 			<div class="bg-gray-700 p-4 text-gray-100 border border-gray-800 shadow-lg mb-2">
 				<input id="copySpectatorURL" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
 				<input id="copyInviteURL" ng-show="match.player1 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player2 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
-				<input id="copyInviteURL" ng-show="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
+				<input id="copyInviteURL2" ng-show="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
 
 				<div class="font-semibold text-lg">
 					<span class="font-semibold">Spectator</span>
