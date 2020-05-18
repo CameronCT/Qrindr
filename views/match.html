@@ -395,8 +395,8 @@
 			<!-- Final -->
 			<div ng-if="player && pwd">
 				<div class="bg-gray-700 p-4 text-gray-100 border border-gray-800 shadow-lg mb-2" ng-if="match.bestof == 3 && match.champ_pick_6 != 0 || match.bestof == 5 && match.champ_pick_10 != 0">
-					<h3 class="text-center font-semibold text-xl mt-2 mb-4">Copy & Paste</h3 >
-					<div class="copypasta text-center bg-gray-800 p-3">
+					<h3 class="text-center font-semibold text-xl mt-2 mb-4">Copy & Paste</h3>
+					<div id="copyPasta" class="copypasta text-center bg-gray-800 p-3">
 						<div>
 							[{{ match.player1 }}/{{ match.player2 }}] --
 							[{{ maps_veto['Pick'][match.map_pick_1]['Abbreviation'] }}] {{ champions_veto['Pick'][match.champ_pick_2]['Abbreviation'] }}/{{ champions_veto['Pick'][match.champ_pick_1]['Abbreviation'] }} --

@@ -30,7 +30,6 @@ app.run(['$rootScope', '$http', '$cookieStore', function($rootScope, $http, $coo
 
     $rootScope.config = {
         'name':       'Qrindr',
-        'year':       '2019',
     };
 
     $rootScope.fuckNavigation = false;

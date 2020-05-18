@@ -5,7 +5,7 @@
 		<div class="w-full px-4">
 			<div class="mb-4 p-2 rounded-full px-8 shadow bg-gray-700 text-gray-200">
 				<div class="flex flex-wrap">
-					<div class="w-1/2 my-auto">
+					<div class="w-full md:w-1/2 text-center md:text-left my-auto">
 						<div ng-show="$root.session.inQueue">
 							You are currently in queue with <span class="font-semibold">{{ getMatchmakingStatistics.count }}</span> player(s)!
 						</div>
@@ -13,8 +13,8 @@
 							There are currently <span class="font-semibold">{{ getMatchmakingStatistics.count }}</span> player(s) searching for a game!
 						</div>
 					</div>
-					<div id="MatchMaking" class="w-1/2">
-						<div class="float-right">
+					<div id="MatchMaking" class="w-full md:w-1/2">
+						<div class="text-center md:float-right">
 							<div ng-show="$root.session.inQueue">
 								<i class="fa fa-circle-o-notch fa-spin"></i> Searching ({{ getQueueTime }}s)
 								<button type="button" class="p-2 px-4 mr-2 font-semibold bg-gray-600 text-gray-100 hover:bg-gray-500 rounded-full" ng-click="exitQueue()">Leave Queue</button>

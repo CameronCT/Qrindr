@@ -50,23 +50,14 @@
 
         <!-- External JS -->
         <script>
-            const menu = document.getElementById('collapseMenu');
-            const toggle = () => menu.classList.toggle("hidden");
+            function toggle() {
+                let menu = document.getElementById('collapseMenu');
 
-
-            /* http://jsfiddle.net/LwLBx/ */
-
-            // Cache selectors
-            var lastId,
-                topMenu = $("#menu-content"),
-                topMenuHeight = topMenu.outerHeight()+175,
-                // All list items
-                menuItems = topMenu.find("a"),
-                // Anchors corresponding to menu items
-                scrollItems = menuItems.map(function(){
-                var item = $($(this).attr("href"));
-                if (item.length) { return item; }
-            });
+                if (menu.classList.contains('hidden'))
+                    menu.classList.remove('hidden');
+                else
+                    menu.classList.add('hidden');
+            }
         </script>
 
         
