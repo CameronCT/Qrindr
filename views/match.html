@@ -649,7 +649,7 @@
 			<div class="bg-gray-700 p-4 text-gray-100 border border-gray-800 shadow-lg mb-2">
 				<input id="copySpectatorURL" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
 				<input id="copyInviteURL" ng-show="match.player1 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player2 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
-				<input id="copyInviteURL2" ng-show="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
+				<input id="copyInviteURL" ng-show="match.player2 == player" type="text" value="{{ getCurrentURL }}/#!/match/{{ match.uuid }}/{{ match.password }}/{{ match.player1 | urlencode }}" style="position: absolute; left: -1000px; top: -1000px" readonly />
 
 				<div class="font-semibold text-lg">
 					<span class="font-semibold">Spectator</span>
