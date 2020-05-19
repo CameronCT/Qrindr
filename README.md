@@ -16,15 +16,14 @@
 
 ## Stack
 
-* PHP 7.2
+* PHP 7.4
 * MySQL 8
 * JavaScript
 
 ## Frameworks
 
-* Bootstrap v4
+* Tailwind CSS (latest)
 * AngularJS (latest)
-* jQuery
 
 ## Starting containerized
 
