@@ -1,3 +1,5 @@
+# Qrindr
+
 <p align="center">
   <img src="http://qrindr.com/static/img/logo_dark.png" alt="Qrindr"/>
 </p>
@@ -12,11 +14,20 @@
 	A way to emulate best of 3 and best of 5 matches for competitive practice in Quake Champions.
 </p>
 
-## Languages
-* JavaScript
+## Stack
+
 * PHP 7.2
+* MySQL 8
+* JavaScript
 
 ## Frameworks
+
 * Bootstrap v4
 * AngularJS (latest)
 * jQuery
+
+## Starting containerized
+
+Install Docker (Linux mode)  
+Run `docker-compose up -d` to start, then open <http://localhost>  
+Run `docker-compose down` to stop services
