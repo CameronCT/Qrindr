@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Cameron">
+        <link rel="icon" href="../../favicon.ico">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+        <link rel="manifest" href="static/favicon/site.webmanifest">
+
+        <title>Qrindr</title>
+
+        <!-- CSS -->
+        <link href="assets/app.css" rel="stylesheet">
+    </head>
+    <body ng-app="QrindrApp">
+        <navigation></navigation>
+        <div ng-view></div>
+        <footer></footer>
+
+        <!-- Socket -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js"></script>
+        <script src="qrindr/app.js"></script>
+
+        <!-- Controllers -->
+        <script src="qrindr/components/layout/navigation.js"></script>
+
+        <!-- Controllers -->
+        <script src="qrindr/controllers/NavigationController.js"></script>
+
+    </body>
+</html>
