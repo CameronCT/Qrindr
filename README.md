@@ -16,17 +16,11 @@
 
 ## Stack
 
-* PHP 7.4
-* MySQL 8
-* JavaScript
+* Node
+* Express
+* PostgreSQL
 
 ## Frameworks
 
-* Tailwind CSS (latest)
-* AngularJS (latest)
-
-## Starting containerized
-
-Install Docker (Linux mode)  
-Run `docker-compose up -d` to start, then open <http://localhost>  
-Run `docker-compose down` to stop services
+* Tailwind
+* React
