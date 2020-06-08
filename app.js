@@ -33,59 +33,11 @@ function(accessToken, refreshToken, profile, cb) {
      */
 }));
 
-/* Facebook */
-passport.use(new FacebookStrategy({
-        clientID: config.OAUTH.Facebook.Client,
-        clientSecret: config.OAUTH.Facebook.Secret,
-        callbackURL: config.OAUTH.Facebook.Redirect
-    },
-    function(accessToken, refreshToken, profile, cb) {
-        console.log(profile);
-        return false;
-        /*
-        User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
-        */
-    }
-));
-
-/* Google */
-passport.use(new GoogleStrategy({
-        consumerKey: config.OAUTH.Google.Secret,
-        consumerSecret: config.OAUTH.Google.Secret,
-        callbackURL: config.OAUTH.Google.Secret
-    },
-    function(token, tokenSecret, profile, done) {
-        console.log(profile);
-        return false;
-        /*
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-            return done(err, user);
-        });
-        */
-    }
-));
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/auth/discord', passport.authenticate('discord'));
 app.get('/auth/discord/callback', passport.authenticate('discord', {
-    failureRedirect: '/'
-}), function(req, res) {
-    res.redirect('/') // Successful auth
-});
-
-
-app.get('/auth/google', passport.authenticate('google'));
-app.get('/auth/google/callback', passport.authenticate('google', {
-    failureRedirect: '/'
-}), function(req, res) {
-    res.redirect('/') // Successful auth
-});
-
-app.get('/auth/facebook', passport.authenticate('facebook'));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/'
 }), function(req, res) {
     res.redirect('/') // Successful auth
