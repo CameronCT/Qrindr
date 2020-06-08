@@ -11,6 +11,21 @@ const config            = require('./config.js');
 
 app.use(express.static(__dirname + '/public'));
 
+app.use((err, req, res, next) => {
+    switch (err.message) {
+        case 'NoCodeProvided':
+            return res.status(400).send({
+                status: 'ERROR',
+                error: err.message,
+            });
+        default:
+            return res.status(500).send({
+                status: 'ERROR',
+                error: err.message,
+            });
+    }
+});
+
 app.get('/login', (req, res) => {
     res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${config.OAUTH.Discord.Client}&scope=identify&response_type=code&redirect_uri=${config.OAUTH.Discord.Redirect}`);
 });
@@ -27,6 +42,7 @@ app.get('/oauth/discord', catchAsync(async (req, res) => {
             },
         });
     const json = await response.json();
+    console.log(creds);
     console.log(json)
     res.redirect(`/?token=${json.access_token}`);
 }));
