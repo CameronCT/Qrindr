@@ -2,21 +2,26 @@
 const express           = require('express');
 const session           = require('express-session');
 const app               = express();
-const fetch             = require('node-fetch');
-const btoa              = require('btoa');
-const { catchAsync }    = require('./utils.js');
 const http              = require('http').Server(app);
 const io                = require('socket.io')(http);
+const jwt               = require('jsonwebtoken');
 const config            = require('./config.js');
 
 const passport          = require('passport');
 const DiscordStrategy   = require('passport-discord').Strategy;
-const FacebookStrategy  = require('passport-facebook').Strategy;
-const GoogleStrategy    = require('passport-google-oauth').OAuthStrategy;
 
+const mysql             = require('mysql');
 const conn              = mysql.createConnection({ host: config.MariaDB.Host, user: config.MariaDB.User, password: config.MariaDB.Pass, database: config.MariaDB.Name });
 
+const User              = require('./methods/User.js')(conn, jwt, config);
+
+app.use(session({ secret: config.Session.secret, resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 /* Discord */
+passport.serializeUser(function(user, done) { done(null, user); });
+passport.deserializeUser(function(user, done) { done(null, user); });
 passport.use(new DiscordStrategy({
     clientID: config.OAUTH.Discord.Client,
     clientSecret: config.OAUTH.Discord.Secret,
@@ -24,27 +29,23 @@ passport.use(new DiscordStrategy({
     scope: ['identify']
 },
 function(accessToken, refreshToken, profile, cb) {
-
-    console.log(profile);
-    return false;
-
-    /*
-    User.findOrCreate({ discordId: profile.id }, function(err, user) {
+    User.findOrCreate({ authId: profile.id, userName: profile.username, avatar: profile.avatar }, function(err, user) {
         return cb(err, user);
     });
-     */
 }));
-
-
-app.use(express.static(__dirname + '/public'));
 
 app.get('/auth/discord', passport.authenticate('discord'));
 app.get('/auth/discord/callback', passport.authenticate('discord', {
     failureRedirect: '/'
 }), function(req, res) {
-    res.redirect('/') // Successful auth
+    let token = User.createJWT(req.user);
+    res.cookie('token', token, { maxAge: config.JWT.expiryMax })
+    res.end()
+    res.redirect('/')
 });
-
+app.get('/auth/session', (req, res) => {
+    return res.send(req.session);
+})
 app.get('/getMatch', (req, res) => {
     return res.send({ data: 'working' });
 });
