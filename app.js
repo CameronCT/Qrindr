@@ -1,3 +1,4 @@
+'use strict';
 const express           = require('express');
 const session           = require('express-session');
 const app               = express();
@@ -12,6 +13,21 @@ app.get('/pingServer', (req, res) => {
 
 app.get('/getMatch', (req, res) => {
     return res.send({ data: 'working' });
+});
+
+app.post('/updateMatch', (req, res) => {
+    let error = "";
+    let success = "";
+
+    let step = req.body.step;
+    let value = req.body.value;
+
+    if (!req.body.step || !req.body.value) {
+        error = 'Invalid information supplied!';
+        return res.send({error, success});
+    }
+
+
 });
 
 const server = http.listen(process.env.PORT || 8000, () => {
