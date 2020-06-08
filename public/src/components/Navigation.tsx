@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.png';
 
 class Navigation extends Component {
-
-
     render() {
         return (
-            <div className="border-t-4 border-gray-600 text-gray-100 py-4">
+            <div className="border-t-4 border-gray-800 text-gray-100 py-4">
                 <div className="max-w-screen-lg container mx-auto">
                     <div className="flex flex-wrap">
-                        <div className="w-1/5">
-                            <img src={logo} alt="Logo" />
+                        <div className="w-1/5 text-4xl my-auto font-bold">
+                            Qrindr
                         </div>
                         <div className="w-4/5 text-right my-auto">
                             <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Home</a>
