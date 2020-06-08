@@ -5,6 +5,7 @@ module.exports = {
         'Discord': {
             'Client': '',
             'Secret': '',
+            'Redirect': '',
         }
     },
     'MariaDB': {

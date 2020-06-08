@@ -1,0 +1,29 @@
+{
+  "name": "qrindr",
+  "version": "3.0.0",
+  "description": "Match emulator for FPS games",
+  "main": "app.js",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "discord.js": "^12.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http": "0.0.1-security",
+    "node-fetch": "^2.6.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CameronCT/Qrindr.git"
+  },
+  "author": "Cameron Touchette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CameronCT/Qrindr/issues"
+  },
+  "homepage": "https://github.com/CameronCT/Qrindr#readme"
+}
