@@ -9,43 +9,87 @@ const http              = require('http').Server(app);
 const io                = require('socket.io')(http);
 const config            = require('./config.js');
 
+const passport          = require('passport');
+const DiscordStrategy   = require('passport-discord').Strategy;
+const FacebookStrategy  = require('passport-facebook').Strategy;
+const GoogleStrategy    = require('passport-google-oauth').OAuthStrategy;
+
+/* Discord */
+passport.use(new DiscordStrategy({
+    clientID: config.OAUTH.Discord.Client,
+    clientSecret: config.OAUTH.Discord.Secret,
+    callbackURL: config.OAUTH.Discord.Redirect,
+    scope: ['identify']
+},
+function(accessToken, refreshToken, profile, cb) {
+
+    console.log(profile);
+    return false;
+
+    /*
+    User.findOrCreate({ discordId: profile.id }, function(err, user) {
+        return cb(err, user);
+    });
+     */
+}));
+
+/* Facebook */
+passport.use(new FacebookStrategy({
+        clientID: config.OAUTH.Facebook.Client,
+        clientSecret: config.OAUTH.Facebook.Secret,
+        callbackURL: config.OAUTH.Facebook.Redirect
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        console.log(profile);
+        return false;
+        /*
+        User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+            return cb(err, user);
+        });
+        */
+    }
+));
+
+/* Google */
+passport.use(new GoogleStrategy({
+        consumerKey: config.OAUTH.Google.Secret,
+        consumerSecret: config.OAUTH.Google.Secret,
+        callbackURL: config.OAUTH.Google.Secret
+    },
+    function(token, tokenSecret, profile, done) {
+        console.log(profile);
+        return false;
+        /*
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return done(err, user);
+        });
+        */
+    }
+));
+
 app.use(express.static(__dirname + '/public'));
 
-app.use((err, req, res, next) => {
-    switch (err.message) {
-        case 'NoCodeProvided':
-            return res.status(400).send({
-                status: 'ERROR',
-                error: err.message,
-            });
-        default:
-            return res.status(500).send({
-                status: 'ERROR',
-                error: err.message,
-            });
-    }
+app.get('/auth/discord', passport.authenticate('discord'));
+app.get('/auth/discord/callback', passport.authenticate('discord', {
+    failureRedirect: '/'
+}), function(req, res) {
+    res.redirect('/') // Successful auth
 });
 
-app.get('/login', (req, res) => {
-    res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${config.OAUTH.Discord.Client}&scope=identify&response_type=code&redirect_uri=${config.OAUTH.Discord.Redirect}`);
+
+app.get('/auth/google', passport.authenticate('google'));
+app.get('/auth/google/callback', passport.authenticate('google', {
+    failureRedirect: '/'
+}), function(req, res) {
+    res.redirect('/') // Successful auth
 });
 
-app.get('/oauth/discord', catchAsync(async (req, res) => {
-    if (!req.query.code) throw new Error('NoCodeProvided');
-    const code = req.query.code;
-    const creds = btoa(`${config.OAUTH.Discord.Client}:${config.OAUTH.Discord.Secret}`);
-    const response = await fetch(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${config.OAUTH.Discord.Redirect}`,
-        {
-            method: 'POST',
-            headers: {
-                Authorization: `Basic ${creds}`,
-            },
-        });
-    const json = await response.json();
-    console.log(creds);
-    console.log(json)
-    res.redirect(`/?token=${json.access_token}`);
-}));
+app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    failureRedirect: '/'
+}), function(req, res) {
+    res.redirect('/') // Successful auth
+});
 
 app.get('/getMatch', (req, res) => {
     return res.send({ data: 'working' });

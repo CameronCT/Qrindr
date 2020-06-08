@@ -6,7 +6,17 @@ module.exports = {
             'Client': '',
             'Secret': '',
             'Redirect': '',
-        }
+        },
+        'Google': {
+            'Client': '',
+            'Secret': '',
+            'Redirect': '',
+        },
+        'Facebook': {
+            'Client': '',
+            'Secret': '',
+            'Redirect': '',
+        },
     },
     'MariaDB': {
         'Host': 'localhost',
