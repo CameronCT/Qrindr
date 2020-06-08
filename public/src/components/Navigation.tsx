@@ -20,7 +20,7 @@ class Navigation extends Component {
                             <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Donate</a>
                             <span className="border-r border-gray-500 px-2"></span>
                             <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Settings</a>
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Login</a>
+                            <a href="/auth/discord" className="text-gray-300 font-semibold uppercase pl-3">Login</a>
                         </div>
                     </div>
                 </div>
