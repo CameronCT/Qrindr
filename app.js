@@ -14,6 +14,8 @@ const DiscordStrategy   = require('passport-discord').Strategy;
 const FacebookStrategy  = require('passport-facebook').Strategy;
 const GoogleStrategy    = require('passport-google-oauth').OAuthStrategy;
 
+const conn              = mysql.createConnection({ host: config.MariaDB.Host, user: config.MariaDB.User, password: config.MariaDB.Pass, database: config.MariaDB.Name });
+
 /* Discord */
 passport.use(new DiscordStrategy({
     clientID: config.OAUTH.Discord.Client,
