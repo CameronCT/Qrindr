@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Router, hashHistory as History } from 'react-router';
+import {
+    Link
+} from 'react-router-dom';
 
 class Navigation extends Component {
     render() {
@@ -11,11 +13,11 @@ class Navigation extends Component {
                             Qrindr
                         </div>
                         <div className="w-4/5 text-right my-auto">
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Home</a>
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">About</a>
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Discord</a>
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">GitHub</a>
-                            <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Donate</a>
+                            <Link className="text-gray-300 font-semibold uppercase pl-3" to="/">Home</Link>
+                            <Link className="text-gray-300 font-semibold uppercase pl-3" to="/about">About</Link>
+                            <a href="https://discord.gg/BAEkm58" className="text-gray-300 font-semibold uppercase pl-3">Discord</a>
+                            <a href="https://github.com/CameronCT/Qrindr" className="text-gray-300 font-semibold uppercase pl-3">GitHub</a>
+                            <a href="https://streamlabs.com/gnikgg" className="text-gray-300 font-semibold uppercase pl-3">Donate</a>
                             <span className="border-r border-gray-500 px-2"></span>
                             <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Settings</a>
                             <a href="/auth/discord" className="text-gray-300 font-semibold uppercase pl-3">Login</a>
