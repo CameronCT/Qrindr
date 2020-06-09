@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import RecentMatchesData, { RecentMatchesDataProps } from './RecentMatchesData';
 
 class RecentMatches extends Component {
-    state = {
-        data: [],
-        isLoading: true,
-    };
+    constructor(props: any) {
+        super(props);
+
+        this.state = {
+            data: [],
+            isLoading: false,
+        };
+    }
+
 
     componentDidMount() {
-        const data = fetch('https://qrindr.com/api/matches.php')
-            .then(response => response.json())
-            .then(data => this.setState({ data: data, isLoading: false }));
-
-        console.log(this.state);
+        this.setState({ isLoading: true });
+        axios.get('/getMatch')
+            .then(result => this.setState({
+                data: result.data,
+                isLoading: false
+            }))
+            .catch(error => this.setState({
+                error,
+                isLoading: false
+            }));
     }
 
     render() {
-        return (
-            <div>render</div>
+        return this.state.data && (
+            <div>
+                {this.state.data.map((row) => (
+                        <RecentMatchesData key={row.id} {...row} />
+                    ))
+                }
+            </div>
         )
-    };
+    }
 }
 
 export default RecentMatches;

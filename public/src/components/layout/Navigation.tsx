@@ -20,7 +20,7 @@ class Navigation extends Component {
                             <a href="https://streamlabs.com/gnikgg" className="text-gray-300 font-semibold uppercase pl-3">Donate</a>
                             <span className="border-r border-gray-500 px-2"></span>
                             <a href="#home" className="text-gray-300 font-semibold uppercase pl-3">Settings</a>
-                            <a href="/auth/discord" className="text-gray-300 font-semibold uppercase pl-3">Login</a>
+                            <a href="http://localhost:8000/auth/discord" className="text-blue-100 font-semibold bg-blue-700 hover:bg-blue-800 hover:text-blue-200 uppercase py-2 px-4 rounded-full ml-3">Login with Discord</a>
                         </div>
                     </div>
                 </div>
