@@ -3,36 +3,36 @@ import axios from 'axios';
 import RecentMatchesData, { RecentMatchesDataProps } from './RecentMatchesData';
 
 class RecentMatches extends Component {
-    constructor(props: any) {
-        super(props);
 
-        this.state = {
-            data: [],
-            isLoading: false,
-        };
+    state = {
+        rows: [],
+        isLoading: true,
+        error: false
     }
 
-
     componentDidMount() {
-        this.setState({ isLoading: true });
-        axios.get('/getMatch')
-            .then(result => this.setState({
-                data: result.data,
+        fetch('/getMatch')
+            .then(response => response.json())
+            .then(response => this.setState({
+                rows: response.data,
                 isLoading: false
             }))
             .catch(error => this.setState({
-                error,
-                isLoading: false
+                isLoading: false,
+                error: true
             }));
+
     }
 
     render() {
-        return this.state.data && (
+        const { rows, isLoading, error } = this.state;
+        console.log(rows);
+        console.log(isLoading);
+        return rows && !error && !isLoading && (
             <div>
-                {this.state.data.map((row) => (
-                        <RecentMatchesData key={row.id} {...row} />
-                    ))
-                }
+                {rows.map((row: any) => (
+                    <RecentMatchesData key={row.id} {...row} />
+                ))}
             </div>
         )
     }
