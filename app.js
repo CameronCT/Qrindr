@@ -43,7 +43,7 @@ app.get('/auth/discord/callback', passport.authenticate('discord', {
     let token = User.createJWT(req.user);
     res.cookie('token', token, { maxAge: config.JWT.expiryMax })
     res.end()
-    res.redirect(config.BASE_URL '/')
+    res.redirect(config.BASE_URL + '/')
 });
 app.get('/auth/session', (req, res) => {
     return res.send(req.session);
