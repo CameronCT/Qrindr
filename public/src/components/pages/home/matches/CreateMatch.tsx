@@ -7,7 +7,7 @@ class CreateMatch extends Component {
             <form method="post">
                 <div className="bg-gray-800 text-gray-400 shadow p-6">
                     <h1 className="pb-4 text-2xl text-gray-300 text-center font-semibold">Configuration</h1>
-                    <select name="configuration" className="mb-4">
+                    <select name="gameId" className="mb-4">
                         <option value="0">Quake Champions - Best of 3</option>
                         <option value="1">Quake Champions - Best of 5</option>
                         <option value="2">Diabotical Duel - Best of 3</option>
@@ -17,15 +17,15 @@ class CreateMatch extends Component {
                         <option value="6">Diabotical MacGuffin - Best of 5</option>
                         <option value="7">Diabotical MacGuffin - Best of 7</option>
                     </select>
-                    <select name="mode" className="mb-4">
+                    <select name="gameFormat" className="mb-4">
                         <option value="0">Practice</option>
                         <option value="1">Tournament</option>
                     </select>
                     <div className="border-t border-gray-700 my-4"></div>
                     <h1 className="pb-4 text-2xl text-gray-300 text-center font-semibold">Information</h1>
                     <input type="text" name="player1" placeholder="Liquid rapha" className="mb-4" required />
-                    <input type="text" name="player1" placeholder="Nemesis dooi" className="mb-4" required />
-                    <select name="mode" className="mb-4">
+                    <input type="text" name="player2" placeholder="Nemesis dooi" className="mb-4" required />
+                    <select name="cointoss" className="mb-4">
                         <option value="0">Random</option>
                         <option value="1">You</option>
                         <option value="2">Opponent</option>
