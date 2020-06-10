@@ -5,3 +5,6 @@
 @import "tailwindcss/utilities";
 
 body { @apply bg-gray-900; }
+
+input, textarea, select { @apply bg-gray-700 text-gray-400 border-2 border-gray-600 p-2 w-full; }
+input:focus, textarea:focus, select:focus { @apply outline-none; }

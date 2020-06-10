@@ -14346,6 +14346,12 @@ video {
 body { --bg-opacity: 1; background-color: #1A202C; background-color: rgba(26, 32, 44, var(--bg-opacity));
 }
 
+input, textarea, select { --bg-opacity: 1; background-color: #4A5568; background-color: rgba(74, 85, 104, var(--bg-opacity)); --text-opacity: 1; color: #CBD5E0; color: rgba(203, 213, 224, var(--text-opacity)); border-width: 2px; --border-opacity: 1; border-color: #718096; border-color: rgba(113, 128, 150, var(--border-opacity)); padding: 0.5rem; width: 100%;
+}
+
+input:focus, textarea:focus, select:focus { outline: 0;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
