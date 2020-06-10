@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import RecentMatchesData, { RecentMatchesDataProps } from './RecentMatchesData';
+import RecentMatchesData from './RecentMatchesData';
 
 class RecentMatches extends Component {
 
