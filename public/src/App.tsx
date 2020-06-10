@@ -20,7 +20,8 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/about" component={About} />
-                    <Route path="/match" component={Match} />
+                    <Route path="/match/:hash/" component={Match} />
+                    <Route path="/match/:hash/:secret/:player" component={Match} />
                 </Switch>
             </div>
           <Footer />
