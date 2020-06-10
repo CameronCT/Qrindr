@@ -11,7 +11,7 @@ class RecentMatches extends Component {
     }
 
     componentDidMount() {
-        fetch('/getMatch')
+        fetch('/getMatches')
             .then(response => response.json())
             .then(response => this.setState({
                 rows: response.data,
@@ -31,7 +31,7 @@ class RecentMatches extends Component {
         return rows && !error && !isLoading && (
             <div className="flex flex-wrap">
                 {rows.map((row: any) => (
-                    <RecentMatchesData key={row.id} {...row} />
+                    <RecentMatchesData key={row.matchId} {...row} />
                 ))}
             </div>
         )
