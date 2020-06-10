@@ -13,12 +13,14 @@ class RecentMatchesData extends Component<RecentMatchesDataProps> {
         const { id, uuid, player1, player2, jsDatetime } = this.props;
 
         return (
-            <div className="bg-gray-800 px-4 py-2 mb-3 border border-gray-700 shadow flex">
-                <div className="w-1/2 text-gray-300 font-semibold">
-                    {player1} vs {player2}
-                </div>
-                <div className="w-1/2 text-gray-400 text-right">
-                    {jsDatetime}
+            <div className="w-1/2 px-1">
+                <div className="flex flex-wrap bg-gray-800 px-4 py-2 mb-3 border border-gray-700 text-center shadow">
+                    <div className="w-full text-gray-300 font-semibold">
+                        <span className="text-lg">{player1}</span> <span className="text-xs text-gray-500 px-1">VS</span> <span className="text-lg">{player2}</span>
+                    </div>
+                    <div className="w-full text-gray-500 font-semibold text-sm">
+                        {jsDatetime}
+                    </div>
                 </div>
             </div>
         )

@@ -5,8 +5,8 @@ class CreateMatch extends Component {
     render() {
         return (
             <form method="post">
-                <div className="bg-gray-800 text-gray-400 shadow p-6 mb-4">
-                    <h1 className="pb-4 text-3xl text-gray-300 text-center font-semibold">Configuration</h1>
+                <div className="bg-gray-800 text-gray-400 shadow p-6">
+                    <h1 className="pb-4 text-2xl text-gray-300 text-center font-semibold">Configuration</h1>
                     <select name="configuration" className="mb-4">
                         <option value="0">Quake Champions - Best of 3</option>
                         <option value="1">Quake Champions - Best of 5</option>
@@ -21,12 +21,19 @@ class CreateMatch extends Component {
                         <option value="0">Practice</option>
                         <option value="1">Tournament</option>
                     </select>
+                    <div className="border-t border-gray-700 my-4"></div>
+                    <h1 className="pb-4 text-2xl text-gray-300 text-center font-semibold">Information</h1>
+                    <input type="text" name="player1" placeholder="Liquid rapha" className="mb-4" required />
+                    <input type="text" name="player1" placeholder="Nemesis dooi" className="mb-4" required />
+                    <select name="mode" className="mb-4">
+                        <option value="0">Random</option>
+                        <option value="1">You</option>
+                        <option value="2">Opponent</option>
+                    </select>
+                    <input type="password" name="secret" placeholder="********" className="mb-4" required />
                 </div>
 
-                <div className="bg-gray-800 text-gray-400 shadow p-6">
-                    <h1 className="pb-4 text-3xl text-gray-300 text-center font-semibold">Information</h1>
-                    <input type="text" name="player1" placeholder="Liquid rapha" required />
-                </div>
+                <button type="submit" className="bg-blue-700 text-blue-100 hover:bg-blue-800 hover:text-blue-200 hover:outline-none py-2 px-4 w-full">Start!</button>
             </form>
         )
     }

@@ -29,7 +29,7 @@ class RecentMatches extends Component {
         console.log(rows);
         console.log(isLoading);
         return rows && !error && !isLoading && (
-            <div>
+            <div className="flex flex-wrap">
                 {rows.map((row: any) => (
                     <RecentMatchesData key={row.id} {...row} />
                 ))}
