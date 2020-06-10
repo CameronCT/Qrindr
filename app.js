@@ -5,46 +5,14 @@ const app               = express();
 const http              = require('http').Server(app);
 const io                = require('socket.io')(http);
 const cors              = require('cors');
-const jwt               = require('jsonwebtoken');
 const config            = require('./config.js');
-
-const passport          = require('passport');
-const DiscordStrategy   = require('passport-discord').Strategy;
 
 const mysql             = require('mysql');
 const conn              = mysql.createConnection({ host: config.MariaDB.Host, user: config.MariaDB.User, password: config.MariaDB.Pass, database: config.MariaDB.Name });
 
-const User              = require('./methods/User.js')(conn, jwt, config);
-
 app.use(cors({ credentials: true, origin: '*' }));
 app.use(session({ secret: config.Session.secret, resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
-/* Discord */
-passport.serializeUser(function(user, done) { done(null, user); });
-passport.deserializeUser(function(user, done) { done(null, user); });
-passport.use(new DiscordStrategy({
-    clientID: config.OAUTH.Discord.Client,
-    clientSecret: config.OAUTH.Discord.Secret,
-    callbackURL: config.OAUTH.Discord.Redirect,
-    scope: ['identify']
-},
-function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ authId: profile.id, userName: profile.username, avatar: profile.avatar }, function(err, user) {
-        return cb(err, user);
-    });
-}));
-
-app.get('/auth/discord', passport.authenticate('discord'));
-app.get('/auth/discord/callback', passport.authenticate('discord', {
-    failureRedirect: '/'
-}), function(req, res) {
-    let token = User.createJWT(req.user);
-    res.cookie('token', token, { maxAge: config.JWT.expiryMax })
-    res.end()
-    res.redirect(config.BASE_URL + '/')
-});
 app.get('/auth/session', (req, res) => {
     return res.send(req.session);
 })
