@@ -3,9 +3,14 @@ import Games from "./Games";
 
 class CreateMatch extends Component {
 
+    constructor(props: any) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     render() {
         return (
-            <form method="post">
+            <form method="post" onSubmit={this.handleSubmit}>
                 <div className="bg-gray-800 text-gray-400 shadow p-6">
                     <h1 className="pb-4 text-2xl text-gray-300 text-center font-semibold">Configuration</h1>
                     <div className="text-gray-200 font-semibold">Game</div>

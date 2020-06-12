@@ -26,8 +26,6 @@ class RecentMatches extends Component {
 
     render() {
         const { rows, isLoading, error } = this.state;
-        console.log(rows);
-        console.log(isLoading);
         return rows && !error && !isLoading && (
             <div className="flex flex-wrap">
                 {rows.map((row: any) => (
