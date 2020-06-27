@@ -46,7 +46,6 @@ app.get('/getMatch', (req, res) => {
     let data = [];
     let error = "";
     let success = "";
-    let isAuthenticated = false;
 
     /*
      * Get Game Configs
@@ -54,6 +53,7 @@ app.get('/getMatch', (req, res) => {
     const gameConfigs = require('./data/Games');
     const gameConfig = gameConfigs['QuakeChampions_BO3'];
     data['Config'] = gameConfig;
+    data.isAuthenticated = false;
 
     /*
      * Get Query
@@ -69,7 +69,7 @@ app.get('/getMatch', (req, res) => {
      * Check if there is a Player and Secret
      */
     if (playerName && secret) {
-        isAuthenticated = true;
+        data.isAuthenticated = true;
     }
 
     /*
@@ -132,7 +132,7 @@ app.get('/getMatch', (req, res) => {
                             matchDataValue: rows[i].matchDataValue
                         };
                     }
-                    return res.send({ error, success, data: { Config: data.Config, Match: data.Match, Data: data.Data } });
+                    return res.send({ error, success, data: { Config: data.Config, Match: data.Match, Data: data.Data, isAuthenticated: data.isAuthenticated } });
                 }
             });
         }

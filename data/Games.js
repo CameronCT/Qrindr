@@ -1,5 +1,6 @@
 const QuakeChampions_BO5 = {
     totalSteps: 22,
+    splitOnStep: 7,
     getSteps: {
         1: 'map_ban',
         2: 'map_ban',
@@ -55,6 +56,7 @@ const QuakeChampions_BO5 = {
 
 const QuakeChampions_BO3 = {
     totalSteps: 16,
+    splitOnStep: 7,
     getSteps: {
         1: 'map_ban',
         2: 'map_ban',
