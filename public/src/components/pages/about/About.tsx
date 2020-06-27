@@ -5,7 +5,7 @@ class About extends Component {
         return (
             <div className="my-6 text-gray-100 text-center">
                 <h1 className="text-3xl font-semibold text-center py-2">About Qrindr</h1>
-                <div className="my-2 border-t-2 border-gray-500 mx-auto w-1/5"></div>
+                <div className="my-2 border-t-2 border-gray-500 mx-auto w-1/12"></div>
                 <div className="w-2/4 mx-auto py-2">
                     When Quake Pro League was announced in Summer 2019, players have been emulating the formats used by professional players on their streams. For many, this is still being manually done and oftentimes leads to confusion and forgetfulness.
 
@@ -15,7 +15,7 @@ class About extends Component {
                 </div>
 
                 <h1 className="text-3xl font-semibold text-center py-2 mt-10">Frequently Asked Questions</h1>
-                <div className="my-2 border-t-2 border-gray-500 mx-auto w-1/5"></div>
+                <div className="my-2 border-t-2 border-gray-500 mx-auto w-1/12"></div>
                 <div className="w-2/4 mx-auto py-2 text-center">
                     <div className="font-semibold">Can you add [insert map] or [insert modes] for other tournaments?</div>
                     This tool was built as a way for me to easily pick my champions and maps due to the use of typing each picks out at the time was frustrating. With this in mind, the functionality is very static and is hard to modify for all modes and extra maps.
