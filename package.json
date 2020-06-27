@@ -4,6 +4,7 @@
   "description": "Match emulator for FPS games",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
