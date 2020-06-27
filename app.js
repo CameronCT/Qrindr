@@ -20,9 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/auth/session', (req, res) => {
     return res.send(req.session);
 })
-app.get('/getMatch', (req, res) => {
-
-});
 
 app.get('/getMatches', (req, res) => {
     let data = {};
@@ -42,6 +39,103 @@ app.get('/getGames', (req, res) => {
             data = rows;
         }
         return res.send({ data });
+    });
+});
+
+app.get('/getMatch', (req, res) => {
+    let data = [];
+    let error = "";
+    let success = "";
+    let isAuthenticated = false;
+
+    /*
+     * Get Game Configs
+     */
+    const gameConfigs = require('./data/Games');
+    const gameConfig = gameConfigs['QuakeChampions_BO3'];
+    data['Config'] = gameConfig;
+
+    /*
+     * Get Query
+     * Params: matchHash, playerName, Secret
+     */
+    const { matchHash, playerName, secret } = req.query;
+    if (!matchHash) {
+        error = "Please make sure all fields are entered correctly!";
+        return res.send({ error, success });
+    }
+
+    /*
+     * Check if there is a Player and Secret
+     */
+    if (playerName && secret) {
+        isAuthenticated = true;
+    }
+
+    /*
+     * Get Query
+     */
+    conn.query(`
+        SELECT
+            matchId, matchHash, matchPlayerOne, matchPlayerTwo, matchGame, matchFormat, matchSecret, matchCointoss, matchCreated
+        FROM
+            matches
+         WHERE
+           matchHash = ?
+    `, [matchHash], function(error, rows) {
+
+        if (error) {
+            error = "Unable to get match information";
+            return res.send({ error, success });
+        } else if (!error && rows) {
+            /*
+             * Format Data
+             */
+            data['Match'] = {
+                matchId: rows[0].matchId,
+                matchHash: rows[0].matchHash,
+                matchPlayerOne: rows[0].matchPlayerOne,
+                matchPlayerTwo: rows[0].matchPlayerTwo,
+                matchGame: rows[0].matchGame,
+                matchFormat: rows[0].matchFormat,
+                matchSecret: rows[0].matchSecret,
+                matchCointoss: rows[0].matchCointoss,
+                matchCreated: rows[0].matchCreated.toLocaleTimeString()
+            }
+
+            /*
+             * get Match Data
+             */
+            conn.query(`
+                SELECT
+                    matchDataId, matchDataMatchId, matchDataPlayer, matchDataStep, matchDataValue
+                 FROM
+                    matches_data
+                 WHERE
+                    matchDataMatchId = ?
+                 ORDER BY
+                    matchDataId ASC
+            `, [data['Match'].matchId], function (error, rows) {
+                if (error) {
+                    error = "Unable to get match information";
+                    return res.send({error, success});
+                } else if (!error && rows) {
+                    /*
+                     * Format Data
+                     */
+                    let i;
+                    for (i = 0; i < rows.length; i++) {
+                        data['Data'][i] = {
+                            matchDataId: rows[i].matchDataId,
+                            matchDataPlayer: rows[i].matchDataPlayer,
+                            matchDataStep: rows[i].matchDataStep,
+                            matchDataValue: rows[i].matchDataValue
+                        };
+                    }
+                    return res.send({ error, success, data: { Config: data.Config, Match: data.Match, Data: data.Data } });
+                }
+            });
+        }
     });
 });
 
@@ -112,7 +206,7 @@ app.post('/createMatch', (req, res) => {
                 console.log(err);
             }
             if (!err && rows.insertId !== 0) {
-                success = `/match/${hash}/${playerName1}`;
+                success = `/match/${hash}/${playerName1}/test`;
             }
             return res.send({ error, success });
         });
