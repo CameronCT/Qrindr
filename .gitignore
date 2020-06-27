@@ -1,3 +1,5 @@
 static/maps
 api/core/mysql.php
 *.bak
+*.xml
+*.iml

@@ -126,13 +126,13 @@ app.controller('HomeController', ['$rootScope', '$cookieStore', '$scope', '$loca
 
 		youPlayer = $scope.formData.player1;
 
-		if ($scope.formData.seedings == 0) {
-			cointoss = Math.floor(Math.random() * 2);
+		if ($scope.formData.seedings == 0 || !$scope.formData.seedings) {
+			let cointoss = Math.floor(Math.random() * 2);
 			if (cointoss == 1) {
 				$scope.formData.player1 = $scope.formData.player2;
 				$scope.formData.player2 = youPlayer;
 			}
-		} else if ($scope.formData.seedings == 2) { 
+		} else if ($scope.formData.seedings == 2) {
 			$scope.formData.player1 = $scope.formData.player2;
 			$scope.formData.player2 = youPlayer;
 		}
