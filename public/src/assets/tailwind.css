@@ -8,3 +8,18 @@ body { @apply bg-gray-900; }
 
 input, textarea, select { @apply bg-gray-700 text-gray-400 border-2 border-gray-600 p-2 w-full; }
 input:focus, textarea:focus, select:focus { @apply outline-none; }
+
+.nav-link {
+    @apply text-gray-100 py-6 text-center;
+}
+
+.nav-link i {
+    @apply text-4xl;
+}
+.nav-link div {
+    @apply uppercase text-xs font-semibold pt-1;
+}
+
+.nav-link:hover {
+    @apply text-gray-200 bg-gray-700;
+}

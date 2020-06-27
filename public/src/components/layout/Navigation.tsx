@@ -6,23 +6,42 @@ import {
 class Navigation extends Component {
     render() {
         return (
-            <div className="border-t-4 border-gray-800 text-gray-100 py-4">
-                <div className="max-w-screen-lg container mx-auto">
-                    <div className="flex flex-wrap">
-                        <div className="w-1/5 text-4xl my-auto font-bold">
-                            Qrindr
-                        </div>
-                        <div className="w-4/5 text-right my-auto">
-                            <Link className="text-gray-300 font-semibold pl-3" to="/">Home</Link>
-                            <Link className="text-gray-300 font-semibold pl-3" to="/about">About</Link>
-                            <a href="https://discord.gg/BAEkm58" className="text-gray-300 font-semibold pl-3">Discord</a>
-                            <a href="https://github.com/CameronCT/Qrindr" className="text-gray-300 font-semibold pl-3">GitHub</a>
-                            <a href="https://streamlabs.com/gnikgg" className="text-gray-300 font-semibold pl-3">Donate</a>
-                            <span className="border-r border-gray-500 px-2"></span>
-                            <a href="#home" className="text-gray-300 font-semibold pl-3">Settings</a>
-                        </div>
+            <div className="w-24 bg-gray-800">
+                <a key={"main"} href="/">
+                    <div className="nav-link">
+                        <i className="fad fa-home"/>
+                        <div>Home</div>
                     </div>
-                </div>
+                </a>
+
+                <a key={"about"} href="/about">
+                    <div className="nav-link">
+                        <i className="fad fa-info-circle"/>
+                        <div>About</div>
+                    </div>
+                </a>
+
+                <a key={"discord"} href="https://discord.gg/gvrmT9j">
+                    <div className="nav-link">
+                        <i className="fab fa-discord"/>
+                        <div>Discord</div>
+                    </div>
+                </a>
+
+                <a key={"github"} href="https://github.com/CameronCT">
+                    <div className="nav-link">
+                        <i className="fab fa-github"/>
+                        <div>GitHub</div>
+                    </div>
+                </a>
+
+                <a key={"donate"} href="https://streamlabs.com/gnikgg/donate">
+                    <div className="nav-link">
+                        <i className="fad fa-donate"/>
+                        <div>Donate</div>
+                    </div>
+                </a>
+
             </div>
         )
     }
