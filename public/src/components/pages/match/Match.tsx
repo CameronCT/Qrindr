@@ -33,6 +33,10 @@ class Match extends Component<IProps, IState> {
 
     }
 
+    isEven(n: number) {
+        return n % 2 == 0;
+    }
+
     render() {
         const { Config, Match, Data, isAuthenticated } = this.state.data;
 
@@ -46,6 +50,7 @@ class Match extends Component<IProps, IState> {
         let getRemovedChampions     = [];
         let getRemovedMaps          = [];
         let getCurrentStep          = 1;
+        let getCurrentPlayer        = "";
 
         /*
          * Format Data for Front
@@ -55,34 +60,63 @@ class Match extends Component<IProps, IState> {
             let i;
             for (i = 1; i <= Config.totalSteps; i++) {
                 if (Data) {
+
+                    /*
+                     * Get Player
+                     * (Odd #: 1, 3, 5) = Player1
+                     * (Even #: 2, 4, 6) = Player2
+                     */
+                    getCurrentPlayer = Match.player1;
+                    if (this.isEven(getCurrentStep)) {
+                        getCurrentPlayer = Match.player2;
+                    }
+
                     /*
                      * Filter Data
                      */
-                    if (Config.getSteps[i] == 'map_ban' || Config.getSteps[i] == 'map_ban') {
-                        if (Data[i].matchDataStep === i)
-                            getRemovedMaps.push(Data[i].matchDataValue);
-                    }
-                    if (Config.getSteps[i] == 'map_pick' || Config.getSteps[i] == 'map_pick') {
-                        if (Data[i].matchDataStep === i)
-                            getSelectedMaps.push(Data[i].matchDataValue);
-                    }
-                    if (Config.getSteps[i] == 'champ_ban' || Config.getSteps[i] == 'champ_ban') {
-                        if (Data[i].matchDataStep === i)
-                            getRemovedChampions.push(Data[i].matchDataValue);
-                    }
-                    if (Config.getSteps[i] == 'champ_pick' || Config.getSteps[i] == 'champ_pick') {
-                        if (Data[i].matchDataStep === i)
-                            getSelectedChampions.push(Data[i].matchDataValue);
+                    if (Data[i]) {
+                        if (Config.getSteps[i] == 'map_ban' || Config.getSteps[i] == 'map_ban') {
+                            if (Data[i].matchDataStep === i)
+                                getRemovedMaps.push(Data[i].matchDataValue);
+                        }
+                        if (Config.getSteps[i] == 'map_pick' || Config.getSteps[i] == 'map_pick') {
+                            if (Data[i].matchDataStep === i)
+                                getSelectedMaps.push(Data[i].matchDataValue);
+                        }
+                        if (Config.getSteps[i] == 'champ_ban' || Config.getSteps[i] == 'champ_ban') {
+                            if (Data[i].matchDataStep === i)
+                                getRemovedChampions.push(Data[i].matchDataValue);
+                        }
+                        if (Config.getSteps[i] == 'champ_pick' || Config.getSteps[i] == 'champ_pick') {
+                            if (Data[i].matchDataStep === i)
+                                getSelectedChampions.push(Data[i].matchDataValue);
+                        }
                     }
 
                     /*
                      * Generate HTML
+                     * if: Step has already been performed
                      */
-                    generateHTML += (
-                        <div>
-                            testing
-                        </div>
-                    );
+                    if (!Data[i]) {
+                        generateHTML += `
+                            <div>
+                                player needs to perform a step
+                            </div>
+                        `;
+                    }
+                    if (Data[i]) {
+                        generateHTML += `
+                            <div>
+                                {Data[i].matchDataPlayer} performed {Config.getSteps[i]}
+                            </div>
+                        `;
+                    }
+
+                    /*
+                     * Generate HTML
+                     * if: step hasn't been performed
+                     */
+                    getCurrentStep++;
                 }
             }
         }

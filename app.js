@@ -43,7 +43,11 @@ app.get('/getGames', (req, res) => {
 });
 
 app.get('/getMatch', (req, res) => {
-    let data = [];
+    let data = {
+        Config: {},
+        Match: {},
+        Data: []
+    };
     let error = "";
     let success = "";
 
@@ -125,12 +129,12 @@ app.get('/getMatch', (req, res) => {
                      */
                     let i;
                     for (i = 0; i < rows.length; i++) {
-                        data['Data'][i] = {
+                        data.Data.push({
                             matchDataId: rows[i].matchDataId,
                             matchDataPlayer: rows[i].matchDataPlayer,
                             matchDataStep: rows[i].matchDataStep,
                             matchDataValue: rows[i].matchDataValue
-                        };
+                        });
                     }
                     return res.send({ error, success, data: { Config: data.Config, Match: data.Match, Data: data.Data, isAuthenticated: data.isAuthenticated } });
                 }
