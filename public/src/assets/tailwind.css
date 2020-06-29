@@ -23,3 +23,19 @@ input:focus, textarea:focus, select:focus { @apply outline-none; }
 .nav-link:hover {
     @apply text-gray-200 bg-gray-700;
 }
+
+.step {
+    @apply p-4 font-semibold text-gray-200 mb-4;
+}
+
+.step span {
+    @apply font-bold;
+}
+
+.step--regular {
+    @apply bg-gray-700 border border-gray-600;
+}
+
+.step--inverse {
+    @apply bg-gray-800 border border-gray-900;
+}

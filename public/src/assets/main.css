@@ -17902,6 +17902,39 @@ input:focus, textarea:focus, select:focus { outline: 0;
   background-color: rgba(74, 85, 104, var(--bg-opacity));
 }
 
+.step {
+  padding: 1rem;
+  font-weight: 600;
+  --text-opacity: 1;
+  color: #edf2f7;
+  color: rgba(237, 242, 247, var(--text-opacity));
+  margin-bottom: 1rem;
+}
+
+.step span {
+  font-weight: 700;
+}
+
+.step--regular {
+  --bg-opacity: 1;
+  background-color: #4a5568;
+  background-color: rgba(74, 85, 104, var(--bg-opacity));
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #718096;
+  border-color: rgba(113, 128, 150, var(--border-opacity));
+}
+
+.step--inverse {
+  --bg-opacity: 1;
+  background-color: #2d3748;
+  background-color: rgba(45, 55, 72, var(--bg-opacity));
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #1a202c;
+  border-color: rgba(26, 32, 44, var(--border-opacity));
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactHtmlParser from "react-html-parser";
 
 interface IPropsMatch {
     params: any;
@@ -59,8 +60,10 @@ class Match extends Component<IProps, IState> {
 
             let i;
             for (i = 1; i <= Config.totalSteps; i++) {
-                if (Data) {
+                let iArray:number = (i - 1);
+                let iSteps:number = (i);
 
+                if (Data[iArray]) {
                     /*
                      * Get Player
                      * (Odd #: 1, 3, 5) = Player1
@@ -74,22 +77,22 @@ class Match extends Component<IProps, IState> {
                     /*
                      * Filter Data
                      */
-                    if (Data[i]) {
+                    if (Data[iArray]) {
                         if (Config.getSteps[i] == 'map_ban' || Config.getSteps[i] == 'map_ban') {
-                            if (Data[i].matchDataStep === i)
-                                getRemovedMaps.push(Data[i].matchDataValue);
+                            if (Data[iArray].matchDataStep === i)
+                                getRemovedMaps.push(Data[iArray].matchDataValue);
                         }
                         if (Config.getSteps[i] == 'map_pick' || Config.getSteps[i] == 'map_pick') {
-                            if (Data[i].matchDataStep === i)
-                                getSelectedMaps.push(Data[i].matchDataValue);
+                            if (Data[iArray].matchDataStep === i)
+                                getSelectedMaps.push(Data[iArray].matchDataValue);
                         }
                         if (Config.getSteps[i] == 'champ_ban' || Config.getSteps[i] == 'champ_ban') {
-                            if (Data[i].matchDataStep === i)
-                                getRemovedChampions.push(Data[i].matchDataValue);
+                            if (Data[iArray].matchDataStep === i)
+                                getRemovedChampions.push(Data[iArray].matchDataValue);
                         }
                         if (Config.getSteps[i] == 'champ_pick' || Config.getSteps[i] == 'champ_pick') {
-                            if (Data[i].matchDataStep === i)
-                                getSelectedChampions.push(Data[i].matchDataValue);
+                            if (Data[iArray].matchDataStep === i)
+                                getSelectedChampions.push(Data[iArray].matchDataValue);
                         }
                     }
 
@@ -97,19 +100,18 @@ class Match extends Component<IProps, IState> {
                      * Generate HTML
                      * if: Step has already been performed
                      */
-                    if (!Data[i]) {
+                    if (Data[iArray]) {
                         generateHTML += `
-                            <div>
-                                player needs to perform a step
-                            </div>
-                        `;
-                    }
-                    if (Data[i]) {
+                        <div class="step step--regular">
+                            <span>${Data[iArray].matchDataPlayer}</span> performed ${Config.getSteps[i]}
+                        </div>
+                    `;
+                    } else {
                         generateHTML += `
-                            <div>
-                                {Data[i].matchDataPlayer} performed {Config.getSteps[i]}
-                            </div>
-                        `;
+                        <div class="step step--regular">
+                            <span>${Data[iArray].matchDataPlayer}</span> has to create step
+                        </div>
+                    `;
                     }
 
                     /*
@@ -117,6 +119,16 @@ class Match extends Component<IProps, IState> {
                      * if: step hasn't been performed
                      */
                     getCurrentStep++;
+                } else if (!Data[iArray]) {
+                    /*
+                     * Generate HTML
+                     * if: Step has already been performed
+                     */
+                    generateHTML += `
+                        <div>
+                            player needs to perform a step ${i}
+                        </div>
+                    `;
                 }
             }
         }
@@ -124,7 +136,7 @@ class Match extends Component<IProps, IState> {
         return (
             <div>
                 testing generation
-                {generateHTML}
+                { ReactHtmlParser(generateHTML) }
             </div>
         )
     }
