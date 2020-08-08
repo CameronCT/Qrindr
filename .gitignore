@@ -1,7 +1,0 @@
-/node_modules
-.idea/*
-.idea/misc.xml
-.idea/modules.xml
-.idea/Qrindr.iml
-.idea/vcs.xml
-config.js
