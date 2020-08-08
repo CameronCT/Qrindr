@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGamepadAlt} from "@fortawesome/pro-solid-svg-icons";
+import FormInput from "../../form/FormInput";
 
 interface GitHubState {
     tree: { sha: string, url: string };
@@ -83,8 +84,6 @@ class Home extends Component {
     render() {
         const { GitHub } = this.state;
 
-        console.log(GitHub);
-
         return (
             <div>
                 {GitHub && GitHub.tree && GitHub.tree.url && GitHub.tree.sha && GitHub.committer.date && (
@@ -93,7 +92,7 @@ class Home extends Component {
                     </div>
                 )}
 
-                <div className="bg-gray-800 p-6">
+                <div className="bg-gray-800 shadow-md p-6">
                     <div className={"pl-2 pb-4 text-xl text-white uppercase font-bold"}>
                         News
                     </div>
@@ -121,14 +120,15 @@ class Home extends Component {
                 </div>
                 <div className="flex flex-wrap mt-6">
                     <div className={"w-full lg:w-2/5 pr-2"}>
-                        <div className={"bg-gray-800 p-4 rounded shadow-md"}>
-                            <div className="pb-6 text-xl font-semibold text-white">
+                        <div className={"bg-gray-800 p-4 shadow-md"}>
+                            <div className="pb-4 text-2xl text-center font-semibold text-white">
                                 Create Match
                             </div>
+                            <FormInput type="text" name="playerOne" id="You" placeholder="RAIJIN GNiK" className={"mb-4"} onChange="" />
                         </div>
                     </div>
                     <div className={"w-full lg:w-3/5 pl-2"}>
-                        Form
+
                     </div>
                 </div>
             </div>
