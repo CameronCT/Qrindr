@@ -7,13 +7,14 @@ import NavigationDesktop from "./components/navigation/NavigationDesktop";
 export const App = () => {
   return (
       <BrowserRouter>
-        <NavigationDesktop />
-        <div>
-            <Switch>
-                <Route exact path="/" component={Home} />
-            </Switch>
+        <div className="flex min-h-screen">
+            <NavigationDesktop />
+            <div className="p-4 md:p-6 lg:p-12 w-full">
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                </Switch>
+            </div>
         </div>
-          <NavigationMobile />
       </BrowserRouter>
   );
 };
