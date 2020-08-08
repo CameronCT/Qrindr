@@ -9,6 +9,7 @@ class NavigationDesktop extends Component {
     navOptions = [
         {
             name: 'Home',
+            location: '/',
             icon: {
                 fa: faHome,
                 css: 'text-red-400',
@@ -16,6 +17,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'About',
+            location: '/',
             icon: {
                 fa: faInfoCircle,
                 css: 'text-teal-400',
@@ -23,6 +25,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Watch',
+            location: '/',
             icon: {
                 fa: faTwitch,
                 css: 'text-purple-500',
@@ -30,6 +33,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Betting',
+            location: '/',
             icon: {
                 fa: faHandHoldingUsd,
                 css: 'text-yellow-400',
@@ -37,6 +41,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Discord',
+            location: '/',
             icon: {
                 fa: faDiscord,
                 css: 'text-indigo-300',
@@ -44,6 +49,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'GitHub',
+            location: 'https://github.com/CameronCT/Qrindr',
             icon: {
                 fa: faGithub,
                 css: 'text-gray-200',
@@ -51,6 +57,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Donate',
+            location: '/donate',
             icon: {
                 fa: faDollarSign,
                 css: 'text-green-400',
@@ -65,7 +72,7 @@ class NavigationDesktop extends Component {
                     <div className="text-sm lg:text-3xl text-white font-bold">Qrindr</div>
                 </div>
                 {this.navOptions.map((row) => (
-                    <a href="#" className="flex py-3 hover:bg-gray-900">
+                    <a href={row.location} className="flex py-3 hover:bg-gray-900">
                         <div className="w-full lg:w-3/12 text-center my-auto">
                             <FontAwesomeIcon icon={row.icon.fa} className={` ${row.icon.css}`} />
                         </div>
