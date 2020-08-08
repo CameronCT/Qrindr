@@ -11,12 +11,12 @@ interface IProps {
 
 class FormInput extends Component<IProps> {
     render() {
-        const { type, placeholder, name, id, className } = this.props;
+        const { type, placeholder, name, id, className, onChange } = this.props;
 
         return (
             <div className={className}>
                 <div className="font-semibold text-base text-gray-200">{id}</div>
-                <input type={type} placeholder={placeholder} name={name} className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} required />
+                <input type={type} placeholder={placeholder} name={name} className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={onChange} required />
             </div>
         )
     }

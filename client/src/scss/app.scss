@@ -5,3 +5,23 @@
 body {
   @apply bg-gray-900;
 }
+
+.btn {
+
+  &-small {
+    @apply px-2 py-1 rounded-full font-semibold;
+  }
+  &-medium {
+    @apply px-4 py-2 rounded-full font-semibold;
+  }
+  &-large {
+    @apply px-5 py-3 rounded-full font-semibold;
+  }
+
+  &-blue {
+    @apply bg-blue-600 text-blue-100;
+  }
+  &-blue:hover {
+    @apply bg-blue-700;
+  }
+}

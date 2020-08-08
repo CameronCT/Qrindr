@@ -27,7 +27,12 @@ interface MatchRows {
 class Home extends Component {
 
     state = {
-        GitHub: {} as GitHubState
+        GitHub: {} as GitHubState,
+        playerOne: '',
+        playerTwo: '',
+        matchGame: 0,
+        matchSecret: '',
+        matchCointoss: 0,
     };
 
     blogs = [
@@ -73,12 +78,63 @@ class Home extends Component {
         }
     ];
 
+    configs = [
+        {
+            configId: 0,
+            configName: 'Quake Champions - Timelimit Duel (Best of 3)',
+        },
+        {
+            configId: 1,
+            configName: 'Quake Champions - Timelimit Duel (Best of 5)',
+        },
+        {
+            configId: 2,
+            configName: 'Diabotical - Duel (Best of 3)',
+        }
+    ];
+
+    cointoss = [
+        {
+            cointossId: 0,
+            cointossName: 'Random',
+        },
+        {
+            cointossId: 1,
+            cointossName: 'You',
+        },
+        {
+            cointossId: 2,
+            cointossName: 'Opponent',
+        },
+    ]
+
     componentDidMount() {
         fetch('https://api.github.com/repos/CameronCT/Qrindr/commits/v3')
             .then(response => response.json())
             .then(response => {
                 this.setState({ GitHub: response.commit })
             });
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(formName: string, event: any) {
+        this.setState({ [formName]: event.target.value });
+    }
+
+    handleSubmit(event: any) {
+        event.preventDefault();
+
+        console.log(this.state);
+    /*
+        const { state } = this;
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(state)
+        };
+*/
     }
 
     render() {
@@ -119,12 +175,35 @@ class Home extends Component {
                     </div>
                 </div>
                 <div className="flex flex-wrap mt-6">
-                    <div className={"w-full lg:w-2/5 pr-2"}>
-                        <div className={"bg-gray-800 p-4 shadow-md"}>
-                            <div className="pb-4 text-2xl text-center font-semibold text-white">
-                                Create Match
-                            </div>
-                            <FormInput type="text" name="playerOne" id="You" placeholder="RAIJIN GNiK" className={"mb-4"} onChange="" />
+                    <div className={"w-full lg:w-1/3 pr-2"}>
+                        <div className={"bg-gray-800 p-6 shadow-md"}>
+                            <form method={"post"} onSubmit={this.handleSubmit}>
+                                <div className="pb-4 text-2xl text-center font-semibold text-white">
+                                    Create Match
+                                </div>
+                                <div className={"mb-4"}>
+                                    <div className="font-semibold text-base text-gray-200">Game</div>
+                                    <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchConfig", e)} required>
+                                        {this.configs.map((row) => (
+                                            <option value={row.configId}>{row.configName}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <FormInput type="text" name="playerOne" id="You" placeholder="RAIJIN GNiK" className={"mb-4"} onChange={(e: any) => this.handleChange("playerOne", e)} />
+                                <FormInput type="text" name="playerTwo" id="Opponent" placeholder="Nemesis dooi" className={"mb-4"} onChange={(e: any) => this.handleChange("playerTwo", e)} />
+                                <div className={"mb-4"}>
+                                    <div className="font-semibold text-base text-gray-200">First Seed</div>
+                                    <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchCointoss", e)} required>
+                                        {this.cointoss.map((row) => (
+                                            <option value={row.cointossId}>{row.cointossName}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <FormInput type="password" name="playerTwo" id="Passphrase" placeholder="**************" className={"mb-4"} onChange={(e: any) => this.handleChange("matchSecret", e)} />
+                                <div className={"text-right"}>
+                                    <button type="submit" className={"btn-medium btn-blue"}>Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div className={"w-full lg:w-3/5 pl-2"}>

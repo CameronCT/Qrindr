@@ -14448,6 +14448,46 @@ body {
   background-color: rgba(26, 32, 44, var(--bg-opacity));
 }
 
+.btn {
+  &-small {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+  &-medium {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+  &-large {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+  &-blue {
+    --bg-opacity: 1;
+    background-color: #3182ce;
+    background-color: rgba(49, 130, 206, var(--bg-opacity));
+    --text-opacity: 1;
+    color: #ebf8ff;
+    color: rgba(235, 248, 255, var(--text-opacity));
+  }
+  &-blue:hover {
+    --bg-opacity: 1;
+    background-color: #2b6cb0;
+    background-color: rgba(43, 108, 176, var(--bg-opacity));
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
