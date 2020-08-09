@@ -106,6 +106,41 @@ class Home extends Component {
             cointossId: 2,
             cointossName: 'Opponent',
         },
+    ];
+
+    matches = [
+        {
+            matchId: 0,
+            matchHash: 'alsl20dfkj2f0dfk20la',
+            matchPlayerOne: 'GNiK',
+            matchPlayerTwo: 'rapha',
+            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
+            matchCreated: 'Aug 9, 2020'
+        },
+        {
+            matchId: 0,
+            matchHash: 'alsl20dfkj2f0dfk20la',
+            matchPlayerOne: 'GNiK',
+            matchPlayerTwo: 'rapha',
+            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
+            matchCreated: 'Aug 9, 2020'
+        },
+        {
+            matchId: 0,
+            matchHash: 'alsl20dfkj2f0dfk20la',
+            matchPlayerOne: 'GNiK',
+            matchPlayerTwo: 'rapha',
+            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
+            matchCreated: 'Aug 9, 2020'
+        },
+        {
+            matchId: 0,
+            matchHash: 'alsl20dfkj2f0dfk20la',
+            matchPlayerOne: 'GNiK',
+            matchPlayerTwo: 'rapha',
+            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
+            matchCreated: 'Aug 9, 2020'
+        },
     ]
 
     componentDidMount() {
@@ -127,6 +162,8 @@ class Home extends Component {
         event.preventDefault();
 
         console.log(this.state);
+
+        /* perform cointoss stuff here */
     /*
         const { state } = this;
         const requestOptions = {
@@ -175,7 +212,7 @@ class Home extends Component {
                     </div>
                 </div>
                 <div className="flex flex-wrap mt-6">
-                    <div className={"w-full lg:w-1/3 pr-2"}>
+                    <div className={"w-full md:w-1/2 lg:w-1/3 md:pr-2"}>
                         <div className={"bg-gray-800 p-6 shadow-md"}>
                             <form method={"post"} onSubmit={this.handleSubmit}>
                                 <div className="pb-4 text-2xl text-center font-semibold text-white">
@@ -206,8 +243,19 @@ class Home extends Component {
                             </form>
                         </div>
                     </div>
-                    <div className={"w-full lg:w-3/5 pl-2"}>
-
+                    <div className={"w-full md:w-1/2 lg:w-2/3 md:pl-2"}>
+                        <div className="flex flex-wrap pt-4 md:pt-0">
+                            {this.matches.map((row) => (
+                                <a href="/" className="w-full xl:w-1/3 pb-2 md:px-1">
+                                    <div className="p-3 text-white text-xl bg-gray-800 border-2 border-gray-700 shadow text-center">
+                                        <div>
+                                            <span className="font-semibold">{row.matchPlayerOne}</span> vs <span className="font-semibold">{row.matchPlayerTwo}</span>
+                                        </div>
+                                        <div className="text-gray-500 text-xs">{row.matchConfig}</div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
