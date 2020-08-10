@@ -1,0 +1,63 @@
+[
+  {
+    "matchId": 0,
+    "matchConfig": "Quake Champions - Timelimit Duel (Best of 3)",
+    "matchPlayerOne": "GNiK",
+    "matchPlayerTwo": "rapha",
+    "matchCointoss": 0,
+    "matchSplit": 6,
+    "matchSteps": {
+      "current": 0,
+      "next": 1,
+      "list": {
+        "0": "map_pick",
+        "1": "map_pick",
+        "2": "map_ban",
+        "3": "map_ban",
+        "4": "map_ban"
+      },
+      "values": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "3": 4,
+        "4": 5
+      }
+    },
+    "matchMaps": {
+      "available": [0, 1, 2],
+      "taken": [3, 4, 5],
+      "remain": [6],
+      "list": [
+        {
+          "0": "Awoken",
+          "1": "Blood Covenant",
+          "2": "Blood Run",
+          "3": "Corrupted Keep",
+          "4": "Molten Falls",
+          "5": "Ruins of Sarnath",
+          "6": "Vale of Pnath"
+        }
+      ]
+    },
+    "matchChampions": {
+      "available": [0, 1, 2],
+      "taken": [3, 4, 5],
+      "remain": [6],
+      "list": [
+        {
+          "0": "Anarki",
+          "1": "Slash",
+          "2": "Athena",
+          "3": "Nyx",
+          "4": "Ranger",
+          "5": "Visor",
+          "6": "B.J. Blazkowicz",
+          "7": "Deathknight",
+          "8": "Scalebearer",
+          "9": "Keel"
+        }
+      ]
+    }
+  }
+]
