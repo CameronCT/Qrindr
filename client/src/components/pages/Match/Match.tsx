@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import data from './data.json';
 import Veto from "./Veto";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
 
 class Match extends Component {
     state = {
@@ -19,8 +21,21 @@ class Match extends Component {
 
         return (
             <div>
+                <div className={"flex flex-wrap border-b-2 border-indigo-700 mb-4 pb-4 mx-2"}>
+                    <div className={"w-full md:w-3/4 text-xl my-auto text-white"}>
+                        <span className={"font-semibold"}>{data.matchPlayerOne}</span> vs <span className={"font-semibold"}>{data.matchPlayerTwo}</span>
+                    </div>
+                    <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
+                        <a href="/" className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-full"}>
+                            <FontAwesomeIcon icon={faExternalLink} /> Invite
+                        </a>
+                        <a href="/" className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
+                            <FontAwesomeIcon icon={faEye} /> Spectate
+                        </a>
+                    </div>
+                </div>
                 <div className={"flex flex-wrap"}>
-                    <div className="w-1/3 px-2">
+                    <div className="w-3/12 px-2">
                         {data.matchSteps.list.map((value:any, key:number) => (
                             <div>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
@@ -29,7 +44,7 @@ class Match extends Component {
                             </div>
                         ))}
                     </div>
-                    <div className="w-1/3 px-2">
+                    <div className="w-6/12 px-2">
                         <div className={"bg-gray-700 p-6 shadow mb-3"}>
                             <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                 {data.matchMaps.list[data.matchMaps.picked[0]]}
@@ -79,7 +94,7 @@ class Match extends Component {
                             ))}
                         </div>
                     </div>
-                    <div className="w-1/5 px-2">
+                    <div className="w-3/12 px-2">
                         <div className={"bg-gray-800 shadow p-6 mb-4"}>
                             <div>
                                 <div className={"text-lg font-semibold text-white"}>
