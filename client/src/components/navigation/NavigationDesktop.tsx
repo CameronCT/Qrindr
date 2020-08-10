@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHandHoldingUsd, faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
+import {faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
 import {faDiscord, faGithub, faTwitch} from "@fortawesome/free-brands-svg-icons";
 import {faDollarSign} from "@fortawesome/pro-duotone-svg-icons";
 
@@ -29,14 +29,6 @@ class NavigationDesktop extends Component {
             icon: {
                 fa: faTwitch,
                 css: 'text-purple-500',
-            }
-        },
-        {
-            name: 'Betting',
-            location: '/',
-            icon: {
-                fa: faHandHoldingUsd,
-                css: 'text-yellow-400',
             }
         },
         {
