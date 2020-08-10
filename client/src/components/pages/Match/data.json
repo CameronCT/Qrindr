@@ -5,58 +5,72 @@
     "matchPlayerOne": "GNiK",
     "matchPlayerTwo": "rapha",
     "matchCointoss": 0,
-    "matchSplit": 6,
+    "matchSplitMapOne": 4,
+    "matchSplitMapTwo": 7,
+    "matchSplitMapThree": 10,
+    "matchSplitMapFour": 999,
+    "matchSplitMapFive": 999,
     "matchSteps": {
-      "current": 0,
-      "next": 1,
-      "list": {
-        "0": "map_pick",
-        "1": "map_pick",
-        "2": "map_ban",
-        "3": "map_ban",
-        "4": "map_ban"
-      },
-      "values": {
-        "0": 3,
-        "1": 1,
-        "2": 2,
-        "3": 4,
-        "4": 5
-      }
+      "next": 11,
+      "list": [
+          "map_pick",
+          "map_pick",
+          "map_ban",
+          "map_ban",
+          "map_pick",
+          "champ_ban",
+          "champ_pick",
+          "champ_pick",
+          "champ_ban",
+          "champ_pick",
+          "champ_pick",
+          "champ_ban",
+          "champ_pick",
+          "champ_pick"
+      ]
+      ,
+      "values": [
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          4,
+          5,
+          3
+      ]
     },
     "matchMaps": {
-      "available": [0, 1, 2],
-      "taken": [3, 4, 5],
-      "remain": [6],
+      "available": [],
+      "taken": [2, 3, 1, 4, 5],
+      "picked": [2, 3, 5],
       "list": [
-        {
-          "0": "Awoken",
-          "1": "Blood Covenant",
-          "2": "Blood Run",
-          "3": "Corrupted Keep",
-          "4": "Molten Falls",
-          "5": "Ruins of Sarnath",
-          "6": "Vale of Pnath"
-        }
+          "Awoken",
+          "Blood Covenant",
+          "Blood Run",
+          "Corrupted Keep",
+          "Molten Falls",
+          "Ruins of Sarnath",
+          "Vale of Pnath"
       ]
     },
     "matchChampions": {
       "available": [0, 1, 2],
-      "taken": [3, 4, 5],
-      "remain": [6],
+      "taken": [6, 7, 8, 4, 5, 3],
       "list": [
-        {
-          "0": "Anarki",
-          "1": "Slash",
-          "2": "Athena",
-          "3": "Nyx",
-          "4": "Ranger",
-          "5": "Visor",
-          "6": "B.J. Blazkowicz",
-          "7": "Deathknight",
-          "8": "Scalebearer",
-          "9": "Keel"
-        }
+        "Anarki",
+        "Slash",
+        "Athena",
+        "Nyx",
+        "Ranger",
+        "Visor",
+        "B.J. Blazkowicz",
+        "Deathknight",
+        "Scalebearer",
+        "Keel"
       ]
     }
   }
