@@ -59,7 +59,7 @@ class Match extends Component<IProps> {
                         {data.matchSteps.list.map((value:any, key:number) => (
                             <div>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
-                                    <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} champions={data.matchChampions.list} next={key >= data.matchSteps.next} />
+                                    <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                 )}
                             </div>
                         ))}
@@ -76,7 +76,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapTwo &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} champions={data.matchChampions.list} next={key >= data.matchSteps.next} />
+                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}
@@ -92,7 +92,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapThree &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} champions={data.matchChampions.list} next={key >= data.matchSteps.next} />
+                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}
@@ -108,7 +108,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapFour &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} champions={data.matchChampions.list} next={key >= data.matchSteps.next} />
+                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}
@@ -127,10 +127,10 @@ class Match extends Component<IProps> {
                                                 <li>{key+1}. {data.matchMaps.list[value]}</li>
                                             ))}
                                         </div>
-                                        {data.matchMaps.available.map((value:any, key:any) => (
+                                        {data.matchMaps.available.map((value:any) => (
                                             <li>{data.matchMaps.list[value]}</li>
                                         ))}
-                                        {data.matchMaps.taken.map((value:any, key:any) => (
+                                        {data.matchMaps.taken.map((value:any) => (
                                             <li className={"line-through text-gray-600"}>{data.matchMaps.list[value]}</li>
                                         ))}
                                     </ul>
@@ -145,10 +145,10 @@ class Match extends Component<IProps> {
                                 </div>
                                 <div>
                                     <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
-                                        {data.matchChampions.available.map((value:any, key:any) => (
+                                        {data.matchChampions.available.map((value:any) => (
                                             <li>{data.matchChampions.list[value]}</li>
                                         ))}
-                                        {data.matchChampions.taken.map((value:any, key:any) => (
+                                        {data.matchChampions.taken.map((value:any) => (
                                             <li className={"line-through text-gray-600"}>{data.matchChampions.list[value]}</li>
                                         ))}
                                     </ul>
