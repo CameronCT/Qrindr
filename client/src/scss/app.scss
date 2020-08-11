@@ -24,4 +24,18 @@ body {
   &-blue:hover {
     @apply bg-blue-700;
   }
+
+  &-red {
+    @apply bg-red-600 text-red-100;
+  }
+  &-red:hover {
+    @apply bg-red-700;
+  }
+
+  &-green {
+    @apply bg-green-600 text-green-100;
+  }
+  &-green:hover {
+    @apply bg-green-700;
+  }
 }

@@ -14486,6 +14486,32 @@ body {
     background-color: #2b6cb0;
     background-color: rgba(43, 108, 176, var(--bg-opacity));
   }
+  &-red {
+    --bg-opacity: 1;
+    background-color: #e53e3e;
+    background-color: rgba(229, 62, 62, var(--bg-opacity));
+    --text-opacity: 1;
+    color: #fff5f5;
+    color: rgba(255, 245, 245, var(--text-opacity));
+  }
+  &-red:hover {
+    --bg-opacity: 1;
+    background-color: #c53030;
+    background-color: rgba(197, 48, 48, var(--bg-opacity));
+  }
+  &-green {
+    --bg-opacity: 1;
+    background-color: #38a169;
+    background-color: rgba(56, 161, 105, var(--bg-opacity));
+    --text-opacity: 1;
+    color: #f0fff4;
+    color: rgba(240, 255, 244, var(--text-opacity));
+  }
+  &-green:hover {
+    --bg-opacity: 1;
+    background-color: #2f855a;
+    background-color: rgba(47, 133, 90, var(--bg-opacity));
+  }
 }
 
 @media (min-width: 640px) {
