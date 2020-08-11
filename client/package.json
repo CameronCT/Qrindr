@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^5.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
