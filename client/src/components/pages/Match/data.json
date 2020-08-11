@@ -10,6 +10,7 @@
     "matchSplitMapThree": 10,
     "matchSplitMapFour": 999,
     "matchSplitMapFive": 999,
+    "matchTimeout": 30,
     "matchSteps": {
       "next": 11,
       "list": [
