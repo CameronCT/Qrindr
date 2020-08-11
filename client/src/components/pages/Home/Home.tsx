@@ -33,121 +33,31 @@ class Home extends Component {
         matchGame: 0,
         matchSecret: '',
         matchCointoss: 0,
+        blogs: [] as any,
+        matches: [] as any,
+        cointoss: [] as any,
+        configs: [] as any
     };
 
-    blogs = [
-        {
-            blogId: 0,
-            blogThumbnail: `https://images.ctfassets.net/rporu91m20dc/4ZIIRBz1xqsLCqvwgFRSC1/bb758e0f5ab9c29fdcee17eca4ae9d63/QC_QPL_HERO_1920x870.jpg?w=380&h=210&fit=thumb`,
-            blogTitle: `Quake World Championships - Day Three`,
-            blogHref: 'https://quake.com',
-            blogGame: 'Quake',
-            blogCreated: `Aug 9, 2020`
-        },
-        {
-            blogId: 0,
-            blogThumbnail: `https://images.ctfassets.net/rporu91m20dc/4ZIIRBz1xqsLCqvwgFRSC1/bb758e0f5ab9c29fdcee17eca4ae9d63/QC_QPL_HERO_1920x870.jpg?w=380&h=210&fit=thumb`,
-            blogTitle: `Quake World Championships - Day Two`,
-            blogHref: 'https://quake.com',
-            blogGame: 'Quake',
-            blogCreated: `Aug 8, 2020`
-        },
-        {
-            blogId: 0,
-            blogThumbnail: `https://images.ctfassets.net/rporu91m20dc/4ZIIRBz1xqsLCqvwgFRSC1/bb758e0f5ab9c29fdcee17eca4ae9d63/QC_QPL_HERO_1920x870.jpg?w=380&h=210&fit=thumb`,
-            blogTitle: `Quake World Championships - Day One`,
-            blogHref: 'https://quake.com',
-            blogGame: 'Quake',
-            blogCreated: `Aug 7, 2020`
-        },
-        {
-            blogId: 0,
-            blogThumbnail: `https://i.ytimg.com/vi/YTQelhNvjSE/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAIfTYH9wEe4QbMzn6tn87AU4r14w`,
-            blogTitle: `Diabotical Closed Beta Dates - Aug 10, 2020`,
-            blogHref: 'https://quake.com',
-            blogGame: 'Diabotical',
-            blogCreated: `Aug 4, 2020`
-        },
-        {
-            blogId: 0,
-            blogThumbnail: `https://images.ctfassets.net/rporu91m20dc/4ZIIRBz1xqsLCqvwgFRSC1/bb758e0f5ab9c29fdcee17eca4ae9d63/QC_QPL_HERO_1920x870.jpg?w=380&h=210&fit=thumb`,
-            blogTitle: `Quake World Championships - Details`,
-            blogHref: 'https://quake.com',
-            blogGame: 'Quake',
-            blogCreated: `Aug 2, 2020`
-        }
-    ];
 
-    configs = [
-        {
-            configId: 0,
-            configName: 'Quake Champions - Timelimit Duel (Best of 3)',
-        },
-        {
-            configId: 1,
-            configName: 'Quake Champions - Timelimit Duel (Best of 5)',
-        },
-        {
-            configId: 2,
-            configName: 'Diabotical - Duel (Best of 3)',
-        }
-    ];
-
-    cointoss = [
-        {
-            cointossId: 0,
-            cointossName: 'Random',
-        },
-        {
-            cointossId: 1,
-            cointossName: 'You',
-        },
-        {
-            cointossId: 2,
-            cointossName: 'Opponent',
-        },
-    ];
-
-    matches = [
-        {
-            matchId: 0,
-            matchHash: 'alsl20dfkj2f0dfk20la',
-            matchPlayerOne: 'GNiK',
-            matchPlayerTwo: 'rapha',
-            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
-            matchCreated: 'Aug 9, 2020'
-        },
-        {
-            matchId: 0,
-            matchHash: 'alsl20dfkj2f0dfk20la',
-            matchPlayerOne: 'GNiK',
-            matchPlayerTwo: 'rapha',
-            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
-            matchCreated: 'Aug 9, 2020'
-        },
-        {
-            matchId: 0,
-            matchHash: 'alsl20dfkj2f0dfk20la',
-            matchPlayerOne: 'GNiK',
-            matchPlayerTwo: 'rapha',
-            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
-            matchCreated: 'Aug 9, 2020'
-        },
-        {
-            matchId: 0,
-            matchHash: 'alsl20dfkj2f0dfk20la',
-            matchPlayerOne: 'GNiK',
-            matchPlayerTwo: 'rapha',
-            matchConfig: 'Quake Champions - Timelimit Duel (Best of 3)',
-            matchCreated: 'Aug 9, 2020'
-        },
-    ]
 
     componentDidMount() {
         fetch('https://api.github.com/repos/CameronCT/Qrindr/commits/v3')
             .then(response => response.json())
             .then(response => {
                 this.setState({ GitHub: response.commit })
+            });
+
+        fetch('http://localhost:3000/Home.php')
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    blogs: response.Blogs,
+                    configs: response.Configs,
+                    cointoss: response.Cointoss,
+                    matches: response.Matches
+                })
             });
 
         this.handleChange = this.handleChange.bind(this);
@@ -160,7 +70,6 @@ class Home extends Component {
 
     handleSubmit(event: any) {
         event.preventDefault();
-
         console.log(this.state);
 
         /* perform cointoss stuff here */
@@ -175,7 +84,7 @@ class Home extends Component {
     }
 
     render() {
-        const { GitHub } = this.state;
+        const { GitHub, blogs, matches, cointoss, configs } = this.state;
 
         return (
             <div>
@@ -190,7 +99,7 @@ class Home extends Component {
                         News
                     </div>
                     <div className="flex flex-wrap">
-                        {this.blogs.map((row) => (
+                        {blogs.map((row: any) => (
                             <div className="w-1/2 md:w-1/3 xl:w-1/5 mb-4 xl:mb-0 px-2">
                                 <a href={row.blogHref} target={"_blank"}>
                                     <img className={"w-full h-auto border-2 border-gray-700"} src={row.blogThumbnail} alt={row.blogTitle} />
@@ -221,7 +130,7 @@ class Home extends Component {
                                 <div className={"mb-4"}>
                                     <div className="font-semibold text-base text-gray-200">Game</div>
                                     <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchConfig", e)} required>
-                                        {this.configs.map((row) => (
+                                        {configs.map((row: any) => (
                                             <option value={row.configId}>{row.configName}</option>
                                         ))}
                                     </select>
@@ -231,7 +140,7 @@ class Home extends Component {
                                 <div className={"mb-4"}>
                                     <div className="font-semibold text-base text-gray-200">First Seed</div>
                                     <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchCointoss", e)} required>
-                                        {this.cointoss.map((row) => (
+                                        {cointoss.map((row: any) => (
                                             <option value={row.cointossId}>{row.cointossName}</option>
                                         ))}
                                     </select>
@@ -245,7 +154,7 @@ class Home extends Component {
                     </div>
                     <div className={"w-full md:w-1/2 lg:w-2/3 md:pl-2"}>
                         <div className="flex flex-wrap pt-4 md:pt-0">
-                            {this.matches.map((row) => (
+                            {matches.map((row: any) => (
                                 <a href="/" className="w-full xl:w-1/3 pb-2 md:px-1">
                                     <div className="p-3 text-white text-xl bg-gray-800 border-2 border-gray-700 shadow text-center">
                                         <div>
