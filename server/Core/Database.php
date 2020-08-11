@@ -6,7 +6,6 @@ class Database {
 
     public function __construct(String $host, String $user, String $pass, String $name) {
         try {
-        echo 'mysql:host=$host;dbname=$name';
             $this->conn = new PDO('mysql:host=' . $host . ';dbname=' . $name . '', $user, $pass);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -35,7 +34,7 @@ class Database {
         return $q->fetchColumn();
     }
 
-    public function getBlogs($limit = 5) {
+    public function getBlogs(String $limit) {
         return $this->fetchAll("
             SELECT
                 blogId, blogTitle, blogThumbnail, blogHref, blogGame, blogCreated
@@ -48,7 +47,31 @@ class Database {
         ");
     }
 
-    public function getMatches($limit = 20) {
+    public function getMatchIdFromHash(String $matchHash) {
+        return $this->fetchColumn("
+            SELECT
+                matchId
+            FROM
+                matches
+            WHERE
+                matchHash = ?
+        ", [$matchHash]);
+    }
+
+    public function getStepsFromMatchId(Integer $matchId) {
+        return $this->fetchAll("
+            SELECT
+                matchStepValue
+            FROM
+                matchesSteps
+            WHERE
+                matchStepMatch = ?
+            ORDER BY
+                matchStepId ASC
+        ", [$matchId]);
+    }
+
+    public function getMatches(String $limit) {
         return $this->fetchAll("
             SELECT
                 matchId, matchHash, matchPlayerOne, matchPlayerTwo, matchConfig, matchCreated
