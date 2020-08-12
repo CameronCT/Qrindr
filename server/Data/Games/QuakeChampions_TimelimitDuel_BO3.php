@@ -35,8 +35,9 @@ $game['matchSteps']                 = [
     'values' => []
 ];
 $game['matchMaps'] = [
-    'available' => [0, 1, 2, 3, 4, 5, 6, 7],
+    'available' => [0, 1, 2, 3, 4, 5, 6],
     'taken' => [],
+    'picked' => [],
     'list' => [
         'Awoken',
         'Blood Covenant',
@@ -57,7 +58,7 @@ $game['matchMaps'] = [
     ]
 ];
 $game['matchChampions'] = [
-    'available' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'available' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     'taken' => [],
     'list' => [
         'Nyx',
