@@ -27,6 +27,13 @@ class Database {
         return $q->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function fetch($query, $params = []) {
+        $q = $this->conn->prepare($query);
+        $q->execute($params);
+
+        return $q->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function fetchColumn($query, $params = []) {
         $q = $this->conn->prepare($query);
         $q->execute($params);
@@ -47,10 +54,21 @@ class Database {
         ");
     }
 
-    public function getMatchIdFromHash(String $matchHash) {
-        return $this->fetchColumn("
+    public function addStepToMatch(Integer $matchId, Integer $matchStepValue) {
+
+        return $this->query("
+            INSERT INTO
+                matchesSteps
+            ( matchStepMatch, matchStepValue )
+                VALUES
+            ( ?, ? )
+        ", [$matchStepValue, $matchId]);
+    }
+
+    public function getDataFromMatchHash(String $matchHash) {
+        return $this->fetch("
             SELECT
-                matchId
+                matchId, matchConfig, matchHash, matchSecret, matchPlayerOne, matchPlayerTwo, matchFormat, matchCointoss, matchCreated
             FROM
                 matches
             WHERE
@@ -58,7 +76,7 @@ class Database {
         ", [$matchHash]);
     }
 
-    public function getStepsFromMatchId(Integer $matchId) {
+    public function getStepsFromMatchId(String $matchId) {
         return $this->fetchAll("
             SELECT
                 matchStepValue
