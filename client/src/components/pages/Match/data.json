@@ -1,77 +1,123 @@
-
-  {
-    "matchId": 0,
-    "matchConfig": "Quake Champions - Timelimit Duel (Best of 3)",
-    "matchPlayerOne": "GNiK",
-    "matchPlayerTwo": "rapha",
-    "matchCointoss": 0,
-    "matchSplitMapOne": 4,
-    "matchSplitMapTwo": 7,
-    "matchSplitMapThree": 10,
-    "matchSplitMapFour": 999,
-    "matchSplitMapFive": 999,
-    "matchTimeout": 30,
-    "matchSteps": {
-      "next": 11,
-      "list": [
-          "map_pick",
-          "map_pick",
-          "map_ban",
-          "map_ban",
-          "map_pick",
-          "champ_ban",
-          "champ_pick",
-          "champ_pick",
-          "champ_ban",
-          "champ_pick",
-          "champ_pick",
-          "champ_ban",
-          "champ_pick",
-          "champ_pick"
-      ]
-      ,
-      "values": [
-          2,
-          3,
-          1,
-          4,
-          5,
-          6,
-          7,
-          8,
-          4,
-          5,
-          3
-      ]
-    },
-    "matchMaps": {
-      "available": [],
-      "taken": [2, 3, 1, 4, 5],
-      "picked": [2, 3, 5],
-      "list": [
-          "Awoken",
-          "Blood Covenant",
-          "Blood Run",
-          "Corrupted Keep",
-          "Molten Falls",
-          "Ruins of Sarnath",
-          "Vale of Pnath"
-      ]
-    },
-    "matchChampions": {
-      "available": [0, 1, 2],
-      "taken": [6, 7, 8, 4, 5, 3],
-      "list": [
-        "Anarki",
-        "Slash",
-        "Athena",
-        "Nyx",
-        "Ranger",
-        "Visor",
-        "B.J. Blazkowicz",
-        "Deathknight",
-        "Scalebearer",
-        "Keel"
-      ]
-    }
-  }
+{
+  "matchConfig": "Quake Champions - Timelimit Duel (Best of 3)",
+  "matchSplitMapOne": 4,
+  "matchSplitMapTwo": 7,
+  "matchSplitMapThree": 10,
+  "matchSplitMapFour": 999,
+  "matchSplitMapFive": 999,
+  "matchSplitMapSix": 999,
+  "matchSplitMapSeven": 999,
+  "matchTimeout": 30,
+  "matchSteps": {
+    "next": 0,
+    "list": [
+      "map_pick",
+      "map_pick",
+      "map_ban",
+      "map_ban",
+      "map_pick",
+      "champ_ban",
+      "champ_pick",
+      "champ_pick",
+      "champ_ban",
+      "champ_pick",
+      "champ_pick",
+      "champ_ban",
+      "champ_pick",
+      "champ_pick"
+    ],
+    "values": []
+  },
+  "matchMaps": {
+    "available": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "taken": [],
+    "picked": [],
+    "list": [
+      "Awoken",
+      "Blood Covenant",
+      "Blood Run",
+      "Corrupted Keep",
+      "Molten Falls",
+      "Ruins of Sarnath",
+      "Vale of Pnath"
+    ],
+    "listAbbreviation": [
+      "Awoken",
+      "BC/DM6",
+      "BR/ZTN",
+      "CK",
+      "Molten",
+      "Ruins",
+      "Vale"
+    ]
+  },
+  "matchChampions": {
+    "available": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "taken": [],
+    "list": [
+      "Nyx",
+      "Anarki",
+      "Slash",
+      "Visor",
+      "Ranger",
+      "Galena",
+      "B.J. Blazkowicz",
+      "Doom Slayer",
+      "Strogg & Peeker",
+      "Eisen",
+      "Scalebearer",
+      "Clutch",
+      "Sorlag",
+      "Keel",
+      "Athena"
+    ],
+    "listAbbreviation": [
+      "Nyx",
+      "Anarki",
+      "Slash",
+      "Visor",
+      "Ranger",
+      "Galena",
+      "BJ",
+      "Doom",
+      "Strogg",
+      "Eisen",
+      "Scalebearer",
+      "Clutch",
+      "Sorlag",
+      "Keel",
+      "Athena"
+    ]
+  },
+  "matchId": "1",
+  "matchPlayerOne": "GNiK",
+  "matchPlayerTwo": "rapha",
+  "matchCointoss": "0",
+  "matchFormat": "0"
+}
