@@ -1,4 +1,5 @@
 <?php
+error_reporting(-1);
 
 $baseDir = dirname(__DIR__);
 
