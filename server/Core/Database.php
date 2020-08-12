@@ -54,7 +54,7 @@ class Database {
         ");
     }
 
-    public function addStepToMatch(Integer $matchId, Integer $matchStepValue) {
+    public function addStepToMatch(String $matchId, String $matchStepValue) {
 
         return $this->query("
             INSERT INTO
@@ -62,7 +62,7 @@ class Database {
             ( matchStepMatch, matchStepValue )
                 VALUES
             ( ?, ? )
-        ", [$matchStepValue, $matchId]);
+        ", [$matchId, $matchStepValue]);
     }
 
     public function getDataFromMatchHash(String $matchHash) {
