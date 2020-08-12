@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from './data.json';
 import Veto from "./Veto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
@@ -17,6 +16,7 @@ interface IProps {
 class Match extends Component<IProps> {
     state = {
         data: {} as any,
+        isLoaded: false,
         currentPlayer: false
     };
 
@@ -25,17 +25,20 @@ class Match extends Component<IProps> {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        fetch(`http://localhost:3000/Match.php?hash=${this.props.match.params.hash}`)
+            .then(response => response.json())
+            .then(response => {
+                this.setState({ data: response, isLoaded: true })
+            });
 
         this.setState({ currentPlayer: this.props.match.params.player || null });
-        this.setState({ data });
     }
 
     render() {
 
-        const { currentPlayer } = this.state;
+        const { currentPlayer, data, isLoaded } = this.state;
 
-        return (
+        return isLoaded && (
             <div>
                 <div className={"flex flex-wrap border-b-2 border-indigo-700 mb-4 pb-4 mx-2"}>
                     <div className={"w-full md:w-3/4 text-xl my-auto text-white"}>
@@ -145,7 +148,7 @@ class Match extends Component<IProps> {
                                 </div>
                                 <div>
                                     <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
-                                        {data.matchChampions.available.map((value:any) => (
+                                        {data.matchChampions.available && data.matchChampions.available.map((value:any) => (
                                             <li>{data.matchChampions.list[value]}</li>
                                         ))}
                                         {data.matchChampions.taken.map((value:any) => (
