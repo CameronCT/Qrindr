@@ -6,9 +6,9 @@ import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
 interface IProps {
     match: {
         params: {
-            hash?: string;
+            hash: string;
             player?: string;
-            pwd?: string;
+            secret?: string;
         }
     }
 }
@@ -37,6 +37,12 @@ class Match extends Component<IProps> {
     render() {
 
         const { currentPlayer, data, isLoaded } = this.state;
+        const { hash } = this.props.match.params;
+
+        let matchSecret = "";
+        if (this.props.match.params.secret)
+            matchSecret = this.props.match.params.secret;
+
 
         return isLoaded && (
             <div>
@@ -62,7 +68,7 @@ class Match extends Component<IProps> {
                         {data.matchSteps.list.map((value:any, key:number) => (
                             <div>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
-                                    <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
+                                    <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                 )}
                             </div>
                         ))}
@@ -79,7 +85,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapTwo &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
+                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}
@@ -95,7 +101,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapThree &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
+                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}
@@ -111,7 +117,7 @@ class Match extends Component<IProps> {
                                         key <= (data.matchSteps.next) &&
                                         key <= data.matchSplitMapFour &&
                                         (
-                                            <Veto currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
+                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
                                         )}
                                 </div>
                             ))}

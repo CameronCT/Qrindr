@@ -5,6 +5,8 @@ import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
 
 interface IProps {
     currentName: string | boolean;
+    hash: string;
+    secret: string;
     name: string;
     type: string;
     value: any;
@@ -41,7 +43,32 @@ class Veto extends Component<IProps> {
     handleSubmit(event: any) {
         event.preventDefault();
 
-        console.log(this.state);
+        console.log(this.props);
+
+        const { currentName, hash, secret } = this.props;
+        const { stepValue } = this.state;
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ hash: hash, player: currentName, value: stepValue, secret: secret })
+        };
+
+        console.log({ hash: hash, player: currentName, value: stepValue });
+
+        fetch(`http://localhost:3000/Step.php`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    if (data.success !== '') {
+                        this.setState({success: data.success });
+                        window.location.reload();
+                    }
+
+                    if (data.error !== '')
+                        this.setState({ error: data.error });
+                }
+            });
     }
 
     render() {
