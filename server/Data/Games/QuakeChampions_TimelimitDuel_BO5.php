@@ -49,7 +49,7 @@ $game['matchMaps'] = [
     'list' => [
         'Awoken',
         'Blood Covenant',
-        'Tower of Koth',
+        'Blood Run',
         'Corrupted Keep',
         'Molten Falls',
         'Ruins of Sarnath',
