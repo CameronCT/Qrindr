@@ -51,13 +51,14 @@ for ($i = 0; $i < $countSteps; $i++) {
 
     if ($vetoType == 'map_pick' || $vetoType == 'map_ban') {
         // Add to Picked (for map order)
-        array_push($game['matchMaps']['picked'], $currentMatchStep);
+        if ($vetoType == 'map_pick')
+            array_push($game['matchMaps']['picked'], $currentMatchStep);
 
         // Add to "Taken"
         array_push($game['matchMaps']['taken'], $currentMatchStep);
 
         // Remove from "Available"
-        //unset($game['matchMaps']['available'][$currentMatchStepString]);
+        //unset($game['matchMaps']['available'][$currentMatchStep]);
     }
 }
 
@@ -65,5 +66,5 @@ for ($i = 0; $i < $countSteps; $i++) {
 * JSON
 */
 header('Content-Type: application/json');
-echo json_encode($game, true);
+echo json_encode($game);
 exit;
