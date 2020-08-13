@@ -33,7 +33,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Discord',
-            location: '/',
+            location: 'https://discord.gg/BAEkm58',
             icon: {
                 fa: faDiscord,
                 css: 'text-indigo-300',
