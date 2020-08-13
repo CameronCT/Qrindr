@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Veto from "./Veto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
+import Config from "../../../Config";
 
 interface IProps {
     match: {
@@ -32,7 +33,7 @@ class Match extends Component<IProps> {
     }
 
     getMatch = () => {
-        fetch(`http://localhost:3000/Match.php?hash=${this.props.match.params.hash}`)
+        fetch(`${Config.apiUrl}/Match.php?hash=${this.props.match.params.hash}`)
             .then(response => response.json())
             .then(response => {
                 if (this.state.data && this.state.data.matchSteps && this.state.data.matchSteps.values) {

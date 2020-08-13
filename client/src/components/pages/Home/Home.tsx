@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGamepadAlt} from "@fortawesome/pro-solid-svg-icons";
 import FormInput from "../../form/FormInput";
+import Config from "../../../Config";
 
 interface GitHubState {
     tree: { sha: string, url: string };
@@ -47,7 +48,7 @@ class Home extends Component {
                 this.setState({ GitHub: response.commit })
             });
 
-        fetch('http://localhost:3000/Home.php')
+        fetch(`${Config.apiUrl}/Home.php`)
             .then(response => response.json())
             .then(response => {
                 this.setState({
