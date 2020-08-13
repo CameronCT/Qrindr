@@ -73,10 +73,10 @@ class Match extends Component<IProps> {
                         </div>
                     </div>
                     <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
-                        <a href="/" className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-full"}>
+                        <a href={`/match/${hash}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}/${matchSecret}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-full"}>
                             <FontAwesomeIcon icon={faExternalLink} /> Invite
                         </a>
-                        <a href="/" className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
+                        <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
                             <FontAwesomeIcon icon={faEye} /> Spectate
                         </a>
                     </div>
@@ -84,7 +84,7 @@ class Match extends Component<IProps> {
                 <div className={"flex flex-wrap"}>
                     <div className="w-3/12 px-2">
                         {data.matchSteps.list.map((value:any, key:number) => (
-                            <div>
+                            <div key={key}>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
                                     <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
                                 )}
@@ -98,7 +98,7 @@ class Match extends Component<IProps> {
                                     {data.matchMaps.list[data.matchMaps.picked[0]]}
                                 </div>
                                 {data.matchSteps.list.map((value:any, key:number) => (
-                                    <div>
+                                    <div key={key}>
                                         {
                                             key > data.matchSplitMapOne &&
                                             key <= (data.matchSteps.next) &&
@@ -116,7 +116,7 @@ class Match extends Component<IProps> {
                                     {data.matchMaps.list[data.matchMaps.picked[1]]}
                                 </div>
                                 {data.matchSteps.list.map((value:any, key:number) => (
-                                    <div>
+                                    <div key={key}>
                                         {
                                             key > data.matchSplitMapTwo &&
                                             key <= (data.matchSteps.next) &&
@@ -134,7 +134,7 @@ class Match extends Component<IProps> {
                                     {data.matchMaps.list[data.matchMaps.picked[2]]}
                                 </div>
                                 {data.matchSteps.list.map((value:any, key:number) => (
-                                    <div>
+                                    <div key={key}>
                                         {
                                             key > data.matchSplitMapThree &&
                                             key <= (data.matchSteps.next) &&
@@ -152,7 +152,7 @@ class Match extends Component<IProps> {
                                     {data.matchMaps.list[data.matchMaps.picked[3]]}
                                 </div>
                                 {data.matchSteps.list.map((value:any, key:number) => (
-                                    <div>
+                                    <div key={key}>
                                         {
                                             key > data.matchSplitMapFour &&
                                             key <= (data.matchSteps.next) &&
@@ -170,7 +170,7 @@ class Match extends Component<IProps> {
                                     {data.matchMaps.list[data.matchMaps.picked[4]]}
                                 </div>
                                 {data.matchSteps.list.map((value:any, key:number) => (
-                                    <div>
+                                    <div key={key}>
                                         {
                                             key > data.matchSplitMapFive &&
                                             key <= (data.matchSteps.next) &&
@@ -192,14 +192,14 @@ class Match extends Component<IProps> {
                                     <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
                                         <div className="mb-2">
                                             {data.matchMaps.picked.map((value:any, key:any) => (
-                                                <li>{key+1}. {data.matchMaps.list[value]}</li>
+                                                <li key={key}>{key+1}. {data.matchMaps.list[value]}</li>
                                             ))}
                                         </div>
                                         {data.matchMaps.available.map((value:any) => (
-                                            <li>{data.matchMaps.list[value]}</li>
+                                            <li key={value}>{data.matchMaps.list[value]}</li>
                                         ))}
                                         {data.matchMaps.taken.map((value:any) => (
-                                            <li className={"line-through text-gray-600"}>{data.matchMaps.list[value]}</li>
+                                            <li key={value} className={"line-through text-gray-600"}>{data.matchMaps.list[value]}</li>
                                         ))}
                                     </ul>
                                 </div>
@@ -214,10 +214,10 @@ class Match extends Component<IProps> {
                                 <div>
                                     <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
                                         {data.matchChampions.available && data.matchChampions.available.map((value:any) => (
-                                            <li>{data.matchChampions.list[value]}</li>
+                                            <li key={value}>{data.matchChampions.list[value]}</li>
                                         ))}
                                         {data.matchChampions.taken.map((value:any) => (
-                                            <li className={"line-through text-gray-600"}>{data.matchChampions.list[value]}</li>
+                                            <li key={value} className={"line-through text-gray-600"}>{data.matchChampions.list[value]}</li>
                                         ))}
                                     </ul>
                                 </div>
