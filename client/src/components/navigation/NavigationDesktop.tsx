@@ -49,7 +49,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'Donate',
-            location: '/donate',
+            location: 'https://streamlabs.com/gnikgg',
             icon: {
                 fa: faDollarSign,
                 css: 'text-green-400',
