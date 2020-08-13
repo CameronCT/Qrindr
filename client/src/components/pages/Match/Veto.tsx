@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/pro-duotone-svg-icons";
 import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
+import Match from "./Match";
 
 interface IProps {
     currentName: string | boolean;
@@ -15,6 +16,7 @@ interface IProps {
     champions: any;
     championsAvailable: any;
     next?: boolean;
+    getMatch: any;
 }
 
 class Veto extends Component<IProps> {
@@ -43,8 +45,6 @@ class Veto extends Component<IProps> {
     handleSubmit(event: any) {
         event.preventDefault();
 
-        console.log(this.props);
-
         const { currentName, hash, secret } = this.props;
         const { stepValue } = this.state;
 
@@ -54,14 +54,13 @@ class Veto extends Component<IProps> {
             body: JSON.stringify({ hash: hash, player: currentName, value: stepValue, secret: secret })
         };
 
-        console.log({ hash: hash, player: currentName, value: stepValue });
-
         fetch(`http://localhost:3000/Step.php`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data) {
                     if (data.success !== '') {
                         this.setState({success: data.success });
+                        this.props.getMatch();
                     }
 
                     if (data.error !== '')
@@ -75,7 +74,7 @@ class Veto extends Component<IProps> {
         const { timer } = this.state;
         const { currentName, name, value, next, maps, champions, mapsAvailable, championsAvailable } = this.props;
         let { type } = this.props;
-        let css = 'yellow';
+        let css;
         let icon = { icon: faCircleNotch, color: 'text-gray-300' };
 
         if (!type)
@@ -134,7 +133,7 @@ class Veto extends Component<IProps> {
                                         ))}
                                     </select>
                                 )}
-                                <button type="submit" className={"w-full btn-medium btn-red mt-4"}>{types[1].toLocaleUpperCase()}</button>
+                                <button type="submit" className={`w-full btn-medium btn-${types[1] === 'pick' ? 'green' : 'red'} mt-4`}>{types[1].toLocaleUpperCase()}</button>
                             </form>
                         </div>
                     )}
