@@ -17,7 +17,7 @@ class NavigationDesktop extends Component {
         },
         {
             name: 'About',
-            location: '/',
+            location: '/about',
             icon: {
                 fa: faInfoCircle,
                 css: 'text-teal-400',
