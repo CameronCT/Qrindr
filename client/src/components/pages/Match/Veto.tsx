@@ -22,7 +22,7 @@ interface IProps {
 class Veto extends Component<IProps> {
 
     state = {
-        stepValue: 0,
+        stepValue: 9999,
         timer: 15,
     }
 
@@ -47,6 +47,8 @@ class Veto extends Component<IProps> {
 
         const { currentName, hash, secret } = this.props;
         const { stepValue } = this.state;
+
+        console.log(this.state);
 
         const requestOptions = {
             method: 'POST',
@@ -122,12 +124,14 @@ class Veto extends Component<IProps> {
                             <form method="post" onSubmit={this.handleSubmit}>
                                 {types[0] === 'champ' ? (
                                     <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                        <option value="999" selected>Select</option>
                                         {championsAvailable.map((value:number) => (
                                             <option value={value}>{champions[value]}</option>
                                         ))}
                                     </select>
                                 ) : (
                                     <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                        <option value="999" selected>Select</option>
                                         {mapsAvailable.map((value:number) => (
                                             <option value={value}>{maps[value]}</option>
                                         ))}

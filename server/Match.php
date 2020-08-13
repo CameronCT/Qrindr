@@ -46,7 +46,7 @@ for ($i = 0; $i < $countSteps; $i++) {
         array_push($game['matchChampions']['taken'], $currentMatchStep);
 
         // Remove from "Available"
-        //unset($game['matchChampions']['available'][$currentMatchStepString]);
+        unset($game['matchChampions']['available'][$currentMatchStep]);
     }
 
     if ($vetoType == 'map_pick' || $vetoType == 'map_ban') {
@@ -58,9 +58,30 @@ for ($i = 0; $i < $countSteps; $i++) {
         array_push($game['matchMaps']['taken'], $currentMatchStep);
 
         // Remove from "Available"
-        //unset($game['matchMaps']['available'][$currentMatchStep]);
+        unset($game['matchMaps']['available'][$currentMatchStep]);
     }
 }
+
+/*
+ *  Fix Champions and Maps
+ */
+$newArray = [];
+
+// Maps
+$oldArray = $game['matchMaps']['available'];
+$newArray = [];
+foreach($oldArray as $key => $value) {
+ array_push($newArray, $key);
+}
+$game['matchMaps']['available'] = $newArray;
+
+// Champions
+$oldArray = $game['matchChampions']['available'];
+$newArray = [];
+foreach($oldArray as $key => $value) {
+ array_push($newArray, $key);
+}
+$game['matchChampions']['available'] = $newArray;
 
 /*
 * JSON
