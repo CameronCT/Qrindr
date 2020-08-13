@@ -48,8 +48,6 @@ class Veto extends Component<IProps> {
         const { currentName, hash, secret } = this.props;
         const { stepValue } = this.state;
 
-        console.log(this.state);
-
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
