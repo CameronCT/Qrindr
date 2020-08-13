@@ -16,8 +16,8 @@ $games = [
         'configName' => 'Quake Champions PTS - Timelimit Duel (Best of 3)',
         'configFile' => 'QuakeChampionsPTS_TimelimitDuel_BO3'
     ],
-    2 => [
-        'configId'   => 2,
+    3 => [
+        'configId'   => 3,
         'configName' => 'Quake Champions PTS - Timelimit Duel (Best of 5)',
         'configFile' => 'QuakeChampionsPTS_TimelimitDuel_BO5'
     ],
