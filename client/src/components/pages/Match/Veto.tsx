@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/pro-duotone-svg-icons";
 import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
-import Match from "./Match";
 
 interface IProps {
     currentName: string | boolean;
@@ -71,7 +70,6 @@ class Veto extends Component<IProps> {
 
     render() {
 
-        const { timer } = this.state;
         const { currentName, name, value, next, maps, champions, mapsAvailable, championsAvailable } = this.props;
         let { type } = this.props;
         let css;
@@ -106,7 +104,7 @@ class Veto extends Component<IProps> {
 
         return !next ? (
             <div className={`border-2 border-${css}-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
-                <FontAwesomeIcon icon={icon.icon} className={icon.color} /> <span className="font-semibold">{name}</span> has {types[1] == 'ban' ? 'banned' : 'picked'} <span className="font-semibold">{types[0] === 'map' ? maps[value] : champions[value]}</span>.
+                <FontAwesomeIcon icon={icon.icon} className={icon.color} /> <span className="font-semibold">{name}</span> has {types[1] === 'ban' ? 'banned' : 'picked'} <span className="font-semibold">{types[0] === 'map' ? maps[value] : champions[value]}</span>.
             </div>
         ) : (
             <div>

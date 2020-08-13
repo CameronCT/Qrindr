@@ -50,7 +50,6 @@ class Home extends Component {
         fetch('http://localhost:3000/Home.php')
             .then(response => response.json())
             .then(response => {
-                console.log(response);
                 this.setState({
                     blogs: response.Blogs,
                     configs: response.Configs,
@@ -99,7 +98,7 @@ class Home extends Component {
             <div>
                 {GitHub && GitHub.tree && GitHub.tree.url && GitHub.tree.sha && GitHub.committer.date && (
                     <div className="border border-blue-900 text-white p-2 mb-4">
-                        <span className={"font-bold"}>Latest Commit:</span> <a href={GitHub.tree.url} target={"_blank"}>{GitHub.tree.sha}</a> on {GitHub.committer.date}
+                        <span className={"font-bold"}>Latest Commit:</span> <a href={GitHub.tree.url} target={"_blank"} rel="noopener noreferrer">{GitHub.tree.sha}</a> on {GitHub.committer.date}
                     </div>
                 )}
 
@@ -110,7 +109,7 @@ class Home extends Component {
                     <div className="flex flex-wrap">
                         {blogs.map((row: any) => (
                             <div className="w-1/2 md:w-1/3 xl:w-1/5 mb-4 xl:mb-0 px-2">
-                                <a href={row.blogHref} target={"_blank"}>
+                                <a href={row.blogHref} target={"_blank"} rel="noopener noreferrer">
                                     <img className={"w-full h-auto border-2 border-gray-700"} src={row.blogThumbnail} alt={row.blogTitle} />
                                 </a>
                                 <div className={"text-white text-sm font-semibold"}>
@@ -163,7 +162,7 @@ class Home extends Component {
                     <div className={"w-full md:w-1/2 lg:w-2/3 md:pl-2"}>
                         <div className="flex flex-wrap pt-4 md:pt-0">
                             {matches.map((row: any) => (
-                                <a href="/" className="w-full xl:w-1/3 pb-2 md:px-1">
+                                <a href={`/match/${row.matchHash}`} className="w-full xl:w-1/3 pb-2 md:px-1">
                                     <div className="p-3 text-white text-xl bg-gray-800 border-2 border-gray-700 shadow text-center">
                                         <div>
                                             <span className="font-semibold">{row.matchPlayerOne}</span> vs <span className="font-semibold">{row.matchPlayerTwo}</span>

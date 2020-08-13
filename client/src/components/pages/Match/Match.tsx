@@ -36,7 +36,7 @@ class Match extends Component<IProps> {
             .then(response => response.json())
             .then(response => {
                 if (this.state.data && this.state.data.matchSteps && this.state.data.matchSteps.values) {
-                    if (this.state.data.matchSteps.values.length != response.matchSteps.values.length)
+                    if (this.state.data.matchSteps.values.length !== response.matchSteps.values.length)
                         this.playNotificationSound();
                 }
                 this.setState({ data: response, isLoaded: true })
@@ -69,7 +69,7 @@ class Match extends Component<IProps> {
                         <span className={"font-semibold"}>{data.matchPlayerOne}</span> <span className={"text-gray-400"}>vs</span> <span className={"font-semibold"}>{data.matchPlayerTwo}</span>
                         <div className={"text-xs text-gray-600"}>
                             {data.matchConfig} <span className={"px-2"}>|</span>
-                            {data.matchCointoss == 0 ? 'Random' : 'Manual'} Cointoss
+                            {data.matchCointoss === '0' ? 'Random' : 'Manual'} Cointoss
                         </div>
                     </div>
                     <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
