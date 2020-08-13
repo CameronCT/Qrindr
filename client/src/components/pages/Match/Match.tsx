@@ -24,14 +24,32 @@ class Match extends Component<IProps> {
         return n % 2;
     }
 
-    componentDidMount() {
+    playNotificationSound = () => {
+        if (document.getElementById('NotificationSound')) {
+            // @ts-ignore
+            document.getElementById('NotificationSound').play();
+        }
+    }
+
+    getMatch = () => {
         fetch(`http://localhost:3000/Match.php?hash=${this.props.match.params.hash}`)
             .then(response => response.json())
             .then(response => {
+                if (this.state.data && this.state.data.matchSteps && this.state.data.matchSteps.values) {
+                    if (this.state.data.matchSteps.values.length != response.matchSteps.values.length)
+                        this.playNotificationSound();
+                }
                 this.setState({ data: response, isLoaded: true })
             });
 
         this.setState({ currentPlayer: this.props.match.params.player || null });
+    }
+
+    componentDidMount() {
+        this.getMatch();
+        setInterval(() => {
+            this.getMatch();
+        }, 5000);
     }
 
     render() {
@@ -167,6 +185,7 @@ class Match extends Component<IProps> {
 
                     </div>
                 </div>
+                <audio id="NotificationSound" src="/assets/audio/ready.wav" crossOrigin="anonymous" preload="auto" />
             </div>
         )
     }
