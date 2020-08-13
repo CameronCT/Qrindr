@@ -73,9 +73,11 @@ class Match extends Component<IProps> {
                         </div>
                     </div>
                     <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
-                        <a href={`/match/${hash}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}/${matchSecret}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-full"}>
-                            <FontAwesomeIcon icon={faExternalLink} /> Invite
-                        </a>
+                        {matchSecret !== "" && (
+                            <a href={`/match/${hash}/${matchSecret}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-full"}>
+                                <FontAwesomeIcon icon={faExternalLink} /> Invite
+                            </a>
+                        )}
                         <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
                             <FontAwesomeIcon icon={faEye} /> Spectate
                         </a>
@@ -206,23 +208,25 @@ class Match extends Component<IProps> {
                             </div>
                         </div>
 
-                        <div className={"bg-gray-800 shadow p-6 mb-4"}>
-                            <div>
-                                <div className={"text-lg font-semibold text-white"}>
-                                    Champions
-                                </div>
+                        {data.matchChampions.list[0] && (
+                            <div className={"bg-gray-800 shadow p-6 mb-4"}>
                                 <div>
-                                    <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
-                                        {data.matchChampions.available && data.matchChampions.available.map((value:any) => (
-                                            <li key={value}>{data.matchChampions.list[value]}</li>
-                                        ))}
-                                        {data.matchChampions.taken.map((value:any) => (
-                                            <li key={value} className={"line-through text-gray-600"}>{data.matchChampions.list[value]}</li>
-                                        ))}
-                                    </ul>
+                                    <div className={"text-lg font-semibold text-white"}>
+                                        Champions
+                                    </div>
+                                    <div>
+                                        <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
+                                            {data.matchChampions.available && data.matchChampions.available.map((value:any) => (
+                                                <li key={value}>{data.matchChampions.list[value]}</li>
+                                            ))}
+                                            {data.matchChampions.taken.map((value:any) => (
+                                                <li key={value} className={"line-through text-gray-600"}>{data.matchChampions.list[value]}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        )}
 
                     </div>
                 </div>
