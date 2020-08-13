@@ -86,60 +86,101 @@ class Match extends Component<IProps> {
                         {data.matchSteps.list.map((value:any, key:number) => (
                             <div>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
-                                    <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
+                                    <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
                                 )}
                             </div>
                         ))}
                     </div>
                     <div className="w-6/12 px-2">
-                        <div className={"bg-gray-700 p-6 shadow mb-3"}>
-                            <div className={"text-center text-white text-lg font-semibold mb-4"}>
-                                {data.matchMaps.list[data.matchMaps.picked[0]]}
-                            </div>
-                            {data.matchSteps.list.map((value:any, key:number) => (
-                                <div>
-                                    {
-                                        key > data.matchSplitMapOne &&
-                                        key <= (data.matchSteps.next) &&
-                                        key <= data.matchSplitMapTwo &&
-                                        (
-                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
-                                        )}
+                        {data.matchSteps.next > data.matchSplitMapOne && (
+                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    {data.matchMaps.list[data.matchMaps.picked[0]]}
                                 </div>
-                            ))}
-                        </div>
-                        <div className={"bg-gray-700 p-6 shadow mb-3"}>
-                            <div className={"text-center text-white text-lg font-semibold mb-4"}>
-                                {data.matchMaps.list[data.matchMaps.picked[1]]}
+                                {data.matchSteps.list.map((value:any, key:number) => (
+                                    <div>
+                                        {
+                                            key > data.matchSplitMapOne &&
+                                            key <= (data.matchSteps.next) &&
+                                            key <= data.matchSplitMapTwo &&
+                                            (
+                                                <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
+                                            )}
+                                    </div>
+                                ))}
                             </div>
-                            {data.matchSteps.list.map((value:any, key:number) => (
-                                <div>
-                                    {
-                                        key > data.matchSplitMapTwo &&
-                                        key <= (data.matchSteps.next) &&
-                                        key <= data.matchSplitMapThree &&
-                                        (
-                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
-                                        )}
+                        )}
+                        {data.matchSteps.next > data.matchSplitMapTwo && (
+                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    {data.matchMaps.list[data.matchMaps.picked[1]]}
                                 </div>
-                            ))}
-                        </div>
-                        <div className={"bg-gray-700 p-6 shadow mb-3"}>
-                            <div className={"text-center text-white text-lg font-semibold mb-4"}>
-                                {data.matchMaps.list[data.matchMaps.picked[2]]}
+                                {data.matchSteps.list.map((value:any, key:number) => (
+                                    <div>
+                                        {
+                                            key > data.matchSplitMapTwo &&
+                                            key <= (data.matchSteps.next) &&
+                                            key <= data.matchSplitMapThree &&
+                                            (
+                                                <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
+                                            )}
+                                    </div>
+                                ))}
                             </div>
-                            {data.matchSteps.list.map((value:any, key:number) => (
-                                <div>
-                                    {
-                                        key > data.matchSplitMapThree &&
-                                        key <= (data.matchSteps.next) &&
-                                        key <= data.matchSplitMapFour &&
-                                        (
-                                            <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} />
-                                        )}
+                        )}
+                        {data.matchSteps.next > data.matchSplitMapThree && (
+                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    {data.matchMaps.list[data.matchMaps.picked[2]]}
                                 </div>
-                            ))}
-                        </div>
+                                {data.matchSteps.list.map((value:any, key:number) => (
+                                    <div>
+                                        {
+                                            key > data.matchSplitMapThree &&
+                                            key <= (data.matchSteps.next) &&
+                                            key <= data.matchSplitMapFour &&
+                                            (
+                                                <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
+                                            )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {data.matchSteps.next > data.matchSplitMapFour && (
+                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    {data.matchMaps.list[data.matchMaps.picked[3]]}
+                                </div>
+                                {data.matchSteps.list.map((value:any, key:number) => (
+                                    <div>
+                                        {
+                                            key > data.matchSplitMapFour &&
+                                            key <= (data.matchSteps.next) &&
+                                            key <= data.matchSplitMapFive &&
+                                            (
+                                                <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
+                                            )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {data.matchSteps.next > data.matchSplitMapFive && (
+                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    {data.matchMaps.list[data.matchMaps.picked[4]]}
+                                </div>
+                                {data.matchSteps.list.map((value:any, key:number) => (
+                                    <div>
+                                        {
+                                            key > data.matchSplitMapFive &&
+                                            key <= (data.matchSteps.next) &&
+                                            (
+                                                <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={this.isOdd(key) ? data.matchPlayerOne : data.matchPlayerTwo} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
+                                            )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                     <div className="w-3/12 px-2">
                         <div className={"bg-gray-800 shadow p-6 mb-4"}>
