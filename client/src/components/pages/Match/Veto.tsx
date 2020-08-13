@@ -62,7 +62,6 @@ class Veto extends Component<IProps> {
                 if (data) {
                     if (data.success !== '') {
                         this.setState({success: data.success });
-                        window.location.reload();
                     }
 
                     if (data.error !== '')
@@ -112,7 +111,7 @@ class Veto extends Component<IProps> {
             </div>
         ) : (
             <div>
-                <div className={`border-2 border-${css}-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
+                <div className={`border-2 border-yellow-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
                     <FontAwesomeIcon icon={faCircleNotch} spin /> Waiting on <span className="font-semibold">{name}</span> to {types[1]} a {types[0]}.
                 </div>
                 <div>
