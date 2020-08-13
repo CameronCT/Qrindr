@@ -12,7 +12,7 @@ export const App = () => {
             <div className="p-4 md:p-6 lg:p-12 w-full">
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/match/:hash/:player/:secret" component={Match} />
+                    <Route path="/match/:hash/:secret/:player" component={Match} />
                     <Route path="/match/:hash" component={Match} />
                 </Switch>
             </div>
