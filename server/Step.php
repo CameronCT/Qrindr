@@ -8,6 +8,9 @@ if (!isset($_POST['secret']) || !isset($_POST['player']) || !isset($_POST['value
 
 $matchData = $conn->getDataFromMatchHash($_POST['hash']);
 
+if (isset($_POST['value']) && !empty($_POST['value']) && $_POST['value'] == 9999)
+    $err = 'Invalid step value!';
+
 if ($_POST['secret'] != $matchData['matchSecret'])
     $err = "Invalid match secret!";
 
@@ -15,7 +18,7 @@ if ($matchData['matchPlayerOne'] != $_POST['player'] && $matchData['matchPlayerT
     $err = "Invalid player name!";
 
 if ($err == "") {
-    $addStep = $conn->addStepToMatch($matchData['matchId'], $_POST['value']);
+    $addStep = $conn->addStepToMatch($matchData['matchId'], (int) $_POST['value']);
     if ($addStep)
         $msg = "Step added successfully";
     else
