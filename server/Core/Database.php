@@ -102,6 +102,16 @@ class Database {
         ");
     }
 
+    public function addMatch(String $matchHash, String $matchConfig, String $matchCointoss, String $playerOne, String $playerTwo, String $matchSecret) {
+        return $this->query("
+            INSERT INTO
+                matches
+            ( matchHash, matchConfig, matchCointoss, matchPlayerOne, matchPlayerTwo, matchSecret )
+                VALUES
+            ( ?, ?, ?, ?, ?, ? )
+        ", [$matchHash, $matchConfig, $matchCointoss, $playerOne, $playerTwo, $matchSecret]);
+    }
+
     public function countMatches() {
         return $this->fetchColumn("
             SELECT

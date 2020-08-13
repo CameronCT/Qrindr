@@ -31,7 +31,6 @@ class Home extends Component {
         playerOne: '',
         playerTwo: '',
         matchGame: 0,
-        matchSecret: '',
         matchCointoss: 0,
         blogs: [] as any,
         matches: [] as any,
@@ -70,17 +69,27 @@ class Home extends Component {
 
     handleSubmit(event: any) {
         event.preventDefault();
-        console.log(this.state);
 
-        /* perform cointoss stuff here */
-    /*
         const { state } = this;
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(state)
+            body: JSON.stringify({ state })
         };
-*/
+
+        fetch(`http://localhost:3000/Create.php`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    if (data.success !== '') {
+                        window.location.href = data.url;
+                    }
+
+                    if (data.error !== '')
+                        this.setState({ error: data.error });
+                }
+            });
     }
 
     render() {
@@ -129,7 +138,7 @@ class Home extends Component {
                                 </div>
                                 <div className={"mb-4"}>
                                     <div className="font-semibold text-base text-gray-200">Game</div>
-                                    <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchConfig", e)} required>
+                                    <select className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={(e: any) => this.handleChange("matchGame", e)} required>
                                         {configs.map((row: any) => (
                                             <option value={row.configId}>{row.configName}</option>
                                         ))}
@@ -145,7 +154,6 @@ class Home extends Component {
                                         ))}
                                     </select>
                                 </div>
-                                <FormInput type="password" name="playerTwo" id="Passphrase" placeholder="**************" className={"mb-4"} onChange={(e: any) => this.handleChange("matchSecret", e)} />
                                 <div className={"text-right"}>
                                     <button type="submit" className={"btn-medium btn-blue"}>Submit</button>
                                 </div>
