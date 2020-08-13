@@ -28,11 +28,38 @@ $game['matchFormat']            =   $matchData['matchFormat'];
  */
 $countSteps = count($matchSteps);
 for ($i = 0; $i < $countSteps; $i++) {
-    array_push($game['matchSteps']['values'], $matchSteps[$i]);
+
+    $currentMatchStep           = intval($matchSteps[$i]['matchStepValue']);
+    $currentMatchStepString     = $matchSteps[$i]['matchStepValue'];
+
+    // Push Values to Data
+    array_push($game['matchSteps']['values'], $currentMatchStep);
+
+    // Update Steps (next)
+    $game['matchSteps']['next'] += 1;
 
     /* TO-DO: Assign data to matchChampions/matchMaps picked / available */
+    $vetoType = $game['matchSteps']['list'][$i];
+
+    if ($vetoType == 'champ_pick' || $vetoType == 'champ_ban') {
+        // Add to "Taken"
+        array_push($game['matchChampions']['taken'], $currentMatchStep);
+
+        // Remove from "Available"
+        //unset($game['matchChampions']['available'][$currentMatchStepString]);
+    }
+
+    if ($vetoType == 'map_pick' || $vetoType == 'map_ban') {
+        // Add to Picked (for map order)
+        array_push($game['matchMaps']['picked'], $currentMatchStep);
+
+        // Add to "Taken"
+        array_push($game['matchMaps']['taken'], $currentMatchStep);
+
+        // Remove from "Available"
+        //unset($game['matchMaps']['available'][$currentMatchStepString]);
+    }
 }
-$game['matchSteps']['values']  =   $matchSteps;
 
 /*
 * JSON
