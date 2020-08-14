@@ -184,6 +184,16 @@ class Match extends Component<IProps> {
                                 ))}
                             </div>
                         )}
+                        {data.matchCopyPasta && (
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    Copy Pasta
+                                </div>
+                                <div>
+                                    <input className={"text-white bg-gray-800 p-4 w-full"} type={"text"} value={data.matchCopyPasta} disabled />
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className="w-3/12 px-2">
                         <div className={"bg-gray-800 shadow p-6 mb-4"}>

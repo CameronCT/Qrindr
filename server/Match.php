@@ -83,6 +83,28 @@ foreach($oldArray as $key => $value) {
 }
 $game['matchChampions']['available'] = $newArray;
 
+// Copy Pasta
+$game['matchCopyPasta'] = "[" . $game['matchPlayerOne'] . "/" . $game['matchPlayerTwo'] . "] -";
+foreach ($game['matchMaps']['picked'] as $key) {
+    $game['matchCopyPasta'] .= " [" . $game['matchMaps']['listAbbreviation'][$key] . "] ";
+
+    if ($game['matchSteps']['next'] > $game['matchSplitMapOne']) {
+        $enum = "/";
+
+        // buggy code here
+        foreach ($game['matchSteps']['list'] as $k => $v) {
+            if ($k > $game['matchSplitMapOne'] && $k <= $game['matchSteps']['next'] && $k <= $game['matchSplitMapTwo']) {
+                if ($v == "champ_pick") {
+                    $game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$k] . $enum;
+                    $enum = "";
+                }
+            }
+
+        }
+    }
+}
+
+
 /*
 * JSON
 */
