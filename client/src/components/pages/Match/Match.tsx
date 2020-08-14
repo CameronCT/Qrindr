@@ -96,7 +96,7 @@ class Match extends Component<IProps> {
                     </div>
                     <div className="w-6/12 px-2">
                         {data.matchSteps.next > data.matchSplitMapOne && (
-                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[0]]}
                                 </div>
@@ -114,7 +114,7 @@ class Match extends Component<IProps> {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapTwo && (
-                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[1]]}
                                 </div>
@@ -132,7 +132,7 @@ class Match extends Component<IProps> {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapThree && (
-                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[2]]}
                                 </div>
@@ -150,7 +150,7 @@ class Match extends Component<IProps> {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapFour && (
-                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[3]]}
                                 </div>
@@ -168,7 +168,7 @@ class Match extends Component<IProps> {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapFive && (
-                            <div className={"bg-gray-700 p-6 shadow mb-3"}>
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[4]]}
                                 </div>
@@ -192,12 +192,14 @@ class Match extends Component<IProps> {
                                     Maps
                                 </div>
                                 <div>
-                                    <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
+                                    <ul className={"list-decimal pl-8 text-gray-200 mt-4"}>
                                         <div className="mb-2">
                                             {data.matchMaps.picked.map((value:any, key:any) => (
-                                                <li key={key}>{key+1}. {data.matchMaps.list[value]}</li>
+                                                <li key={key}>{data.matchMaps.list[value]}</li>
                                             ))}
                                         </div>
+                                    </ul>
+                                    <ul className={"list-disc pl-8 text-gray-200 mt-4"}>
                                         {data.matchMaps.available.map((value:any) => (
                                             <li key={value}>{data.matchMaps.list[value]}</li>
                                         ))}
