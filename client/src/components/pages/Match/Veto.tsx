@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/pro-duotone-svg-icons";
 import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
+import Config from "../../../Config";
 
 interface IProps {
     currentName: string | boolean;
@@ -53,7 +54,7 @@ class Veto extends Component<IProps> {
             body: JSON.stringify({ hash: hash, player: currentName, value: stepValue, secret: secret })
         };
 
-        fetch(`http://localhost:3000/Step.php`, requestOptions)
+        fetch(`${Config.apiUrl}/Step.php`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data) {

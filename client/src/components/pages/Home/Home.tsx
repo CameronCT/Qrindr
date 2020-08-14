@@ -78,7 +78,7 @@ class Home extends Component {
             body: JSON.stringify({ state })
         };
 
-        fetch(`http://localhost:3000/Create.php`, requestOptions)
+        fetch(`${Config.apiUrl}/Create.php`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data) {
