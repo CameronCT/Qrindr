@@ -5,12 +5,12 @@
  * matchSteps.Next = Length without 0 counting as 1
  */
 
-$game['matchConfig']                = 'Quake Champions - Timelimit Duel (Best of 5)';
-$game['matchSplitMapOne']           = 4;
-$game['matchSplitMapTwo']           = 7;
-$game['matchSplitMapThree']         = 10;
-$game['matchSplitMapFour']          = 13;
-$game['matchSplitMapFive']          = 16;
+$game['matchConfig']                = 'Quake Champions PTS - Timelimit Duel (Best of 5)';
+$game['matchSplitMapOne']           = 6;
+$game['matchSplitMapTwo']           = 9;
+$game['matchSplitMapThree']         = 12;
+$game['matchSplitMapFour']          = 15;
+$game['matchSplitMapFive']          = 18;
 $game['matchSplitMapSix']           = 999;
 $game['matchSplitMapSeven']         = 999;
 $game['matchTimeout']               = 30;
