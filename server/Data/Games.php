@@ -22,12 +22,12 @@ $games = [
         'configFile' => 'QuakeChampionsPTS_TimelimitDuel_BO5'
     ],
     4 => [
-        'configId'   => 2,
+        'configId'   => 4,
         'configName' => 'Quake Live Duel (Best of 3)',
         'configFile' => 'QuakeLive_Duel_BO3'
     ],
     5 => [
-        'configId'   => 2,
+        'configId'   => 5,
         'configName' => 'Quake Live Duel (Best of 5)',
         'configFile' => 'QuakeLive_Duel_BO5'
     ],
