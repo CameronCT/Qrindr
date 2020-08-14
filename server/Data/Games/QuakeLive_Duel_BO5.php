@@ -25,6 +25,15 @@ $game['matchSteps']                 = [
           'map_ban',
           'map_pick',
     ],
+    'player' => [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+    ]
     'values' => []
 ];
 $game['matchMaps'] = [

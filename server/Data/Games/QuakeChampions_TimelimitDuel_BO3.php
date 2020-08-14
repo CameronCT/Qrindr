@@ -6,9 +6,9 @@
  */
 
 $game['matchConfig']                = 'Quake Champions - Timelimit Duel (Best of 3)';
-$game['matchSplitMapOne']           = 4;
-$game['matchSplitMapTwo']           = 7;
-$game['matchSplitMapThree']         = 10;
+$game['matchSplitMapOne']           = 6;
+$game['matchSplitMapTwo']           = 9;
+$game['matchSplitMapThree']         = 12;
 $game['matchSplitMapFour']          = 999;
 $game['matchSplitMapFive']          = 999;
 $game['matchSplitMapSix']           = 999;
@@ -17,6 +17,8 @@ $game['matchTimeout']               = 30;
 $game['matchSteps']                 = [
     'next' => 0,
     'list' => [
+          'map_ban',
+          'map_ban',
           'map_pick',
           'map_pick',
           'map_ban',
@@ -31,6 +33,24 @@ $game['matchSteps']                 = [
           'champ_ban',
           'champ_pick',
           'champ_pick'
+    ],
+    'player' => [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
     ],
     'values' => []
 ];
