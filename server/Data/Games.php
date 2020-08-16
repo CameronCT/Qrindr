@@ -23,11 +23,21 @@ $games = [
     ],
     4 => [
         'configId'   => 4,
-        'configName' => 'Quake Live Duel (Best of 3)',
-        'configFile' => 'QuakeLive_Duel_BO3'
+        'configName' => 'Diabotical - Esports Duel (Best of 3)',
+        'configFile' => 'Diabotical_Duel_BO3'
     ],
     5 => [
         'configId'   => 5,
+        'configName' => 'Diabotical - Esports Duel (Best of 5)',
+        'configFile' => 'Diabotical_Duel_BO5'
+    ],
+    6 => [
+        'configId'   => 6,
+        'configName' => 'Quake Live Duel (Best of 3)',
+        'configFile' => 'QuakeLive_Duel_BO3'
+    ],
+    7 => [
+        'configId'   => 7,
         'configName' => 'Quake Live Duel (Best of 5)',
         'configFile' => 'QuakeLive_Duel_BO5'
     ],
