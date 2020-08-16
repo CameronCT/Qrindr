@@ -190,7 +190,7 @@ class Match extends Component<IProps> {
                                     Copy Pasta
                                 </div>
                                 <div>
-                                    <textarea className={"text-white bg-gray-800 p-4 w-full"} type={"text"} value={data.matchCopyPasta} disabled />
+                                    <textarea className={"text-white bg-gray-800 p-4 w-full"} value={data.matchCopyPasta} disabled />
                                 </div>
                             </div>
                         )}
