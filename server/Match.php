@@ -85,26 +85,35 @@ $game['matchChampions']['available'] = $newArray;
 
 // Copy Pasta
 $game['matchCopyPasta'] = "[" . $game['matchPlayerOne'] . "/" . $game['matchPlayerTwo'] . "] -";
-foreach ($game['matchMaps']['picked'] as $key) {
+foreach ($game['matchMaps']['picked'] as $key => $value) {
     $game['matchCopyPasta'] .= " [" . $game['matchMaps']['listAbbreviation'][$key] . "] ";
 
-    if ($game['matchSteps']['next'] > $game['matchSplitMapOne']) {
-        $enum = "/";
+    $enum = "/";
+    $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
+    foreach ($game['matchSteps']['list'] as $k => $v) {
 
-        // buggy code here
-        foreach ($game['matchSteps']['list'] as $k => $v) {
-            $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
-            foreach($MAPS as $keyMap => $valueMap) {
-                if ($k > $game['matchSplitMap' . $valueMap] && $k <= $game['matchSteps']['next'] && $k <= $game['matchSplitMap' . $MAPS[$keyMap + 1]]) {
-                    if ($v == "champ_pick") {
-                        @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$k] . $enum;
-                        $enum = "";
-                    }
-                }
+        // Check if Next is greater than step number
+        /*
+        echo "
+        <br/>Key: " . $k . "
+        <br/>Next: " . $game['matchSteps']['next'] . "
+        <br/>Split Map: " . $game['matchSplitMap' . $MAPS[$key]] . "
+        <br/>Next: " . $game['matchSplitMap' . $MAPS[$key+1]] . "
+        <br/>Value: " . $v . "<br/>
+        ";
+        */
+        if (
+            $k <= $game['matchSteps']['next']
+            && $k > $game['matchSplitMap' . $MAPS[$key]]
+            && $k <= $game['matchSplitMap' . $MAPS[$key+1]]
+        ) {
+            if ($v == "champ_pick") {
+                @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][$k]] . $enum;
+                $enum = "";
             }
-
         }
     }
+
 }
 
 
