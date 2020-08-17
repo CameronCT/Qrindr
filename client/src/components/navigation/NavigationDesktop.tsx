@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
 import {faDiscord, faGithub, faTwitch} from "@fortawesome/free-brands-svg-icons";
 import {faDollarSign} from "@fortawesome/pro-duotone-svg-icons";
+import {Link} from "react-router-dom";
 
 class NavigationDesktop extends Component {
 
@@ -30,7 +31,10 @@ class NavigationDesktop extends Component {
                 fa: faTwitch,
                 css: 'text-purple-500',
             }
-        },
+        }
+    ];
+
+    navExternal = [
         {
             name: 'Discord',
             location: 'https://discord.gg/BAEkm58',
@@ -42,6 +46,7 @@ class NavigationDesktop extends Component {
         {
             name: 'GitHub',
             location: 'https://github.com/CameronCT/Qrindr',
+            external: true,
             icon: {
                 fa: faGithub,
                 css: 'text-gray-200',
@@ -64,6 +69,18 @@ class NavigationDesktop extends Component {
                     <div className="text-sm lg:text-3xl text-white font-bold">Qrindr</div>
                 </div>
                 {this.navOptions.map((row) => (
+                    <Link to={row.location} className="flex py-3 hover:bg-gray-900">
+                        <div className="w-full lg:w-3/12 text-center my-auto">
+                            <FontAwesomeIcon icon={row.icon.fa} className={` ${row.icon.css}`} />
+                        </div>
+                        <div className="hidden lg:block lg:w-9/12">
+                            <div className={"font-semibold tracking-wide text-gray-100"}>
+                                {row.name}
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+                {this.navExternal.map((row) => (
                     <a href={row.location} className="flex py-3 hover:bg-gray-900">
                         <div className="w-full lg:w-3/12 text-center my-auto">
                             <FontAwesomeIcon icon={row.icon.fa} className={` ${row.icon.css}`} />
