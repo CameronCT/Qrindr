@@ -107,7 +107,8 @@ $game['matchChampions'] = [
         'Clutch',
         'Sorlag',
         'Keel',
-        'Athena'
+        'Athena',
+        'Deathknight',
     ],
     'listAbbreviation' => [
         'Nyx',
@@ -125,5 +126,6 @@ $game['matchChampions'] = [
         'Sorlag',
         'Keel',
         'Athena'
+        'DK',
     ]
 ];
