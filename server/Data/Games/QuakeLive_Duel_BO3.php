@@ -49,11 +49,13 @@ $game['matchMaps'] = [
         'Furious Heights',
         'Sinister',
         'Cure',
-    ]
+    ],
+    'listImage' => [],
 ];
 $game['matchChampions'] = [
     'available' => [],
     'taken' => [],
     'list' => [],
-    'listAbbreviation' => []
+    'listAbbreviation' => [],
+    'listImage' => [],
 ];
