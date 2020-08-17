@@ -2,3 +2,4 @@ server/Configs/Production.php
 *.xml
 server/Data/Games/Diabotical_Duel_BO3.php
 server/Data/Games/Diabotical_Duel_BO5.php
+*.xml
