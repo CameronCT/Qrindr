@@ -135,7 +135,7 @@ class Veto extends Component<IProps> {
                                         ))}
                                     </select>
                                 )}
-                                <button type="submit" className={`${this.state.hide == true && 'hidden'} w-full btn-medium btn-${types[1] === 'pick' ? 'green' : 'red'} mt-4`} onClick={() => { this.setState({ hide: true })}}>{types[1].toLocaleUpperCase()}</button>
+                                <button type="submit" className={`${this.state.hide === true && 'hidden'} w-full btn-medium btn-${types[1] === 'pick' ? 'green' : 'red'} mt-4`} onClick={() => { this.setState({ hide: true })}}>{types[1].toLocaleUpperCase()}</button>
                             </form>
                         </div>
                     )}
