@@ -85,7 +85,7 @@ class Match extends Component<IProps> {
                     </div>
                 </div>
                 <div className={"flex flex-wrap"}>
-                    <div className="w-3/12 px-2">
+                    <div className="w-full lg:w-3/12 px-2">
                         {data.matchSteps.list.map((value:any, key:number) => (
                             <div key={key}>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
@@ -94,7 +94,7 @@ class Match extends Component<IProps> {
                             </div>
                         ))}
                     </div>
-                    <div className="w-6/12 px-2">
+                    <div className="w-full lg:w-6/12 px-2">
                         {data.matchSteps.next > data.matchSplitMapOne && (
                             <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
@@ -195,7 +195,7 @@ class Match extends Component<IProps> {
                             </div>
                         )}
                     </div>
-                    <div className="w-3/12 px-2">
+                    <div className="w-full lg:w-3/12 px-2">
                         <div className={"bg-gray-800 shadow p-6 mb-4"}>
                             <div>
                                 <div className={"text-lg font-semibold text-white"}>
