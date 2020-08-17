@@ -24,10 +24,6 @@ class Match extends Component<IProps> {
         currentPlayer: false
     };
 
-    isOdd = (n: number) => {
-        return n % 2;
-    }
-
     playNotificationSound = () => {
         if (document.getElementById('NotificationSound')) {
             // @ts-ignore
