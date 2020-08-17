@@ -18,6 +18,7 @@ require_once('Data/Games/' . $games[$matchData['matchConfig']]['configFile'] . '
  * Add Missing Data
  */
 $game['matchId']                =   $matchData['matchId'];
+$game['matchHash']              =   $matchData['matchHash'];
 $game['matchPlayerOne']         =   $matchData['matchPlayerOne'];
 $game['matchPlayerTwo']         =   $matchData['matchPlayerTwo'];
 $game['matchCointoss']          =   $matchData['matchCointoss'];
