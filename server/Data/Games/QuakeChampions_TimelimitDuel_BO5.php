@@ -125,7 +125,7 @@ $game['matchChampions'] = [
         'Clutch',
         'Sorlag',
         'Keel',
-        'Athena'
-        'DK',
+        'Athena',
+        'DK'
     ]
 ];
