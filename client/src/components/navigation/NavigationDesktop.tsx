@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
+import {faHeart, faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
 import {faDiscord, faGithub, faTwitch} from "@fortawesome/free-brands-svg-icons";
 import {faDollarSign} from "@fortawesome/pro-duotone-svg-icons";
 import {Link} from "react-router-dom";
@@ -92,6 +92,12 @@ class NavigationDesktop extends Component {
                         </div>
                     </a>
                 ))}
+                <div className={"border-t border-gray-900 py-6 text-gray-400 text-center font-semibold text-xs"}>
+                    <div>
+                        &copy; Qrindr 2020
+                    </div>
+                    Crafted with <FontAwesomeIcon className="text-red-500" icon={faHeart} /> by GNiK
+                </div>
             </div>
         )
     }
