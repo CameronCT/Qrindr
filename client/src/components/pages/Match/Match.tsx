@@ -61,7 +61,7 @@ class Match extends Component<IProps> {
     }
 
     componentDidUpdate(prevProps: IProps) {
-        if (prevProps.match.params.hash != this.props.match.params.hash) {
+        if (prevProps.match.params.hash !== this.props.match.params.hash) {
             clearInterval(this.refreshInterval);
             this.getMatch();
 

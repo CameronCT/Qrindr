@@ -68,8 +68,8 @@ class NavigationDesktop extends Component {
                 <div className="text-center lg:p-6">
                     <div className="text-sm lg:text-3xl text-white font-bold">Qrindr</div>
                 </div>
-                {this.navOptions.map((row) => (
-                    <Link to={row.location} className="flex py-3 hover:bg-gray-900">
+                {this.navOptions.map((row, key:number) => (
+                    <Link key={key} to={row.location} className="flex py-3 hover:bg-gray-900">
                         <div className="w-full lg:w-3/12 text-center my-auto">
                             <FontAwesomeIcon icon={row.icon.fa} className={` ${row.icon.css}`} />
                         </div>
@@ -80,8 +80,8 @@ class NavigationDesktop extends Component {
                         </div>
                     </Link>
                 ))}
-                {this.navExternal.map((row) => (
-                    <a href={row.location} className="flex py-3 hover:bg-gray-900">
+                {this.navExternal.map((row, key: number) => (
+                    <a key={key} href={row.location} className="flex py-3 hover:bg-gray-900">
                         <div className="w-full lg:w-3/12 text-center my-auto">
                             <FontAwesomeIcon icon={row.icon.fa} className={` ${row.icon.css}`} />
                         </div>
