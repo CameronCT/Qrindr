@@ -26,7 +26,7 @@ $data['Statistics'] = [
 ];
 
 // GitHub
-$github = json_decode(curl_get_content('https://api.github.com/repos/CameronCT/Qrindr/commits/v3'), true);
+$github = json_decode(curl_get_content('https://api.github.com/repos/CameronCT/Qrindr/commits/master'), true);
 $data['GitHub'] = [
     'URL' => $github['html_url'],
     'SHA' => $github['sha'],
