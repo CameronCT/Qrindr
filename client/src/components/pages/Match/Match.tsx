@@ -15,6 +15,9 @@ interface IProps {
 }
 
 class Match extends Component<IProps> {
+
+    protected refreshInterval: any;
+
     state = {
         data: {} as any,
         isLoaded: false,
@@ -48,9 +51,24 @@ class Match extends Component<IProps> {
 
     componentDidMount() {
         this.getMatch();
-        setInterval(() => {
+        this.refreshInterval = setInterval(() => {
             this.getMatch();
         }, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.refreshInterval);
+    }
+
+    componentDidUpdate(prevProps: IProps) {
+        if (prevProps.match.params.hash != this.props.match.params.hash) {
+            clearInterval(this.refreshInterval);
+            this.getMatch();
+
+            this.refreshInterval = setInterval(() => {
+                this.getMatch();
+            }, 5000);
+        }
     }
 
     render() {
