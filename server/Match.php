@@ -40,7 +40,7 @@ for ($i = 0; $i < $countSteps; $i++) {
     $game['matchSteps']['next'] += 1;
 
     /* TO-DO: Assign data to matchChampions/matchMaps picked / available */
-    $vetoType = $game['matchSteps']['list'][$i];
+    @$vetoType = $game['matchSteps']['list'][$i];
 
     if ($vetoType == 'champ_pick' || $vetoType == 'champ_ban') {
         // Add to "Taken"
