@@ -14,7 +14,7 @@ require_once($baseDir . '/Data/Options/Cointoss.php');
 $data['Cointoss'] = $cointoss;
 
 // Recent Matches
-$data['Matches'] = $conn->getMatches(25);
+$data['Matches'] = $conn->getMatches(18);
 $count = count($data['Matches']);
 for ($i = 0; $i < $count; $i++) {
     $data['Matches'][$i]['matchConfig'] = $games[$data['Matches'][$i]['matchConfig']]['configName'];
