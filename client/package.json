@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run watch:css\" \"react-scripts start\"",
-    "build": "npm run build:css && react-scripts build",
+    "build": "set NODE_ENV=production && npm run build:css && react-scripts build",
     "build:css": "postcss ./src/scss/app.scss -o ./src/scss/public.scss",
     "watch:css": "postcss -w ./src/scss/app.scss -o ./src/scss/public.scss",
     "test": "react-scripts test",
