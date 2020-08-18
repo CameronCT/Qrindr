@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface IProps {
     currentName: string | boolean;
@@ -28,7 +27,7 @@ class Veto extends Component<IProps> {
 
     render() {
 
-        const { currentName, name, value, next, maps, champions, mapsImage, championsImage } = this.props;
+        const { name, value, next, maps, champions, mapsImage, championsImage } = this.props;
         let { type } = this.props;
         let css;
 
@@ -58,11 +57,24 @@ class Veto extends Component<IProps> {
         }
 
         return !next ? (
-            <div className={`p-3 text-white shadow-md mb-4`}>
-                <img className={`border-4 border-${css}-800`} src={mapsImage[value]} />
-                <div className={"absolute text-white text-center"} style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-                    {name}
-                </div>
+            <div>
+                {types[0] === 'map'
+                    ? (
+                        <div className={`relative text-white shadow-md mb-4`}>
+                            <img className={`border-4 border-${css}-800 w-full h-auto`} src={mapsImage[value]} alt={maps[value]} />
+                            <div className={"absolute text-white text-shadow text-center bottom-0 w-full pb-2 text-lg font-semibold"}>
+                                {name}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className={`relative text-white shadow-md mb-4`}>
+                            <img className={`border-4 border-${css}-800 w-full h-auto`} src={championsImage[value]} alt={champions[value]} />
+                            <div className={"absolute text-white text-shadow text-center bottom-0 w-full pb-2 text-lg font-semibold"}>
+                                {name}
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         ) : (
             <div>
