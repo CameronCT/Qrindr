@@ -3,6 +3,7 @@ import Veto from "./Veto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
 import Config from "../../../Config";
+import {faSignalStream} from "@fortawesome/pro-duotone-svg-icons";
 
 interface IProps {
     match: {
@@ -95,6 +96,9 @@ class Match extends Component<IProps> {
                         )}
                         <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
                             <FontAwesomeIcon icon={faEye} /> Spectate
+                        </a>
+                        <a href={`/stream/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-green-500 hover:bg-green-600 rounded-full"}>
+                            <FontAwesomeIcon icon={faSignalStream} /> Stream
                         </a>
                     </div>
                 </div>
@@ -204,7 +208,7 @@ class Match extends Component<IProps> {
                                     Copy Pasta
                                 </div>
                                 <div>
-                                    <textarea className={"text-white bg-gray-800 p-4 w-full"} value={data.matchCopyPasta} disabled />
+                                    <div className={"text-white text-center bg-gray-800 p-4 w-full"}>{data.matchCopyPasta}</div>
                                 </div>
                             </div>
                         )}
