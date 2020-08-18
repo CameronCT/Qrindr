@@ -2,11 +2,13 @@
 
 $err = "";
 $msg = "";
+$matchData = [];
 
-if (!isset($_POST['secret']) || !isset($_POST['player']) || !isset($_POST['value']))
+if (!isset($_POST['secret']) || !isset($_POST['player']) || !isset($_POST['value']) || !isset($_POST['hash']))
     $err = "Invalid secret, player or value!";
 
-$matchData = $conn->getDataFromMatchHash($_POST['hash']);
+if (isset($_POST['hash']))
+    $matchData = $conn->getDataFromMatchHash($_POST['hash']);
 
 if (!$matchData)
     $err = "Invalid match hash!";
@@ -30,5 +32,10 @@ else {
 }
 
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Max-Age: 1000");
+header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
+header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE");
 echo json_encode([ 'error' => $err, 'success' => $msg ], true);
 exit;
