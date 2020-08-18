@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart, faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
-import {faDiscord, faGithub, faTwitch} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {faDollarSign} from "@fortawesome/pro-duotone-svg-icons";
 import {Link} from "react-router-dom";
 
@@ -22,14 +22,6 @@ class NavigationDesktop extends Component {
             icon: {
                 fa: faInfoCircle,
                 css: 'text-teal-400',
-            }
-        },
-        {
-            name: 'Watch',
-            location: '/',
-            icon: {
-                fa: faTwitch,
-                css: 'text-purple-500',
             }
         }
     ];
