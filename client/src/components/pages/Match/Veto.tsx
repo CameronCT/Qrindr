@@ -122,20 +122,20 @@ class Veto extends Component<IProps> {
                             <form method="post" onSubmit={this.handleSubmit}>
                                 {types[0] === 'champ' ? (
                                     <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
-                                        <option value="999" selected>Select</option>
+                                        <option value="9999" selected>Select</option>
                                         {championsAvailable.map((value:number) => (
                                             <option value={value}>{champions[value]}</option>
                                         ))}
                                     </select>
                                 ) : (
                                     <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
-                                        <option value="999" selected>Select</option>
+                                        <option value="9999" selected>Select</option>
                                         {mapsAvailable.map((value:number) => (
                                             <option value={value}>{maps[value]}</option>
                                         ))}
                                     </select>
                                 )}
-                                <button type="submit" className={`${this.state.hide === true && 'hidden'} w-full btn-medium btn-${types[1] === 'pick' ? 'green' : 'red'} mt-4`} onClick={() => { this.setState({ hide: true })}}>{types[1].toLocaleUpperCase()}</button>
+                                <button type="submit" className={`${this.state.hide === true && 'hidden'} w-full btn-medium btn-${types[1] === 'pick' ? 'green' : 'red'} mt-4`} onClick={() => { if (this.state.stepValue !== 9999) { this.setState({ hide: true }) }}}>{types[1].toLocaleUpperCase()}</button>
                             </form>
                         </div>
                     )}
