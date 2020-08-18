@@ -33,7 +33,7 @@ $game['matchSteps']                 = [
         0,
         1,
         0,
-    ]
+    ],
     'values' => []
 ];
 $game['matchMaps'] = [
