@@ -97,7 +97,7 @@ class Match extends Component<IProps> {
                         <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-full"}>
                             <FontAwesomeIcon icon={faEye} /> Spectate
                         </a>
-                        <a href={`/stream/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-green-500 hover:bg-green-600 rounded-full"}>
+                        <a href={`/stream/${hash}`} className={"hidden ml-2 px-4 py-2 font-semibold text-white bg-green-500 hover:bg-green-600 rounded-full"}>
                             <FontAwesomeIcon icon={faSignalStream} /> Stream
                         </a>
                     </div>
