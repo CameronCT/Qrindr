@@ -92,7 +92,7 @@ $game['matchChampions']['available'] = $newArray;
 if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) {
     $game['matchCopyPasta'] = "[" . $game['matchPlayerOne'] . "/" . $game['matchPlayerTwo'] . "] -";
     foreach ($game['matchMaps']['picked'] as $key => $value) {
-        $game['matchCopyPasta'] .= " [" . $game['matchMaps']['listAbbreviation'][$key] . "] ";
+        $game['matchCopyPasta'] .= " [" . $game['matchMaps']['listAbbreviation'][$value] . "] ";
 
         $enum = "/";
         $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
