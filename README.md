@@ -16,9 +16,9 @@
 
 ## Stack
 
-* Node
-* Express
-* PostgreSQL
+* Nginx
+* Maria
+* PHP7.4 (soon PHP8)
 
 ## Frameworks
 
