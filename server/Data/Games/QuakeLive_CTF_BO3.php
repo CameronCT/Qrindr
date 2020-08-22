@@ -30,12 +30,14 @@ $game['matchSteps']                 = [
         1,
         0,
         1,
+        0,
+        1,
         0
     ],
     'values' => []
 ];
 $game['matchMaps'] = [
-    'available' => [0, 1, 2, 3, 4],
+    'available' => [0, 1, 2, 3, 4, 5, 6],
     'taken' => [],
     'picked' => [],
     'list' => [

@@ -17,13 +17,17 @@ $game['matchTimeout']               = 30;
 $game['matchSteps']                 = [
     'next' => 0,
     'list' => [
-          'map_ban',
-          'map_ban',
-          'map_ban',
-          'map_ban',
-          'map_pick',
+        'map_ban',
+        'map_ban',
+        'map_ban',
+        'map_ban',
+        'map_ban',
+        'map_ban',
+        'map_pick',
     ],
     'player' => [
+        0,
+        1,
         0,
         1,
         0,
@@ -33,7 +37,7 @@ $game['matchSteps']                 = [
     'values' => []
 ];
 $game['matchMaps'] = [
-    'available' => [0, 1, 2, 3, 4],
+    'available' => [0, 1, 2, 3, 4, 5, 6],
     'taken' => [],
     'picked' => [],
     'list' => [
@@ -42,6 +46,9 @@ $game['matchMaps'] = [
         'Limbus',
         'Purgatory',
         'Dreadful Place',
+        'Deep Inside',
+        'Tornado',
+        'Intervention'
     ],
     'listAbbreviation' => [
         'Ragnarok',
@@ -49,6 +56,9 @@ $game['matchMaps'] = [
         'Limbus',
         'Purgatory',
         'Dreadful Place',
+        'Deep Inside',
+        'Tornado',
+        'Intervention'
     ],
     'listImage' => [],
 ];
