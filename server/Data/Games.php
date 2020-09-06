@@ -26,12 +26,12 @@ $games[] = [
 
 $games[] = [
     'configId'   => 4,
-    'configName' => 'Diabotical - Casual Duel (Best of 3)',
+    'configName' => 'Diabotical - Esports Duel (Best of 3)',
     'configFile' => 'Diabotical_Duel_BO3'
 ];
 $games[] = [
     'configId'   => 5,
-    'configName' => 'Diabotical - Casual Duel (Best of 5)',
+    'configName' => 'Diabotical - Esports Duel (Best of 5)',
     'configFile' => 'Diabotical_Duel_BO5'
 ];
 
