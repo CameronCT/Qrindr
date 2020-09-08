@@ -95,6 +95,8 @@ class Database {
                 matchId, matchHash, matchPlayerOne, matchPlayerTwo, matchConfig, matchCreated
             FROM
                 matches
+            WHERE
+                (SELECT COUNT(matchStepId) FROM matchesSteps WHERE matchStepMatch = matchId) >= 5
             ORDER BY
                 matchId DESC
             LIMIT
