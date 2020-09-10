@@ -96,28 +96,29 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
 
         $enum = "/";
         $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
-        foreach ($game['matchSteps']['list'] as $k => $v) {
 
-            // Check if Next is greater than step number
-            /*
-            echo "
-            <br/>Key: " . $k . "
-            <br/>Next: " . $game['matchSteps']['next'] . "
-            <br/>Split Map: " . $game['matchSplitMap' . $MAPS[$key]] . "
-            <br/>Next: " . $game['matchSplitMap' . $MAPS[$key+1]] . "
-            <br/>Value: " . $v . "<br/>
-            ";
-            */
-            if (
-                $k <= $game['matchSteps']['next']
-                && $k > $game['matchSplitMap' . $MAPS[$key]]
-                && $k <= $game['matchSplitMap' . $MAPS[$key+1]]
-            ) {
-                if ($v == "champ_pick") {
-                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][$k]] . $enum;
-                    $enum = "";
-                }
+        $copyPastaQuake = ['QuakeChampions_TimelimitDuel_BO3', 'QuakeChampions_TimelimitDuel_BO5', 'QuakeChampions_2V2TDM_BO3', 'QuakeChampions_2V2TDM_BO5'];
+        if (in_array($games[$matchData['matchConfig']]['configFile'], $copyPastaQuake)) {
+
+            if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
+
+                if ($MAPS[$key] == 'One')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][8]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][9]];
+
+                if ($MAPS[$key] == 'Two')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][12]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][11]];
+
+                if ($MAPS[$key] == 'Three')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][14]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][15]];
+
+                if ($MAPS[$key] == 'Four')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][18]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][17]];
+
+                if ($MAPS[$key] == 'Five')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][20]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][21]];
+
             }
+
         }
     }
 }
