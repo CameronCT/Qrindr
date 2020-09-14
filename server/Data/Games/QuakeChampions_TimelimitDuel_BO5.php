@@ -73,8 +73,8 @@ $game['matchMaps'] = [
     'list' => [
         'Awoken',
         'Blood Covenant',
-        'Deep Embrace',
         'Corrupted Keep',
+        'Deep Embrace',
         'Molten Falls',
         'Ruins of Sarnath',
         'Tower of Koth'
@@ -82,8 +82,8 @@ $game['matchMaps'] = [
     'listAbbreviation' => [
         'Awoken',
         'BC/DM6',
-        'DE',
         'CK',
+        'DE',
         'Molten',
         'Ruins',
         'Koth'
