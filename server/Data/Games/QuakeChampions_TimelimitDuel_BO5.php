@@ -73,20 +73,20 @@ $game['matchMaps'] = [
     'list' => [
         'Awoken',
         'Blood Covenant',
-        'Blood Run',
+        'Deep Embrace',
         'Corrupted Keep',
         'Molten Falls',
         'Ruins of Sarnath',
-        'Vale of Pnath'
+        'Tower of Koth'
     ],
     'listAbbreviation' => [
         'Awoken',
         'BC/DM6',
-        'TOK',
+        'DE',
         'CK',
         'Molten',
         'Ruins',
-        'Vale'
+        'Koth'
     ],
     'listImage' => [
         'https://stats.quake.com/maps/awoken.jpg',
