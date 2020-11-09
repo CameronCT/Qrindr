@@ -12,7 +12,11 @@ if (!isset($_GET['hash']))
  */
 $matchData = $conn->getDataFromMatchHash($_GET['hash']);
 $matchSteps = $conn->getStepsFromMatchId($matchData['matchId']);
-require_once('Data/Games/' . $games[$matchData['matchConfig']]['configFile'] . '.php');
+$gamesLength = count($games);
+for ($i = 0; $i < $gamesLength; $i++) {
+    if ($games[$i]['configId'] == $matchData['matchConfig'])
+        require_once('Data/Games/' . $games[$i]['configFile'] . '.php');
+}
 
 /*
  * Validate Data

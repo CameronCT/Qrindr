@@ -2,6 +2,10 @@
 
 $data = [];
 
+// Filter
+if (!isset($_GET['filter']))
+    $_GET['filter'] = '';
+
 // Blogs
 $data['Blogs'] = $conn->getBlogs(5);
 
@@ -14,10 +18,13 @@ require_once($baseDir . '/Data/Options/Cointoss.php');
 $data['Cointoss'] = $cointoss;
 
 // Recent Matches
-$data['Matches'] = $conn->getMatches(18);
+$data['Matches'] = $conn->getMatches(18, $_GET['filter'] ? $_GET['filter'] : '');
 $count = count($data['Matches']);
 for ($i = 0; $i < $count; $i++) {
-    $data['Matches'][$i]['matchConfig'] = $games[$data['Matches'][$i]['matchConfig']]['configName'];
+    $gamesLength = count($games);
+    for ($j = 0; $j < $gamesLength; $j++)
+        if ($data['Matches'][$i]['matchConfig'] == $games[$j]['configId'])
+            $data['Matches'][$i]['matchConfig'] = $games[$j]['configName'];
 }
 
 // Statistics
@@ -27,12 +34,14 @@ $data['Statistics'] = [
 
 // GitHub
 $github = json_decode(curl_get_content('https://api.github.com/repos/CameronCT/Qrindr/commits/master'), true);
-$data['GitHub'] = [
-    'URL' => $github['html_url'],
-    'SHA' => $github['sha'],
-    'MSG' => $github['commit']['message'],
-    'DATE' => date("F d, Y", strtotime($github['commit']['committer']['date']))
-];
+if ($github && isset($github['html_url'])) {
+    $data['GitHub'] = [
+        'URL' => $github['html_url'],
+        'SHA' => $github['sha'],
+        'MSG' => $github['commit']['message'],
+        'DATE' => date("F d, Y", strtotime($github['commit']['committer']['date']))
+    ];
+}
 
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
