@@ -2,10 +2,6 @@
 
 $data = [];
 
-// Filter
-if (!isset($_GET['filter']))
-    $_GET['filter'] = '';
-
 // Blogs
 $data['Blogs'] = $conn->getBlogs(5);
 
@@ -18,7 +14,7 @@ require_once($baseDir . '/Data/Options/Cointoss.php');
 $data['Cointoss'] = $cointoss;
 
 // Recent Matches
-$data['Matches'] = $conn->getMatches(18, $_GET['filter'] ? $_GET['filter'] : '');
+$data['Matches'] = $conn->getMatches(30);
 $count = count($data['Matches']);
 for ($i = 0; $i < $count; $i++) {
     $gamesLength = count($games);
@@ -29,7 +25,7 @@ for ($i = 0; $i < $count; $i++) {
 
 // Statistics
 $data['Statistics'] = [
-    'totalMatches' => (13019 + $conn->countMatches())
+    'totalMatches' => number_format((13019 + $conn->countMatches()))
 ];
 
 // GitHub

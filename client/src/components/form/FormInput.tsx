@@ -16,7 +16,7 @@ class FormInput extends Component<IProps> {
         return (
             <div className={className}>
                 <div className="font-semibold text-base text-gray-200">{id}</div>
-                <input type={type} placeholder={placeholder} name={name} className={"w-full p-2 bg-gray-900 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-gray-700 focus:outline-none"} onChange={onChange} required />
+                <input type={type} autoComplete={"false"} spellCheck={false} placeholder={placeholder} name={name} className={"form-control"} onChange={onChange} required />
             </div>
         )
     }
