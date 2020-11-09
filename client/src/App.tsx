@@ -22,7 +22,7 @@ export const App = () => {
                 </Switch>
             </div>
             <div className={"text-center p-3 uppercase text-sm text-white font-semibold my-6"}>
-                &copy; Qrindr 2020 - Created by CameronCT
+                &copy; Qrindr 2020 - Created by GNiK.
             </div>
       </BrowserRouter>
   );
