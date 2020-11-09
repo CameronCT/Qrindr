@@ -105,7 +105,7 @@ class Veto extends Component<IProps> {
         }
 
         return !next ? (
-            <div className={`border-2 border-${css}-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
+            <div className={`border-2 border-opacity-75 border-${css}-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
                 <FontAwesomeIcon icon={icon.icon} className={icon.color} /> <span className="font-semibold">{name}</span> has {types[1] === 'ban' ? 'banned' : 'picked'} <span className="font-semibold">{types[0] === 'map' ? maps[value] : champions[value]}</span>.
             </div>
         ) : (
