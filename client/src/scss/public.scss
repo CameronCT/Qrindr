@@ -14448,6 +14448,82 @@ body {
   background-color: rgba(26, 32, 44, var(--bg-opacity));
 }
 
+.animation-short {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 100ms;
+}
+
+.animation-long {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.create-screen {
+  height: 83vh;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  --text-opacity: 1;
+  color: #edf2f7;
+  color: rgba(237, 242, 247, var(--text-opacity));
+  --bg-opacity: 1;
+  background-color: #1a202c;
+  background-color: rgba(26, 32, 44, var(--bg-opacity));
+}
+
+.form-control:select:active {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+}
+
+.form-control:focus {
+  outline: 0;
+}
+
+.form-control::placeholder {
+  --text-opacity: 1;
+  color: #e2e8f0;
+  color: rgba(226, 232, 240, var(--text-opacity));
+}
+
+.bg-black-40 {
+  background: rgba(0, 0, 0, 0.40);
+}
+
+.bg-black-20 {
+  background: rgba(0, 0, 0, 0.20);
+}
+
+.bg-black-15 {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.bg-black-10 {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hover-bg-black-35:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hover-bg-black-20:hover {
+  background: rgba(0, 0, 0, 0.20);
+}
+
+.hover-bg-black-15:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.hover-bg-black-10:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .btn {
   &-small {
     padding-left: 0.5rem;
