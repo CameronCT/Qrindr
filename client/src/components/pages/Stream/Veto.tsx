@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/pro-duotone-svg-icons";
-import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
 
 interface IProps {
     currentName: string | boolean;
@@ -33,7 +32,6 @@ class Veto extends Component<IProps> {
         const { name, value, next, maps, champions, mapsImage, championsImage } = this.props;
         let { type } = this.props;
         let css;
-
         if (!type)
             type = 'map_pick';
 
@@ -51,11 +49,9 @@ class Veto extends Component<IProps> {
         switch (types[1]) {
             case 'ban':
                 css = 'red';
-                icon = { icon: faTimes, color: 'text-red-500' };
                 break;
             case 'pick':
                 css = 'green';
-                icon = { icon: faCheck, color: 'text-green-500' };
                 break;
             default:
                 css = 'orange';
