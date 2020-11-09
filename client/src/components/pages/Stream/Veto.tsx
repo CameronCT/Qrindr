@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSpinner} from "@fortawesome/pro-duotone-svg-icons";
+import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
 
 interface IProps {
     currentName: string | boolean;
@@ -8,9 +11,11 @@ interface IProps {
     type: string;
     value: any;
     maps: any;
+    mapsAvailable: any;
     mapsImage: any;
     champions: any;
     championsImage: any;
+    championsAvailable: any;
     next?: boolean;
     getMatch: any;
 }
@@ -22,8 +27,6 @@ class Veto extends Component<IProps> {
         timer: 15,
         hide: false,
     }
-
-    componentDidMount() { }
 
     render() {
 
@@ -48,9 +51,11 @@ class Veto extends Component<IProps> {
         switch (types[1]) {
             case 'ban':
                 css = 'red';
+                icon = { icon: faTimes, color: 'text-red-500' };
                 break;
             case 'pick':
                 css = 'green';
+                icon = { icon: faCheck, color: 'text-green-500' };
                 break;
             default:
                 css = 'orange';
@@ -61,15 +66,15 @@ class Veto extends Component<IProps> {
                 {types[0] === 'map'
                     ? (
                         <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-4 border-${css}-800 w-full h-auto`} src={mapsImage[value]} alt={maps[value]} />
-                            <div className={"absolute text-white text-shadow text-center bottom-0 w-full pb-2 text-lg font-semibold"}>
+                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={mapsImage[value]} alt={maps[value]} />
+                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
                                 {name}
                             </div>
                         </div>
                     ) : (
                         <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-4 border-${css}-800 w-full h-auto`} src={championsImage[value]} alt={champions[value]} />
-                            <div className={"absolute text-white text-shadow text-center bottom-0 w-full pb-2 text-lg font-semibold"}>
+                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={championsImage[value]} alt={champions[value]} />
+                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
                                 {name}
                             </div>
                         </div>
@@ -78,8 +83,13 @@ class Veto extends Component<IProps> {
             </div>
         ) : (
             <div>
-                <div className={`border-2 border-yellow-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
-                    Waiting on <span className="font-semibold">{name}</span> to {types[1]} a {types[0]}.
+                <div className={`relative text-white shadow-md mb-4`}>
+                    <div className={`border-2 border-yellow-800 bg-gray-800 w-full h-auto text-center py-10`}>
+                        <FontAwesomeIcon icon={faSpinner} className="mb-4" spin />
+                    </div>
+                    <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
+                        {name}
+                    </div>
                 </div>
             </div>
         )
