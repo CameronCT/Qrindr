@@ -58,7 +58,7 @@ class Database {
         $search = "%" . filter_var($name, FILTER_SANITIZE_STRING) . "%";
         return $this->fetchAll("
             SELECT
-                matchId, matchConfig, matchHash, matchSecret, matchPlayerOne, matchPlayerTwo, matchFormat, matchCointoss, matchCreated
+                matchId, matchConfig, matchHash, matchPlayerOne, matchPlayerTwo, matchFormat, matchCointoss, matchCreated
             FROM
                 matches
             WHERE
