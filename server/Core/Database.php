@@ -54,6 +54,18 @@ class Database {
         ");
     }
 
+    public function searchMatches(String $name) {
+        $search = "%" . filter_var($name, FILTER_SANITIZE_STRING) . "%";
+        return $this->fetchAll("
+            SELECT
+                matchId, matchConfig, matchHash, matchSecret, matchPlayerOne, matchPlayerTwo, matchFormat, matchCointoss, matchCreated
+            FROM
+                matches
+            WHERE
+                matchPlayerOne LIKE ? OR matchPlayerTwo LIKE ?
+        ", [$search, $search]);
+    }
+
     public function addStepToMatch(String $matchId, String $matchStepValue) {
 
         return $this->query("

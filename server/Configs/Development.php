@@ -2,7 +2,7 @@
 
 $config['Database'] = [
     'host' => 'localhost',
-    'name' => 'mydb',
+    'name' => 'qrindrv3',
     'user' => 'root',
     'pass' => '',
 ];
