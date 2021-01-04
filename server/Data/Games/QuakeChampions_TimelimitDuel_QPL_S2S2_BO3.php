@@ -5,7 +5,7 @@
  * matchSteps.Next = Length without 0 counting as 1
  */
 
-$game['matchConfig']                = 'Quake Champions - Timelimit Duel (Best of 3)';
+$game['matchConfig']                = 'Quake Champions - Timelimit Duel (Season 2, Stage 2 - Best of 3)';
 $game['matchSplitMapOne']           = 6;
 $game['matchSplitMapTwo']           = 9;
 $game['matchSplitMapThree']         = 12;
@@ -17,22 +17,22 @@ $game['matchTimeout']               = 30;
 $game['matchSteps']                 = [
     'next' => 0,
     'list' => [
-          'map_ban',
-          'map_ban',
-          'map_pick',
-          'map_pick',
-          'map_ban',
-          'map_ban',
-          'map_pick',
-          'champ_ban',
-          'champ_pick',
-          'champ_pick',
-          'champ_ban',
-          'champ_pick',
-          'champ_pick',
-          'champ_ban',
-          'champ_pick',
-          'champ_pick'
+        'map_ban',
+        'map_ban',
+        'map_pick',
+        'map_pick',
+        'map_ban',
+        'map_ban',
+        'map_pick',
+        'champ_ban',
+        'champ_pick',
+        'champ_pick',
+        'champ_ban',
+        'champ_pick',
+        'champ_pick',
+        'champ_ban',
+        'champ_pick',
+        'champ_pick'
     ],
     'player' => [
         0,
@@ -60,30 +60,30 @@ $game['matchMaps'] = [
     'picked' => [],
     'list' => [
         'Awoken',
-        'Blood Covenant',
+        'Exile',
         'Corrupted Keep',
         'Deep Embrace',
         'Molten Falls',
         'Ruins of Sarnath',
-        'Tower of Koth'
+        'Vale of Pnath'
     ],
     'listAbbreviation' => [
         'Awoken',
-        'BC/DM6',
+        'Exile',
         'CK',
         'DE',
         'Molten',
         'Ruins',
-        'Koth'
+        'Vale'
     ],
     'listImage' => [
-         'https://stats.quake.com/maps/awoken.jpg',
-         'https://stats.quake.com/maps/blood_covenant.jpg',
-         'https://stats.quake.com/maps/blood_run.jpg',
-         'https://stats.quake.com/maps/corrupted_keep.jpg',
-         'https://stats.quake.com/maps/the_molten_falls.jpg',
-         'https://stats.quake.com/maps/ruins_of_sarnath.jpg',
-         'https://stats.quake.com/maps/vale_of_pnath.jpg'
+        'https://stats.quake.com/maps/awoken.jpg',
+        'https://stats.quake.com/maps/exile.jpg',
+        'https://stats.quake.com/maps/blood_run.jpg',
+        'https://stats.quake.com/maps/corrupted_keep.jpg',
+        'https://stats.quake.com/maps/the_molten_falls.jpg',
+        'https://stats.quake.com/maps/ruins_of_sarnath.jpg',
+        'https://stats.quake.com/maps/vale_of_pnath.jpg'
     ]
 ];
 $game['matchChampions'] = [
