@@ -101,8 +101,25 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
         $enum = "/";
         $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 
-        $copyPastaQuake = ['QuakeChampions_TimelimitDuel_BO3', 'QuakeChampions_TimelimitDuel_BO5', 'QuakeChampions_2V2TDM_BO3', 'QuakeChampions_2V2TDM_BO5'];
-        if (in_array($games[$matchData['matchConfig']]['configFile'], $copyPastaQuake)) {
+        $copyPastaId = [
+            0 => 'QuakeChampions_TimelimitDuel_BO3',
+            1 => 'QuakeChampions_TimelimitDuel_BO5',
+            2 => 'QuakeChampions_2V2TDM_BO3',
+            3 => 'QuakeChampions_2V2TDM_BO5',
+            17 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
+            18 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
+        ];
+
+        $copyPastaQuake = [
+            'QuakeChampions_TimelimitDuel_BO3',
+            'QuakeChampions_TimelimitDuel_BO5',
+            'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
+            'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
+            'QuakeChampions_2V2TDM_BO3',
+            'QuakeChampions_2V2TDM_BO5'
+        ];
+
+        if ($copyPastaId[$matchData['matchConfig']]) {
 
             if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
 
