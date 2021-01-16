@@ -116,6 +116,14 @@ class Database {
         ");
     }
 
+    public function getConfigName(Array $games, Int $config) {
+        $gamesLength = $games;
+        for ($i = 0; $i < $gamesLength; $i++) {
+            if ($games[$i]['configId'] === $config)
+                return $games[$i]['configName'];
+        }
+    }
+
     public function addMatch(String $matchHash, String $matchConfig, String $matchCointoss, String $playerOne, String $playerTwo, String $matchSecret) {
         return $this->query("
             INSERT INTO

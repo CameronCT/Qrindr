@@ -17,10 +17,7 @@ $data['Cointoss'] = $cointoss;
 $data['Matches'] = $conn->getMatches(30);
 $count = count($data['Matches']);
 for ($i = 0; $i < $count; $i++) {
-    $gamesLength = count($games);
-    for ($j = 0; $j < $gamesLength; $j++)
-        if ($data['Matches'][$i]['matchConfig'] == $games[$j]['configId'])
-            $data['Matches'][$i]['matchConfig'] = $games[$j]['configName'];
+    $data['Matches'][$i]['matchConfig'] = $conn->getConfigName($games, $data['Matches'][$i]['matchConfig']);
 }
 
 // Statistics
