@@ -3,15 +3,15 @@
 $games[] = [
     'configId'   => 0,
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S1 - Best of 3)',
-    'configFile' => 'QuakeChampions_TimelimitDuel_BO3',
-    'order'      => 0,
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S1_BO3',
+    'order'      => 2,
 ];
 
 $games[] = [
     'configId'   => 1,
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S1 - Best of 5)',
-    'configFile' => 'QuakeChampions_TimelimitDuel_BO5',
-    'order'      => 1,
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S1_BO5',
+    'order'      => 3,
 ];
 
 $games[] = [
@@ -32,14 +32,14 @@ $games[] = [
     'configId'   => 17,
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 3)',
     'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
-    'order'      => 2,
+    'order'      => 0,
 ];
 
 $games[] = [
     'configId'   => 18,
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 5)',
     'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
-    'order'      => 3,
+    'order'      => 1,
 ];
 
 $games[] = [
