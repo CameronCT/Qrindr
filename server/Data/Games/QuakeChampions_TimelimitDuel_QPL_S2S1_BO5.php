@@ -5,7 +5,7 @@
  * matchSteps.Next = Length without 0 counting as 1
  */
 
-$game['matchConfig']                = 'Quake Champions - Timelimit Duel (Season 2:Stage 1 - Best of 5)';
+$game['matchConfig']                = 'Quake Champions - Timelimit Duel (Season 2, Stage 1 - Best of 5)';
 $game['matchSplitMapOne']           = 6;
 $game['matchSplitMapTwo']           = 9;
 $game['matchSplitMapThree']         = 12;

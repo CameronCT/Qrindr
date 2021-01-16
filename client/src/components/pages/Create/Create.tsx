@@ -29,6 +29,7 @@ class Create extends Component {
             .then(response => {
                 this.setState({
                     configs: response.Configs,
+                    matchGame: response.Configs[0].configId || 0,
                     cointoss: response.Cointoss,
                 })
             });

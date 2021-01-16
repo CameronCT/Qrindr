@@ -4,6 +4,7 @@ $msg = "";
 $url = "";
 
 $FIELDS = [ 'playerOne', 'playerTwo', 'matchCointoss', 'matchGame' ];
+
 foreach ($FIELDS as $key) {
 
     if ($key != 'matchCointoss' && $key != 'matchGame')
@@ -14,11 +15,18 @@ foreach ($FIELDS as $key) {
         if (strlen($_POST[$key]) > 32)
            $err = "Your player name cannot be greater than 24 characters!";
     }
-
-    if ($key == 'matchGame') {
-        if ($_POST[$key] > count($games))
-            $err = "Invalid config selected!";
-    }
+	
+	if ($key == 'matchGame') {
+		$gamesLength = count($games);
+		$gameVerified = false;
+		for ($i = 0; $i < $gamesLength; $i++) {
+			if ($games[$i]['configId'] == $_POST[$key])
+				$gameVerified = true;
+		}
+		
+		if ($gameVerified == false) 
+			$err = "Invalid config selected";
+	}
 }
 
 if ($err == "") {
