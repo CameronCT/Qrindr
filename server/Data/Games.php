@@ -43,6 +43,13 @@ $games[] = [
 ];
 
 $games[] = [
+    'configId'   => 19,
+    'configName' => 'Quake Champions - Timelimit Duel (Estoty Cup - Best of 1)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_Estoty_BO1',
+    'order'      => 1,
+];
+
+$games[] = [
     'configId'   => 4,
     'configName' => 'Diabotical - Esports Duel (Best of 3)',
     'configFile' => 'Diabotical_Duel_BO3',

@@ -101,7 +101,7 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
         $enum = "/";
         $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 
-        $copyPastaId = [
+        $copyPastaQuake = [
             0 => 'QuakeChampions_TimelimitDuel_BO3',
             1 => 'QuakeChampions_TimelimitDuel_BO5',
             2 => 'QuakeChampions_2V2TDM_BO3',
@@ -110,16 +110,12 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
             18 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
         ];
 
-        $copyPastaQuake = [
-            'QuakeChampions_TimelimitDuel_BO3',
-            'QuakeChampions_TimelimitDuel_BO5',
-            'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
-            'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
-            'QuakeChampions_2V2TDM_BO3',
-            'QuakeChampions_2V2TDM_BO5'
+        $copyPastaEstoty = [
+            19 => 'QuakeChampions_TimelimitDuel_Estoty_BO1'
         ];
 
-        if ($copyPastaId[$matchData['matchConfig']]) {
+
+        if (array_key_exists($matchData['matchConfig'], $copyPastaQuake)) {
 
             if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
 
@@ -138,6 +134,16 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
                 if ($MAPS[$key] == 'Five')
                     @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][20]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][21]];
 
+            }
+
+        }
+
+        if (array_key_exists($matchData['matchConfig'], $copyPastaEstoty)) {
+
+            if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
+
+                if ($MAPS[$key] == 'One')
+                    @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][10]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][9]];
             }
 
         }
