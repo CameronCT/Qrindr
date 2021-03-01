@@ -15,7 +15,7 @@ foreach ($FIELDS as $key) {
         if (strlen($_POST[$key]) > 32)
            $err = "Your player name cannot be greater than 24 characters!";
     }
-	
+
 	if ($key == 'matchGame') {
 		$gamesLength = count($games);
 		$gameVerified = false;
@@ -23,8 +23,8 @@ foreach ($FIELDS as $key) {
 			if ($games[$i]['configId'] == $_POST[$key])
 				$gameVerified = true;
 		}
-		
-		if ($gameVerified == false) 
+
+		if ($gameVerified == false)
 			$err = "Invalid config selected";
 	}
 }
@@ -35,8 +35,8 @@ if ($err == "") {
     $oldPlayerName = $PlayerNameOne;
 
     // Cointoss
-    $randomNumber = mt_rand(0, 1);
-    if ($_POST['matchCointoss'] == 0 && $randomNumber == 1 || $_POST['matchCointoss'] == 2) {
+    $randomNumber = mt_rand(1, 100);
+    if (($_POST['matchCointoss'] == 0 && ($randomNumber % 2)) || $_POST['matchCointoss'] == 2) {
         $PlayerNameOne = $PlayerNameTwo;
         $PlayerNameTwo = $oldPlayerName;
     }
