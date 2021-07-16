@@ -15,6 +15,13 @@ $games[] = [
 ];
 
 $games[] = [
+    'configId'   => 20,
+    'configName' => 'Quake Champions - 2V2 TDM (Best of 1)',
+    'configFile' => 'QuakeChampions_2V2TDM_BO1',
+    'order'      => 4,
+];
+
+$games[] = [
     'configId'   => 2,
     'configName' => 'Quake Champions - 2V2 TDM (Best of 3)',
     'configFile' => 'QuakeChampions_2V2TDM_BO3',

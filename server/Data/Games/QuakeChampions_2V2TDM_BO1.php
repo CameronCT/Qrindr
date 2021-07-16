@@ -5,7 +5,7 @@
  * matchSteps.Next = Length without 0 counting as 1
  */
 
-$game['matchConfig']                = 'Quake Champions 2V2 TDM (Best of 3)';
+$game['matchConfig']                = 'Quake Champions 2V2 TDM (Best of 1)';
 $game['matchSplitMapOne']           = 999;
 $game['matchSplitMapTwo']           = 999;
 $game['matchSplitMapThree']         = 999;
@@ -19,8 +19,8 @@ $game['matchSteps']                 = [
     'list' => [
           'map_ban',
           'map_ban',
-          'map_pick',
-          'map_pick',
+          'map_ban',
+          'map_ban',
           'map_ban',
           'map_ban',
           'map_pick',
