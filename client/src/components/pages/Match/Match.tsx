@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Veto from "./Veto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faExternalLink, faEye} from "@fortawesome/pro-solid-svg-icons";
+import {faExternalLinkAlt, faEye} from "@fortawesome/free-solid-svg-icons";
 import Config from "../../../Config";
-import {faSignalStream} from "@fortawesome/pro-duotone-svg-icons";
 import LoadingSpinner from "../../navigation/LoadingSpinner";
 
 interface IProps {
@@ -92,14 +91,11 @@ class Match extends Component<IProps> {
                     <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
                         {matchSecret !== "" && (
                             <a href={`/match/${hash}/${matchSecret}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded"}>
-                                <FontAwesomeIcon icon={faExternalLink} />
+                                <FontAwesomeIcon icon={faExternalLinkAlt} />
                             </a>
                         )}
                         <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded"}>
                             <FontAwesomeIcon icon={faEye} />
-                        </a>
-                        <a href={`/stream/${hash}`} className={"hidden ml-2 px-4 py-2 font-semibold text-white bg-green-500 hover:bg-green-600 rounded"}>
-                            <FontAwesomeIcon icon={faSignalStream} />
                         </a>
                     </div>
                 </div>
@@ -112,6 +108,16 @@ class Match extends Component<IProps> {
                                 )}
                             </div>
                         ))}
+                        {(data.matchSplitMapOne === 999 && data.matchCopyPasta) && (
+                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    Copy Pasta
+                                </div>
+                                <div>
+                                    <div className={"text-white text-center bg-gray-800 p-4 w-full"}>{data.matchCopyPasta}</div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     {(data.matchSplitMapOne && data.matchSplitMapOne !== 999) && (
                         <div className="w-full lg:w-6/12 px-2">

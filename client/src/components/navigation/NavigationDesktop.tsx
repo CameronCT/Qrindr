@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGamepadAlt, faHome, faInfoCircle} from "@fortawesome/pro-solid-svg-icons";
+import {faGamepad, faHome, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {faDiscord, faGithub} from "@fortawesome/free-brands-svg-icons";
-import {faDollarSign} from "@fortawesome/pro-duotone-svg-icons";
+import {faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 class NavigationDesktop extends Component {
@@ -20,7 +20,7 @@ class NavigationDesktop extends Component {
             name: 'Create',
             location: '/create',
             icon: {
-                fa: faGamepadAlt,
+                fa: faGamepad,
                 css: 'text-yellow-500',
             }
         },

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSpinner} from "@fortawesome/pro-duotone-svg-icons";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 interface IProps {
     currentName: string | boolean;

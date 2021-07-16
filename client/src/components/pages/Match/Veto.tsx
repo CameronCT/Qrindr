@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleNotch} from "@fortawesome/pro-duotone-svg-icons";
-import {faCheck, faTimes} from "@fortawesome/pro-solid-svg-icons";
+import {faCircleNotch} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 import Config from "../../../Config";
 
 interface IProps {
