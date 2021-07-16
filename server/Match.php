@@ -92,6 +92,26 @@ foreach($oldArray as $key => $value) {
 }
 $game['matchChampions']['available'] = $newArray;
 
+// Arrays for Config Copy Pasta
+$copyPastaQuake = [
+    0 => 'QuakeChampions_TimelimitDuel_BO3',
+    1 => 'QuakeChampions_TimelimitDuel_BO5',
+    2 => 'QuakeChampions_2V2TDM_BO3',
+    3 => 'QuakeChampions_2V2TDM_BO5',
+    17 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
+    18 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
+];
+
+$copyPastaEstoty = [
+    19 => 'QuakeChampions_TimelimitDuel_Estoty_BO1'
+];
+
+$copyPastaQuakeTDM = [
+    2 => 'QuakeChampions_2V2TDM_BO3',
+    3 => 'QuakeChampions_2V2TDM_BO5',
+    20 => 'QuakeChampions_2V2TDM_BO1'
+];
+
 // Copy Pasta
 if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) {
     $game['matchCopyPasta'] = "[" . $game['matchPlayerTwo'] . "/" . $game['matchPlayerOne'] . "] -";
@@ -101,24 +121,10 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
         $enum = "/";
         $MAPS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 
-        $copyPastaQuake = [
-            0 => 'QuakeChampions_TimelimitDuel_BO3',
-            1 => 'QuakeChampions_TimelimitDuel_BO5',
-            2 => 'QuakeChampions_2V2TDM_BO3',
-            3 => 'QuakeChampions_2V2TDM_BO5',
-            17 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
-            18 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
-        ];
-
-        $copyPastaEstoty = [
-            19 => 'QuakeChampions_TimelimitDuel_Estoty_BO1'
-        ];
-
-
+        // Copy Pasta with Champs
         if (array_key_exists($matchData['matchConfig'], $copyPastaQuake)) {
 
             if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
-
                 if ($MAPS[$key] == 'One')
                     @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][8]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][9]];
 
@@ -133,20 +139,20 @@ if (count($game['matchSteps']['list']) == count($game['matchSteps']['values'])) 
 
                 if ($MAPS[$key] == 'Five')
                     @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][20]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][21]];
-
             }
-
         }
 
         if (array_key_exists($matchData['matchConfig'], $copyPastaEstoty)) {
-
             if ($game['matchSplitMap' . $MAPS[$key]] != 999) {
-
                 if ($MAPS[$key] == 'One')
                     @$game['matchCopyPasta'] .= $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][10]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][9]];
             }
-
         }
+    }
+
+    // Copy Pasta with only Two Champs
+    if (array_key_exists($matchData['matchConfig'], $copyPastaQuakeTDM)) {
+        @$game['matchCopyPasta'] .= 'X: ' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][7]] . '/' . $game['matchChampions']['listAbbreviation'][$game['matchSteps']['values'][8]];
     }
 }
 
