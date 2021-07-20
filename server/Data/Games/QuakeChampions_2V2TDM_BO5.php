@@ -35,8 +35,8 @@ $game['matchSteps']                 = [
         0,
         1,
         0,
-        1,
-        0
+        0,
+        1
     ],
     'values' => []
 ];
@@ -47,20 +47,20 @@ $game['matchMaps'] = [
     'list' => [
         'Awoken',
         'Blood Covenant',
-        'Tempest Shrine',
+        'Exile',
         'Corrupted Keep',
         'Molten Falls',
         'Ruins of Sarnath',
-        'Vale of Pnath'
+        'Blood Run'
     ],
     'listAbbreviation' => [
         'Awoken',
         'BC/DM6',
-        'Tempest',
+        'Exile',
         'CK',
         'Molten',
         'Ruins',
-        'Vale'
+        'ZTN'
     ],
     'listImage' => [],
 ];
