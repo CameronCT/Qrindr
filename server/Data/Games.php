@@ -1,5 +1,10 @@
 <?php
 
+/* 
+    Last Config Id: 25 
+    Updated: 2022-01-14
+*/
+
 $games[] = [
     'configId'   => 0,
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S1 - Best of 3)',
@@ -12,6 +17,20 @@ $games[] = [
     'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S1 - Best of 5)',
     'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S1_BO5',
     'order'      => 3,
+];
+
+$games[] = [
+    'configId'   => 24,
+    'configName' => 'Quake Champions - TastyCups 2V2 TDM (Best of 1)',
+    'configFile' => 'QuakeChampions_TC2V2TDM_BO1',
+    'order'      => 4,
+];
+
+$games[] = [
+    'configId'   => 25,
+    'configName' => 'Quake Champions - TastyCups 2V2 TDM (Best of 3)',
+    'configFile' => 'QuakeChampions_TC2V2TDM_BO3',
+    'order'      => 4,
 ];
 
 $games[] = [
