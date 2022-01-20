@@ -17,22 +17,22 @@ $game['matchTimeout']               = 30;
 $game['matchSteps']                 = [
     'next' => 0,
     'list' => [
+          'champ_ban',
+          'champ_ban',
           'map_ban',
           'map_ban',
           'map_ban',
           'map_ban',
           'map_pick',
-          'champ_ban',
-          'champ_ban',
     ],
     'player' => [
+        1,
+        0,
         0,
         1,
         0,
         1,
-        0,
-        1,
-        0,
+        0
     ],
     'values' => []
 ];
