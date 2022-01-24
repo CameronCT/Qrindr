@@ -1,8 +1,8 @@
 <?php
 
-/* 
-    Last Config Id: 25 
-    Updated: 2022-01-14
+/*
+    Last Config Id: 26
+    Updated: 2022-01-24
 */
 
 $games[] = [
