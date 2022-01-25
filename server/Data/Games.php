@@ -1,8 +1,8 @@
 <?php
 
-/* 
-    Last Config Id: 25 
-    Updated: 2022-01-14
+/*
+    Last Config Id: 26
+    Updated: 2022-01-24
 */
 
 $games[] = [
@@ -31,6 +31,13 @@ $games[] = [
     'configName' => 'Quake Champions - TastyCups 2V2 TDM (Best of 3)',
     'configFile' => 'QuakeChampions_TC2V2TDM_BO3',
     'order'      => 4,
+];
+
+$games[] = [
+    'configId'   => 26,
+    'configName' => 'Quake Champions - Keen Con Timelimit Duel (Best of 3)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_KeenCon_BO3',
+    'order'      => 5,
 ];
 
 $games[] = [
