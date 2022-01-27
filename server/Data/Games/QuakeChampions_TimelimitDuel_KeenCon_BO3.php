@@ -6,9 +6,9 @@
  */
 
 $game['matchConfig']                = 'Quake Champions - Timelimit Duel (Keen Con - Best of 3)';
-$game['matchSplitMapOne']           = 6;
-$game['matchSplitMapTwo']           = 9;
-$game['matchSplitMapThree']         = 12;
+$game['matchSplitMapOne']           = 8;
+$game['matchSplitMapTwo']           = 11;
+$game['matchSplitMapThree']         = 14;
 $game['matchSplitMapFour']          = 999;
 $game['matchSplitMapFive']          = 999;
 $game['matchSplitMapSix']           = 999;
