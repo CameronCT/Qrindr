@@ -1,9 +1,37 @@
 <?php
 
 /*
-    Last Config Id: 26
+    Last Config Id: 28
     Updated: 2022-01-24
 */
+
+$games[] = [
+    'configId'   => 27,
+    'configName' => 'Quake Champions - Timelimit Duel (QPL S3:S1 - Best of 3)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S3S1_BO3',
+    'order'      => 0,
+];
+
+$games[] = [
+    'configId'   => 28,
+    'configName' => 'Quake Champions - Timelimit Duel (QPL S3:S1 - Best of 5)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S3S1_BO5',
+    'order'      => 0,
+];
+
+$games[] = [
+    'configId'   => 17,
+    'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 3)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
+    'order'      => 1,
+];
+
+$games[] = [
+    'configId'   => 18,
+    'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 5)',
+    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
+    'order'      => 1,
+];
 
 $games[] = [
     'configId'   => 0,
@@ -59,20 +87,6 @@ $games[] = [
     'configName' => 'Quake Champions - 2V2 TDM (Best of 5)',
     'configFile' => 'QuakeChampions_2V2TDM_BO5',
     'order'      => 5,
-];
-
-$games[] = [
-    'configId'   => 17,
-    'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 3)',
-    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
-    'order'      => 0,
-];
-
-$games[] = [
-    'configId'   => 18,
-    'configName' => 'Quake Champions - Timelimit Duel (QPL S2:S2 - Best of 5)',
-    'configFile' => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
-    'order'      => 1,
 ];
 
 $games[] = [
