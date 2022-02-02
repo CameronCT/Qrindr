@@ -69,10 +69,10 @@ $game['matchMaps'] = [
     ],
     'listAbbreviation' => [
         'Awoken',
-        'Exile',
+        'BC',
         'CK',
         'DE',
-        'Molten',
+        'IN',
         'Ruins',
         'Vale'
     ],
