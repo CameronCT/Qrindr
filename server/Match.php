@@ -100,6 +100,9 @@ $copyPastaQuake = [
     3 => 'QuakeChampions_2V2TDM_BO5',
     17 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO3',
     18 => 'QuakeChampions_TimelimitDuel_QPL_S2S2_BO5',
+    26 => 'QuakeChampions_TimelimitDuel_KeenCon_BO3',
+    27 => 'QuakeChampions_TimelimitDuel_QPL_S3S1_BO3',
+    28 => 'QuakeChampions_TimelimitDuel_QPL_S3S1_BO5',
 ];
 
 $copyPastaEstoty = [
