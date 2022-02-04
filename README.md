@@ -1,7 +1,7 @@
 # Qrindr
 
 <p align="center">
-  <img src="http://qrindr.com/static/img/logo_dark.png" alt="Qrindr"/>
+  <img src="https://qrindr.com/assets/favicon/android-chrome-192x192.png" alt="Qrindr"/>
 </p>
 
 <p align="center">
