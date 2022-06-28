@@ -37,6 +37,9 @@ body {
 .btn-icon {
   @apply px-4 py-3 rounded-lg font-semibold transition ease-in-out duration-300;
 }
+.btn-icon-small {
+  @apply px-2.5 py-1 rounded-lg font-semibold transition ease-in-out duration-300;
+}
 .btn-small {
   @apply px-2 py-1 rounded-lg font-semibold transition ease-in-out duration-300;
 }

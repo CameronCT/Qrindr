@@ -17,10 +17,10 @@
 ## Stack
 
 * Nginx
-* Maria
-* PHP7.4 (soon PHP8)
+* MariaDB
+* PHP7/PHP8
 
 ## Frameworks
 
-* Tailwind
-* React
+* Tailwind v3
+* React v18
