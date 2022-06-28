@@ -107,9 +107,12 @@ const Match = () => {
                             <FontAwesomeIcon icon={faExternalLinkAlt} />
                         </a>
                     )}
-                    <a href={`/stream/${hash}`} className={"btn-icon btn-blue"}>
-                        <FontAwesomeIcon icon={faTwitch} />
-                    </a>
+                    {data.matchSpec !== 0 && (
+                        <a href={`/stream/${hash}`} className={"btn-icon btn-blue"}>
+                            <FontAwesomeIcon icon={faTwitch} />
+                        </a>
+                    )}
+                    
                     <a href={`/match/${hash}`} className={"btn-icon btn-blue"}>
                         <FontAwesomeIcon icon={faEye} />
                     </a>
