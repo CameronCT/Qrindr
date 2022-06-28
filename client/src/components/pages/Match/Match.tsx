@@ -133,7 +133,7 @@ const Match = () => {
                                 Copy Pasta
                             </div>
                             <div>
-                                <div className={"text-white text-center alt p-4 w-full"}>{data.matchCopyPasta}</div>
+                                <div className={"text-white text-center content-alt p-4 w-full"}>{data.matchCopyPasta}</div>
                             </div>
                         </div>
                     )}

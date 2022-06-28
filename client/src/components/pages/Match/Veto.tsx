@@ -121,14 +121,14 @@ class Veto extends Component<IProps> {
                             </div>
                             <form method="post" onSubmit={this.handleSubmit}>
                                 {types[0] === 'champ' ? (
-                                    <select className={`w-full p-2 alt border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                    <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
                                         <option value="9999" selected>Select</option>
                                         {championsAvailable.map((value:number) => (
                                             <option value={value}>{champions[value]}</option>
                                         ))}
                                     </select>
                                 ) : (
-                                    <select className={`w-full p-2 alt border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                    <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
                                         <option value="9999" selected>Select</option>
                                         {mapsAvailable.map((value:number) => (
                                             <option value={value}>{maps[value]}</option>

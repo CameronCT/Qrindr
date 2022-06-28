@@ -10,7 +10,7 @@ import Create from "./components/pages/Create/Create";
 export const App = () => {
   return (
       <BrowserRouter>
-            <NavigationDesktop />
+            <NavigationDesktop /> 
             <div className={"w-10/12 mx-auto"}>
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface IProps {
     className: string;
@@ -6,7 +6,7 @@ interface IProps {
     type: string;
     placeholder: string;
     name: string;
-    onChange: any;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FormInput = (props: IProps) => {
