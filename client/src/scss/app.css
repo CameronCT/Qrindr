@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-900;
+  @apply bg-gray-900 text-white;
 }
 
 .animation-short {
@@ -19,7 +19,7 @@ body {
 }
 
 .form-control {
-  @apply block w-full p-2 text-gray-200 bg-gray-900;
+  @apply block w-full py-2 px-4 rounded text-gray-200 bg-gray-900;
 }
 
 .form-control:select:active {
@@ -34,65 +34,56 @@ body {
   @apply text-gray-300;
 }
 
-.bg-black-40 {
-  background: rgba(0, 0, 0, 0.40);
+.btn-icon {
+  @apply px-4 py-3 rounded-lg font-semibold transition ease-in-out duration-300;
 }
-
-.bg-black-20 {
-  background: rgba(0, 0, 0, 0.20);
-}
-
-.bg-black-15 {
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.bg-black-10 {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.hover-bg-black-35:hover {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.hover-bg-black-20:hover {
-  background: rgba(0, 0, 0, 0.20);
-}
-
-.hover-bg-black-15:hover {
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.hover-bg-black-10:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
 .btn-small {
-  @apply px-2 py-1 rounded-full font-semibold;
+  @apply px-2 py-1 rounded-lg font-semibold transition ease-in-out duration-300;
 }
-.btn-small-medium {
-  @apply px-4 py-2 rounded-full font-semibold;
+.btn-medium {
+  @apply px-4 py-2 rounded-lg font-semibold transition ease-in-out duration-300;
 }
-.btn-small-large {
-  @apply px-5 py-3 rounded-full font-semibold;
-}
-
-.btn-small-blue {
-  @apply bg-blue-600 text-blue-100;
-}
-.btn-small-blue:hover {
-  @apply bg-blue-700;
+.btn-large {
+  @apply px-5 py-3 rounded-lg font-semibold transition ease-in-out duration-300;
 }
 
-.btn-small-red {
-    @apply bg-red-600 text-red-100;
+.btn-blue {
+  @apply border-2 border-blue-600 text-blue-600;
 }
-.btn-small-red:hover {
-    @apply bg-red-700;
+.btn-blue:hover {
+  @apply bg-blue-600 text-white;
 }
 
-.btn-small-green {
-    @apply bg-green-600 text-green-100;
+.btn-red {
+    @apply border-2 border-red-600 text-red-600;
 }
-.btn-small-green:hover {
-    @apply bg-green-700;
+.btn-red:hover {
+    @apply bg-red-600 text-white;
+}
+
+.btn-green {
+    @apply border-2 border-green-600 text-green-600;
+}
+.btn-green:hover {
+    @apply bg-green-600 text-white;
+}
+
+.content-bg {
+  @apply bg-white bg-opacity-5 rounded-xl p-6;
+}
+
+.content-bg.no-padding { 
+  @apply p-0 !important;
+}
+
+.content-mini-bg {
+  @apply bg-white bg-opacity-5 rounded-xl py-3 px-6;
+}
+
+.content-bg.next {
+  @apply mb-6;
+}
+
+.content-bg .alt, .content-alt {
+  @apply bg-white bg-opacity-5;
 }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGamepad, faHome, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
+import {faHome, faPlusSquare, faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
 import {faDiscord, faGithub} from "@fortawesome/free-brands-svg-icons";
-import {faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 class NavigationDesktop extends Component {
@@ -20,7 +19,7 @@ class NavigationDesktop extends Component {
             name: 'Create',
             location: '/create',
             icon: {
-                fa: faGamepad,
+                fa: faPlusSquare,
                 css: 'text-yellow-500',
             }
         },
@@ -28,7 +27,7 @@ class NavigationDesktop extends Component {
             name: 'About',
             location: '/about',
             icon: {
-                fa: faInfoCircle,
+                fa: faQuestionCircle,
                 css: 'text-blue-300',
             }
         }
@@ -50,14 +49,6 @@ class NavigationDesktop extends Component {
             icon: {
                 fa: faGithub,
                 css: 'text-gray-200',
-            }
-        },
-        {
-            name: 'Donate',
-            location: 'https://streamlabs.com/gnikgg',
-            icon: {
-                fa: faDollarSign,
-                css: 'text-orange-400',
             }
         },
     ];
@@ -85,24 +76,18 @@ class NavigationDesktop extends Component {
                     </div>
                 </div>
                 <div className={"z-50 fixed bottom-0 w-full lg:hidden"}>
-                    <div className="flex flex-wrap bg-gray-900 border-t border-gray-800">
+                    <div className="bg-black grid grid-cols-5">
                         {this.navOptions.map((row, key:number) => (
-                            <Link key={key} to={row.location} className="animation-short w-1/6 py-2 text-xs uppercase hover:bg-black hover:bg-opacity-25">
+                            <Link key={key} to={row.location} className="hover:text-opacity-70 transition ease-in-out duration-300 py-3">
                                 <div className={"text-center"}>
-                                    <FontAwesomeIcon icon={row.icon.fa} className={`text-xl ${row.icon.css}`} />
-                                    <div className={"text-white font-semibold"}>
-                                        {row.name}
-                                    </div>
+                                    <FontAwesomeIcon icon={row.icon.fa} className={`text-xl hover:opacity-70`} />
                                 </div>
                             </Link>
                         ))}
                         {this.navExternal.map((row, key: number) => (
-                            <a key={key} href={row.location} className="animation-short w-1/6 py-2 text-xs uppercase hover:bg-black hover:bg-opacity-25">
+                            <a key={key} href={row.location} className="hover:text-opacity-70 transition ease-in-out duration-300 py-3">
                                 <div className={"text-center"}>
-                                    <FontAwesomeIcon icon={row.icon.fa} className={`text-xl ${row.icon.css}`} />
-                                    <div className={"text-white font-semibold"}>
-                                        {row.name}
-                                    </div>
+                                    <FontAwesomeIcon icon={row.icon.fa} className={`text-xl hover:opacity-70`} />
                                 </div>
                             </a>
                         ))}

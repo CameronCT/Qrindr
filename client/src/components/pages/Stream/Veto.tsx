@@ -29,7 +29,7 @@ class Veto extends Component<IProps> {
 
     render() {
 
-        const { name, value, next, maps, champions, mapsImage, championsImage } = this.props;
+        const { name, value, next, mapsImage, championsImage } = this.props;
         let { type } = this.props;
         let css;
         if (!type)
@@ -48,22 +48,22 @@ class Veto extends Component<IProps> {
 
         switch (types[1]) {
             case 'ban':
-                css = 'red';
+                css = 'border-red-800';
                 break;
             case 'pick':
-                css = 'green';
+                css = 'border-green-800';
                 break;
             default:
-                css = 'orange';
+                css = 'border-orange-800';
         }
 
         return !next ? (
             <div>
-                <div className={`border-2 border-${css}-800 w-full ${types[0] === 'map' ? 'h-36' : 'h-32'} relative text-white shadow-md mb-4 rounded-xl`} style={{
+                <div className={`border-2 ${css} w-full ${types[0] === 'map' ? 'h-36' : 'h-32'} relative text-white shadow-md mb-4 rounded-lg`} style={{
                     backgroundImage: `url('${types[0] === 'map' ? mapsImage[value] : championsImage[value]}')`,
                     backgroundSize: 'cover'
                 }}>
-                    <div className={"absolute bg-black bg-opacity-75 rounded bottom-4 left-4"}>
+                    <div className={"absolute bg-black bg-opacity-90 rounded px-2 py-0.5 bottom-2 left-2 text-sm"}>
                         {name}
                     </div>
                 </div>
@@ -71,7 +71,7 @@ class Veto extends Component<IProps> {
         ) : (
             <div>
                 <div className={`relative text-white shadow-md mb-4 rounded-xl`}>
-                    <div className={`border-2 border-yellow-800 bg-gray-800 w-full h-auto text-center py-10 rounded-xl`}>
+                    <div className={`border-2 border-yellow-800 alt w-full h-auto text-center py-10 rounded-xl`}>
                         <FontAwesomeIcon icon={faSpinner} className="mb-4" spin />
                     </div>
                     <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>

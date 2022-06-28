@@ -93,24 +93,24 @@ class Veto extends Component<IProps> {
 
         switch (types[1]) {
             case 'ban':
-                css = 'red';
+                css = 'border-red-800';
                 icon = { icon: faTimes, color: 'text-red-500' };
                 break;
             case 'pick':
-                css = 'green';
+                css = 'border-green-800';
                 icon = { icon: faCheck, color: 'text-green-500' };
                 break;
             default:
-                css = 'orange';
+                css = 'border-orange-800';
         }
 
         return !next ? (
-            <div className={`border-2 border-opacity-75 border-${css}-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
+            <div className={`border-2 border-opacity-75 ${css} content-alt p-3 text-white shadow-md rounded-lg mb-4`}>
                 <FontAwesomeIcon icon={icon.icon} className={icon.color} /> <span className="font-semibold">{name}</span> has {types[1] === 'ban' ? 'banned' : 'picked'} <span className="font-semibold">{types[0] === 'map' ? maps[value] : champions[value]}</span>.
             </div>
         ) : (
             <div>
-                <div className={`border-2 border-yellow-800 bg-gray-800 p-3 text-white shadow-md mb-4`}>
+                <div className={`border-2 border-yellow-800 content-alt p-3 text-white shadow-md rounded-lg mb-4`}>
                     <FontAwesomeIcon icon={faCircleNotch} spin /> Waiting on <span className="font-semibold">{name}</span> to {types[1]} a {types[0]}.
                 </div>
                 <div>
@@ -121,14 +121,14 @@ class Veto extends Component<IProps> {
                             </div>
                             <form method="post" onSubmit={this.handleSubmit}>
                                 {types[0] === 'champ' ? (
-                                    <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                    <select className={`w-full p-2 alt border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
                                         <option value="9999" selected>Select</option>
                                         {championsAvailable.map((value:number) => (
                                             <option value={value}>{champions[value]}</option>
                                         ))}
                                     </select>
                                 ) : (
-                                    <select className={`w-full p-2 bg-gray-800 border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
+                                    <select className={`w-full p-2 alt border-2 border-gray-800 text-gray-300 placeholder:text-gray-400 focus:border-${css}-800 focus:outline-none`} onChange={(e: any) => this.handleChange("stepValue", e)} required>
                                         <option value="9999" selected>Select</option>
                                         {mapsAvailable.map((value:number) => (
                                             <option value={value}>{maps[value]}</option>

@@ -6,6 +6,7 @@ import {faExternalLinkAlt, faEye} from "@fortawesome/free-solid-svg-icons";
 import Config from "../../../Config";
 import LoadingSpinner from "../../navigation/LoadingSpinner";
 import { useParams } from 'react-router';
+import { faTwitch } from '@fortawesome/free-brands-svg-icons';
 
 const Match = () => {
 
@@ -23,16 +24,15 @@ const Match = () => {
         fetch(`${Config.apiUrl}/Match.php?hash=${hash}`)
             .then(response => response.json())
             .then(response => {
-                if (data && data.matchSteps && data.matchSteps.values) {
-                    if (data.matchSteps.values.length !== response.matchSteps.values.length)
-                        playNotificationSound();
-                }
+                if (data.matchSteps?.values?.length !== response.matchSteps?.values?.length)
+                    playNotificationSound();
+
                 setData({ ...response });
                 setIsLoaded(true);
             });
 
         setCurrentPlayer(player || '');
-    }, []);
+    }, [ data, hash, player ]);
 
     useEffect(() => {
         return () => {
@@ -51,7 +51,10 @@ const Match = () => {
         }
 
         refreshInterval.current = setInterval(() => getMatch(), 5000);
-    }, [ hash, getMatch ])
+        if (!data?.matchHash)
+            getMatch();
+
+    }, [ hash, data, getMatch ])
 
 
     let matchSecret = "";
@@ -60,27 +63,30 @@ const Match = () => {
 
     return isLoaded ? (
         <div className={`${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'py-6' : 'w-2/3 mx-auto py-6'}`}>
-            <div className={"flex flex-wrap border-b border-gray-700 mb-4 pb-4 mx-2"}>
-                <div className={"w-full md:w-3/4 text-xl my-auto text-white"}>
+            <div className={"grid grid-cols-1 md:grid-cols-2 mb-6"}>
+                <div className="text-2xl">
                     <span className={"font-semibold"}>{data.matchPlayerOne}</span> <span className={"text-gray-300"}>vs</span> <span className={"font-semibold"}>{data.matchPlayerTwo}</span>
-                    <div className={"text-xs text-gray-500"}>
+                    <div className={"text-xs text-gray-500 mt-1"}>
                         {data.matchConfig} <span className={"px-2"}>|</span>
                         {data.matchCointoss === '0' ? 'Random' : 'Manual'} Cointoss
                     </div>
                 </div>
-                <div className={"w-full md:w-1/4 text-center md:text-right my-auto"}>
+                <div className={"flex justify-center md:justify-end space-x-2"}>
                     {matchSecret !== "" && (
-                        <a href={`/match/${hash}/${matchSecret}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded"}>
+                        <a href={`/match/${hash}/${matchSecret}/${data.matchPlayerOne === currentPlayer ? data.matchPlayerTwo : data.matchPlayerOne}`} className={"btn-icon btn-blue"}>
                             <FontAwesomeIcon icon={faExternalLinkAlt} />
                         </a>
                     )}
-                    <a href={`/match/${hash}`} className={"ml-2 px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded"}>
+                    <a href={`/stream/${hash}`} className={"btn-icon btn-blue"}>
+                        <FontAwesomeIcon icon={faTwitch} />
+                    </a>
+                    <a href={`/match/${hash}`} className={"btn-icon btn-blue"}>
                         <FontAwesomeIcon icon={faEye} />
                     </a>
                 </div>
             </div>
-            <div className={"flex flex-wrap"}>
-                <div className={`w-full ${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'lg:w-3/12' : 'lg:w-2/3'} px-2`}>
+            <div className={"grid grid-cols-4 gap-4"}>
+                <div className={`col-span-full ${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'lg:col-span-1' : 'lg:col-span-2'}`}>
                     {data.matchSteps.list.map((value:any, key:number) => (
                         <div key={key}>
                             {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
@@ -89,20 +95,20 @@ const Match = () => {
                         </div>
                     ))}
                     {(data.matchSplitMapOne === 999 && data.matchCopyPasta) && (
-                        <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                        <div className={"content-bg next"}>
                             <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                 Copy Pasta
                             </div>
                             <div>
-                                <div className={"text-white text-center bg-gray-800 p-4 w-full"}>{data.matchCopyPasta}</div>
+                                <div className={"text-white text-center alt p-4 w-full"}>{data.matchCopyPasta}</div>
                             </div>
                         </div>
                     )}
                 </div>
                 {(data.matchSplitMapOne && data.matchSplitMapOne !== 999) && (
-                    <div className="w-full lg:w-6/12 px-2">
+                    <div className="col-span-full lg:col-span-2">
                         {data.matchSteps.next > data.matchSplitMapOne && (
-                            <div className={"p-6 shadow mb-3 bg-gray-800 bg-opacity-75"}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[0]]}
                                 </div>
@@ -120,7 +126,7 @@ const Match = () => {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapTwo && (
-                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[1]]}
                                 </div>
@@ -138,7 +144,7 @@ const Match = () => {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapThree && (
-                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[2]]}
                                 </div>
@@ -156,7 +162,7 @@ const Match = () => {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapFour && (
-                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[3]]}
                                 </div>
@@ -174,7 +180,7 @@ const Match = () => {
                             </div>
                         )}
                         {data.matchSteps.next > data.matchSplitMapFive && (
-                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     {data.matchMaps.list[data.matchMaps.picked[4]]}
                                 </div>
@@ -191,19 +197,19 @@ const Match = () => {
                             </div>
                         )}
                         {data.matchCopyPasta && (
-                            <div className={"p-6 shadow mb-3"} style={{ backgroundColor: 'rgba(45, 55, 72, 0.5)' }}>
+                            <div className={"content-bg next"}>
                                 <div className={"text-center text-white text-lg font-semibold mb-4"}>
                                     Copy Pasta
                                 </div>
                                 <div>
-                                    <div className={"text-white text-center bg-gray-800 p-4 w-full"}>{data.matchCopyPasta}</div>
+                                    <div className={"text-white text-center alt p-4 w-full"}>{data.matchCopyPasta}</div>
                                 </div>
                             </div>
                         )}
                     </div>
                 )}
-                <div className={`w-full ${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'lg:w-3/12' : 'lg:w-1/3'} px-2`}>
-                    <div className={"bg-gray-800 shadow p-6 mb-4"}>
+                <div className={`col-span-full ${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'lg:col-span-1' : 'lg:col-span-2'} px-2`}>
+                    <div className={"content-bg next"}>
                         <div>
                             <div className={"text-lg font-semibold text-white"}>
                                 Maps
@@ -229,7 +235,7 @@ const Match = () => {
                     </div>
 
                     {data.matchChampions.list[0] && (
-                        <div className={"bg-gray-800 shadow p-6 mb-4"}>
+                        <div className={"content-bg next"}>
                             <div>
                                 <div className={"text-lg font-semibold text-white"}>
                                     Champions

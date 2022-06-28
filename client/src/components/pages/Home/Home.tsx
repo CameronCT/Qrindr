@@ -85,7 +85,7 @@ class Home extends Component {
                         {this.supported.map((item) => (
                             <div key={item.key} className={"w-1/3 px-2"}>
                                 <a key={item.key} href={item.url}>
-                                    <img src={`assets/${item.key}.png`} alt={item.key} className={"w-full h-auto rounded shadow-md border border-transparent animation-long hover:border-gray-800 hover:border-opacity-75"} />
+                                    <img src={`assets/${item.key}.png`} alt={item.key} className={"w-full h-auto rounded shadow-md border border-transparent transition ease-in-out duration-300 hover:opacity-70"} />
                                 </a>
                             </div>
                         ))}
@@ -97,11 +97,16 @@ class Home extends Component {
                     <div className="flex flex-wrap pt-4 md:pt-0">
                         {matches.map((row: any, key: number) => (
                             <Link key={key} to={`/match/${row.matchHash}`} className="w-full lg:w-1/2 xl:w-1/3 pb-2 md:p-2">
-                                <div className="animation-long p-3 text-white text-base border-l-2 bg-black-15 hover:bg-black hover:bg-opacity-25 border-orange-600 text-center">
+                                <div className="content-mini-bg hover:opacity-70 transition ease-in-out duration-300">
                                     <div>
                                         <span className="font-semibold">{row.matchPlayerOne}</span> vs <span className="font-semibold">{row.matchPlayerTwo}</span>
                                     </div>
-                                    <div className="text-gray-500 text-xs">{row.matchConfig}</div>
+                                    <div className="text-gray-500 text-xs">
+                                        {row.matchConfig.split(' (')[0]}
+                                        <div>
+                                            {'('}{row.matchConfig.split(' (')[1]}
+                                        </div>
+                                    </div>
                                 </div>
                             </Link>
                         ))}

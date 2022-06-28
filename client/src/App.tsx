@@ -18,7 +18,7 @@ export const App = () => {
                     <Route path="/create" element={<Create />} />
                     <Route path="/match/:hash/:secret/:player" element={<Match />} />
                     <Route path="/match/:hash" element={<Match />} />
-                    {/* <Route path="/stream/:hash" element={<Stream />} /> */}
+                    <Route path="/stream/:hash" element={<Stream />} />
                 </Routes>
             </div>
             <div className={"text-center p-3 uppercase text-sm text-white font-semibold my-6"}>

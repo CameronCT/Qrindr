@@ -4,8 +4,8 @@ class About extends Component {
 
     render() {
         return (
-            <div className={"max-w-screen-md mx-auto"}>
-                <div className={"my-10 bg-black bg-opacity-25 p-8"}>
+            <div className={"max-w-screen-md mx-auto mt-16"}>
+                <div className={"content-bg next"}>
                     <div className={"text-xl text-white font-semibold border-b border-gray-800 pb-3 mb-3"}>About Qrindr</div>
                     <div className={"text-gray-100 text-sm tracking-wide"}>
                         When Quake Pro League was announced in Summer 2019, players have been emulating the formats used by professional players on their streams. For many, this is still being manually done and oftentimes leads to confusion and forgetfulness.
@@ -14,7 +14,7 @@ class About extends Component {
                     </div>
                 </div>
 
-                <div className={"my-10 bg-black bg-opacity-25 p-8"}>
+                <div className={"content-bg next"}>
                     <div className={"text-xl text-white font-semibold border-b border-gray-800 pb-3 mb-3"}>Frequently Asked Questions</div>
                     <div className={"text-gray-100 text-sm tracking-wide"}>
                         <div className={"mt-3"}>
@@ -40,7 +40,7 @@ class About extends Component {
                     </div>
                 </div>
 
-                <div className={"my-10 bg-black bg-opacity-25 p-8"}>
+                <div className={"content-bg next"}>
                     <div className={"text-xl text-white font-semibold border-b border-gray-800 pb-3 mb-3"}>Other credits</div>
                     <div className={"text-gray-100 text-sm tracking-wide"}>
                         I want to give a big thanks to <a className="font-semibold text-gray-400" href={"https://xjon.me"}>Jon Lachney</a> for helping with the bleep and boopity sounds for Qrindr!
