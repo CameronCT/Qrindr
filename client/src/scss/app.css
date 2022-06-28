@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   @apply bg-gray-900;
@@ -66,36 +66,33 @@ body {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.btn {
+.btn-small {
+  @apply px-2 py-1 rounded-full font-semibold;
+}
+.btn-small-medium {
+  @apply px-4 py-2 rounded-full font-semibold;
+}
+.btn-small-large {
+  @apply px-5 py-3 rounded-full font-semibold;
+}
 
-  &-small {
-    @apply px-2 py-1 rounded-full font-semibold;
-  }
-  &-medium {
-    @apply px-4 py-2 rounded-full font-semibold;
-  }
-  &-large {
-    @apply px-5 py-3 rounded-full font-semibold;
-  }
+.btn-small-blue {
+  @apply bg-blue-600 text-blue-100;
+}
+.btn-small-blue:hover {
+  @apply bg-blue-700;
+}
 
-  &-blue {
-    @apply bg-blue-600 text-blue-100;
-  }
-  &-blue:hover {
-    @apply bg-blue-700;
-  }
-
-  &-red {
+.btn-small-red {
     @apply bg-red-600 text-red-100;
-  }
-  &-red:hover {
+}
+.btn-small-red:hover {
     @apply bg-red-700;
-  }
+}
 
-  &-green {
+.btn-small-green {
     @apply bg-green-600 text-green-100;
-  }
-  &-green:hover {
+}
+.btn-small-green:hover {
     @apply bg-green-700;
-  }
 }

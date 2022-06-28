@@ -60,7 +60,7 @@ class Veto extends Component<IProps> {
         return !next ? (
             <div>
                 <div className={`border-2 border-${css}-800 w-full ${types[0] === 'map' ? 'h-36' : 'h-32'} relative text-white shadow-md mb-4 rounded-xl`} style={{
-                    backgroundImage: `url('${mapsImage[value]}')`,
+                    backgroundImage: `url('${types[0] === 'map' ? mapsImage[value] : championsImage[value]}')`,
                     backgroundSize: 'cover'
                 }}>
                     <div className={"absolute bg-black bg-opacity-75 rounded bottom-4 left-4"}>
