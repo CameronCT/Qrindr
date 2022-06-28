@@ -79,10 +79,10 @@ $game['matchMaps'] = [
     ],
     'listImage' => [
         '/qc/awoken.jpg',
-        '/qc/exile.jpg',
-        '/qc/blood_run.jpg',
+        '/qc/blood_covenant.jpg',
         '/qc/corrupted_keep.jpg',
-        '/qc/the_molten_falls.jpg',
+        '/qc/deep_embrace.jpg',
+        '/qc/insomnia.jpg',
         '/qc/ruins_of_sarnath.jpg',
         '/qc/vale_of_pnath.jpg'
     ]

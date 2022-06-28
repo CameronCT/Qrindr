@@ -92,11 +92,11 @@ $game['matchMaps'] = [
     'listImage' => [
         '/qc/awoken.jpg',
         '/qc/blood_covenant.jpg',
-        '/qc/blood_run.jpg',
         '/qc/corrupted_keep.jpg',
+        '/qc/deep_embrace.jpg',
         '/qc/the_molten_falls.jpg',
         '/qc/ruins_of_sarnath.jpg',
-        '/qc/vale_of_pnath.jpg'
+        '/qc/tower_of_koth.jpg'
     ]
 ];
 $game['matchChampions'] = [
