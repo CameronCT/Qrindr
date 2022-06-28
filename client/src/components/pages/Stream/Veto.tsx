@@ -59,28 +59,19 @@ class Veto extends Component<IProps> {
 
         return !next ? (
             <div>
-                {types[0] === 'map'
-                    ? (
-                        <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={mapsImage[value]} alt={maps[value]} />
-                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
-                                {name}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={championsImage[value]} alt={champions[value]} />
-                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
-                                {name}
-                            </div>
-                        </div>
-                    )
-                }
+                <div className={`border-2 border-${css}-800 w-full ${types[0] === 'map' ? 'h-36' : 'h-32'} relative text-white shadow-md mb-4 rounded-xl`} style={{
+                    backgroundImage: `url('${mapsImage[value]}')`,
+                    backgroundSize: 'cover'
+                }}>
+                    <div className={"absolute bg-black bg-opacity-75 rounded bottom-4 left-4"}>
+                        {name}
+                    </div>
+                </div>
             </div>
         ) : (
             <div>
-                <div className={`relative text-white shadow-md mb-4`}>
-                    <div className={`border-2 border-yellow-800 bg-gray-800 w-full h-auto text-center py-10`}>
+                <div className={`relative text-white shadow-md mb-4 rounded-xl`}>
+                    <div className={`border-2 border-yellow-800 bg-gray-800 w-full h-auto text-center py-10 rounded-xl`}>
                         <FontAwesomeIcon icon={faSpinner} className="mb-4" spin />
                     </div>
                     <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>

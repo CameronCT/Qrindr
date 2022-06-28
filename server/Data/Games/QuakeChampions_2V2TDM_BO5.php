@@ -6,6 +6,7 @@
  */
 
 $game['matchConfig']                = 'Quake Champions 2V2 TDM (Best of 5)';
+$game['matchSpec']                  = 1;
 $game['matchSplitMapOne']           = 999;
 $game['matchSplitMapTwo']           = 999;
 $game['matchSplitMapThree']         = 999;
@@ -62,12 +63,71 @@ $game['matchMaps'] = [
         'Ruins',
         'ZTN'
     ],
-    'listImage' => [],
+    'listImage' => [
+        '/qc/awoken.jpg',
+        '/qc/blood_covenant.jpg',
+        '/qc/exile.jpg',
+        '/qc/corrupted_keep.jpg',
+        '/qc/the_molten_falls.jpg',
+        '/qc/ruins_of_sarnath.jpg',
+        '/qc/blood_run.jpg'
+    ],
 ];
 $game['matchChampions'] = [
-    'available' => [],
+    'available' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     'taken' => [],
-    'list' => [],
-    'listAbbreviation' => [],
-    'listImage' => [],
+    'list' => [
+        'Nyx',
+        'Anarki',
+        'Slash',
+        'Visor',
+        'Ranger',
+        'Galena',
+        'B.J. Blazkowicz',
+        'Doom Slayer',
+        'Strogg & Peeker',
+        'Eisen',
+        'Scalebearer',
+        'Clutch',
+        'Sorlag',
+        'Keel',
+        'Athena',
+        'Deathknight',
+    ],
+    'listAbbreviation' => [
+        'Nyx',
+        'Anarki',
+        'Slash',
+        'Visor',
+        'Ranger',
+        'Galena',
+        'BJ',
+        'Doom',
+        'Strogg',
+        'Eisen',
+        'Scalebearer',
+        'Clutch',
+        'Sorlag',
+        'Keel',
+        'Athena',
+        'DK'
+    ],
+    'listImage' => [
+        '/qc/nyx.png',
+        '/qc/anarki.png',
+        '/qc/slash.png',
+        '/qc/visor.png',
+        '/qc/ranger.png',
+        '/qc/galena.png',
+        '/qc/bj.png',
+        '/qc/doom.png',
+        '/qc/strogg.png',
+        '/qc/eisen.png',
+        '/qc/scalebearer.png',
+        '/qc/clutch.png',
+        '/qc/sorlag.png',
+        '/qc/keel.png',
+        '/qc/athena.png',
+        '/qc/deathknight.png',
+    ]
 ];

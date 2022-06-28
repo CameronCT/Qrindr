@@ -6,6 +6,7 @@
  */
 
 $game['matchConfig']                = 'Quake Champions - Timelimit Duel (Keen Con - Best of 3)';
+$game['matchSpec']                  = 1;
 $game['matchSplitMapOne']           = 8;
 $game['matchSplitMapTwo']           = 11;
 $game['matchSplitMapThree']         = 14;
@@ -85,15 +86,15 @@ $game['matchMaps'] = [
         'ztn'
     ],
     'listImage' => [
-        'https://stats.quake.com/maps/awoken.jpg',
-        'https://stats.quake.com/maps/exile.jpg',
-        'https://stats.quake.com/maps/blood_run.jpg',
-        'https://stats.quake.com/maps/corrupted_keep.jpg',
-        'https://stats.quake.com/maps/the_molten_falls.jpg',
-        'https://stats.quake.com/maps/ruins_of_sarnath.jpg',
-        'https://stats.quake.com/maps/vale_of_pnath.jpg',
-        'https://stats.quake.com/maps/blood_covenant.jpg',
-        'https://stats.quake.com/maps/blood_run.jpg'
+        '/qc/awoken.jpg',
+        '/qc/exile.jpg',
+        '/qc/blood_run.jpg',
+        '/qc/corrupted_keep.jpg',
+        '/qc/the_molten_falls.jpg',
+        '/qc/ruins_of_sarnath.jpg',
+        '/qc/vale_of_pnath.jpg',
+        '/qc/blood_covenant.jpg',
+        '/qc/blood_run.jpg'
     ]
 ];
 $game['matchChampions'] = [
@@ -136,21 +137,21 @@ $game['matchChampions'] = [
         'DK'
     ],
     'listImage' => [
-        'https://stats.quake.com/champions/nyx.png',
-        'https://stats.quake.com/champions/anarki.png',
-        'https://stats.quake.com/champions/slash.png',
-        'https://stats.quake.com/champions/visor.png',
-        'https://stats.quake.com/champions/ranger.png',
-        'https://stats.quake.com/champions/galena.png',
-        'https://stats.quake.com/champions/bj.png',
-        'https://stats.quake.com/champions/doom.png',
-        'https://stats.quake.com/champions/strogg.png',
-        'https://stats.quake.com/champions/eisen.png',
-        'https://stats.quake.com/champions/scalebearer.png',
-        'https://stats.quake.com/champions/clutch.png',
-        'https://stats.quake.com/champions/sorlag.png',
-        'https://stats.quake.com/champions/keel.png',
-        'https://stats.quake.com/champions/athena.png',
-        'https://stats.quake.com/champions/deathknight.png',
+        '/qc/nyx.png',
+        '/qc/anarki.png',
+        '/qc/slash.png',
+        '/qc/visor.png',
+        '/qc/ranger.png',
+        '/qc/galena.png',
+        '/qc/bj.png',
+        '/qc/doom.png',
+        '/qc/strogg.png',
+        '/qc/eisen.png',
+        '/qc/scalebearer.png',
+        '/qc/clutch.png',
+        '/qc/sorlag.png',
+        '/qc/keel.png',
+        '/qc/athena.png',
+        '/qc/deathknight.png',
     ]
 ];

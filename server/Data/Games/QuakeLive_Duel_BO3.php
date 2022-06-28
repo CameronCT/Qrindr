@@ -50,7 +50,13 @@ $game['matchMaps'] = [
         'Sinister',
         'Cure',
     ],
-    'listImage' => [],
+    'listImage' => [
+        '/ql/toxicity.jpg',
+        '/ql/bloodrun.jpg',
+        '/ql/furiousheights.jpg',
+        '/ql/sinister.jpg',
+        '/ql/cure.jpg'
+    ],
 ];
 $game['matchChampions'] = [
     'available' => [],

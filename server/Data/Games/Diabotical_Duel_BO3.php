@@ -6,6 +6,7 @@
  */
 
 $game['matchConfig']                = 'Diabotical Esports Duel (Best of 3)';
+$game['matchSpec']                  = 0;
 $game['matchSplitMapOne']           = 999;
 $game['matchSplitMapTwo']           = 999;
 $game['matchSplitMapThree']         = 999;

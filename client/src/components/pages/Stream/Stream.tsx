@@ -100,9 +100,9 @@ class Stream extends Component<IProps> {
                     </div>
                 </div>
                 <div>
-                    <div className={`flex flex-wrap px-3`}>
+                    <div className={`flex flex-wrap`}>
                         {data.matchSteps.list.map((value:any, key:number) => (
-                            <div className="w-56 px-2" key={key}>
+                            <div className="w-52 px-2" key={key}>
                                 {key <= data.matchSplitMapOne && key <= (data.matchSteps.next) && (
                                     <Veto secret={matchSecret} hash={hash} currentName={currentPlayer} name={data.matchSteps.player[key] === 1 ? data.matchPlayerTwo : data.matchPlayerOne} type={value} value={data.matchSteps.values[key]} maps={data.matchMaps.list} mapsImage={data.matchMaps.listImage} mapsAvailable={data.matchMaps.available} champions={data.matchChampions.list} championsImage={data.matchChampions.listImage} championsAvailable={data.matchChampions.available} next={key >= data.matchSteps.next} getMatch={this.getMatch} />
                                 )}

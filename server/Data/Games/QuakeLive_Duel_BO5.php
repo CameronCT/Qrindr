@@ -58,7 +58,15 @@ $game['matchMaps'] = [
         'Aerowalk',
         'Hektik',
     ],
-    'listImage' => [],
+    'listImage' => [
+        '/ql/toxicity.jpg',
+        '/ql/bloodrun.jpg',
+        '/ql/furiousheights.jpg',
+        '/ql/sinister.jpg',
+        '/ql/cure.jpg',
+        '/ql/aerowalk.jpg',
+        '/ql/hektik.jpg',
+    ],
 ];
 $game['matchChampions'] = [
     'available' => [],
