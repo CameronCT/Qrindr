@@ -29,7 +29,7 @@ class Veto extends Component<IProps> {
 
     render() {
 
-        const { name, value, next, maps, champions, mapsImage, championsImage } = this.props;
+        const { name, value, next, maps, mapsImage, championsImage } = this.props;
         let { type } = this.props;
         let css;
         if (!type)
@@ -48,43 +48,52 @@ class Veto extends Component<IProps> {
 
         switch (types[1]) {
             case 'ban':
-                css = 'red';
+                css = 'border-red-800';
                 break;
             case 'pick':
-                css = 'green';
+                css = 'border-green-800';
                 break;
             default:
-                css = 'orange';
+                css = 'border-orange-800';
         }
 
         return !next ? (
             <div>
-                {types[0] === 'map'
-                    ? (
-                        <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={mapsImage[value]} alt={maps[value]} />
-                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
-                                {name}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className={`relative text-white shadow-md mb-4`}>
-                            <img className={`border-2 border-${css}-800 w-full h-auto`} src={championsImage[value]} alt={champions[value]} />
-                            <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
-                                {name}
-                            </div>
-                        </div>
-                    )
-                }
+                <div className={`border-4 ${css} w-full ${types[0] === 'map' ? 'h-20' : 'h-24'} relative text-white shadow-md rounded-lg`} style={{
+                    backgroundImage: `url('${types[0] === 'map' ? mapsImage[value] : championsImage[value]}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundColor: '#555',
+                }}>
+                    <div className={"absolute bg-black bg-opacity-90 rounded px-2 py-0.5 bottom-2 left-2 text-sm"}>
+                        <span className="font-semibold">{name}</span>
+                        {types[0] === 'map' && (
+                            <span>
+                                {types[1] === 'ban' ? ' banned ' : ' picked '}
+                                <span className="font-semibold">{maps[value]}</span>
+                            </span> 
+                        )}
+                    </div>
+                </div>
             </div>
         ) : (
             <div>
-                <div className={`relative text-white shadow-md mb-4`}>
-                    <div className={`border-2 border-yellow-800 bg-gray-800 w-full h-auto text-center py-10`}>
-                        <FontAwesomeIcon icon={faSpinner} className="mb-4" spin />
-                    </div>
-                    <div className={"absolute text-white bg-black bg-opacity-75 p-px text-shadow text-center bottom-0 w-full text-base"}>
-                        {name}
+                <div className={`border-4 ${css} w-full ${types[0] === 'map' ? 'h-20' : 'h-24'} relative text-white shadow-md rounded-lg bg-white bg-opacity-10`}>
+                    <div className={"absolute bg-black bg-opacity-90 rounded px-2 py-0.5 bottom-2 left-2 text-sm"}>
+                        {types[0] === 'map' ? (
+                            <span>
+                                <FontAwesomeIcon icon={faSpinner} className="mr-2" spin />
+                                Waiting on <span className="font-semibold">{name}</span>
+                                {types[1] === 'ban' ? ' ban ' : ' pick '} a map
+                            </span> 
+                        ) : (
+                            <div>
+                                <FontAwesomeIcon icon={faSpinner} className="absolute -top-9 -right-7 text-3xl" spin />
+                                <span>
+                                    {name}
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
-export default {
-    apiUrl:
-        process.env.NODE_ENV === 'production'
-            ? 'https://api.qrindr.com'
-            : ''
+const Config = {
+    apiUrl: 'https://api.qrindr.com'
 }
+
+export default Config;

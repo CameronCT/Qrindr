@@ -6,6 +6,7 @@
  */
 
 $game['matchConfig']                = 'CSGO - Active Pool (Best of 1)';
+$game['matchSpec']                  = 0;
 $game['matchSplitMapOne']           = 999;
 $game['matchSplitMapTwo']           = 999;
 $game['matchSplitMapThree']         = 999;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface IProps {
     className: string;
@@ -6,20 +6,18 @@ interface IProps {
     type: string;
     placeholder: string;
     name: string;
-    onChange: any;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-class FormInput extends Component<IProps> {
-    render() {
-        const { type, placeholder, name, id, className, onChange } = this.props;
+const FormInput = (props: IProps) => {
+    const { type, placeholder, name, id, className, onChange } = props;
 
-        return (
-            <div className={className}>
-                <div className="font-semibold text-base text-gray-200">{id}</div>
-                <input type={type} autoComplete={"false"} spellCheck={false} placeholder={placeholder} name={name} className={"form-control"} onChange={onChange} required />
-            </div>
-        )
-    }
+    return (
+        <div className={className}>
+            <div className="font-semibold text-base text-gray-200">{id}</div>
+            <input type={type} autoComplete={"false"} spellCheck={false} placeholder={placeholder} name={name} className={"form-control"} onChange={onChange} required />
+        </div>
+    )
 }
 
 export default FormInput;

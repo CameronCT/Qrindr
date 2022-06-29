@@ -6,6 +6,7 @@
  */
 
 $game['matchConfig']                = 'Quake Live CTF (Best of 5)';
+$game['matchSpec']                  = 0;
 $game['matchSplitMapOne']           = 999;
 $game['matchSplitMapTwo']           = 999;
 $game['matchSplitMapThree']         = 999;
