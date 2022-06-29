@@ -44,6 +44,13 @@ const About = () => {
                     I want to give a big thanks to <a className="font-semibold text-gray-400" href={"https://xjon.me"}>Jon Lachney</a> for helping with the bleep and boopity sounds for Qrindr!
                 </div>
             </div>
+
+            <div className={"content-bg next"}>
+                <div className={"text-xl text-white font-semibold border-b border-gray-800 pb-3 mb-3"}>Copyright</div>
+                <div className={"text-gray-100 text-sm tracking-wide"}>
+                    This repository contains assets that are property of id Software LLC, Zenimax Media and/or Bethesda Game Studios specifically titles from Quake Live and Quake Champions. While these are published on the repository, these are not my assets and all trademarks / copyrights belong to their respective owners.
+                </div>
+            </div>
         </div>
     );
 }
