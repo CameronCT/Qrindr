@@ -147,6 +147,17 @@ const Match = () => {
                         {data.matchSteps.next > data.matchSplitMapFive && renderSplit(4)}
                         {data.matchSteps.next > data.matchSplitMapSix && renderSplit(5)}
                         {data.matchSteps.next > data.matchSplitMapSeven && renderSplit(7)}
+
+                        {data.matchCopyPasta && (
+                            <div className={"content-bg next"}>
+                                <div className={"text-center text-white text-lg font-semibold mb-4"}>
+                                    Copy Pasta
+                                </div>
+                                <div>
+                                    <div className={"text-white text-center bg-gray-800 p-4 w-full"}>{data.matchCopyPasta}</div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
                 <div className={`col-span-full ${(data.matchSplitMapOne && data.matchSplitMapOne !== 999) ? 'lg:col-span-1' : 'lg:col-span-2'} px-2`}>

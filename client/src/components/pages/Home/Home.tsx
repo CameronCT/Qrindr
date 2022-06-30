@@ -14,8 +14,8 @@ interface GitHubState {
 const Home = () => {
 
     const [ GitHub, setGitHub ] = useState<GitHubState | null>(null);
-    const [ playerOne, setPlayerOne ] = useState<string>('');
-    const [ playerTwo, setPlayerTwo ] = useState<string>('');
+    // const [ playerOne, setPlayerOne ] = useState<string>('');
+    // const [ playerTwo, setPlayerTwo ] = useState<string>('');
     const [ matches, setMatches ] = useState<any>([]);
     const [ statistics, setStatistics ] = useState<any>([]);
 
