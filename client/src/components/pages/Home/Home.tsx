@@ -19,24 +19,6 @@ const Home = () => {
     const [ matches, setMatches ] = useState<any>([]);
     const [ statistics, setStatistics ] = useState<any>([]);
 
-    const supported = [
-        {
-            key: 'quake',
-            name: 'Quake Champions',
-            url: 'https://quake.com/',
-        },
-        {
-            key: 'diabotical',
-            name: 'Diabotical',
-            url: 'https://diabotical.com',
-        },
-        {
-            key: 'csgo',
-            name: 'Counter-Strike: Global Offensive',
-            url: 'https://counter-strike.net'
-        }
-    ];
-
     useEffect(() => {
         fetch('https://api.github.com/repos/CameronCT/Qrindr/commits/v3')
             .then(response => response.json())
@@ -52,9 +34,13 @@ const Home = () => {
 
     return (
         <div className={"w-full lg:w-2/3 mx-auto"}>
+            <div className="my-6 px-4 py-3 bg-teal-800 border-2 border-teal-900 rounded-lg">
+                Qrindr is currently in <span className="font-semibold">legacy mode</span>{' - '}
+                <a href="https://pickban.app" className="underline font-semibold" rel="noopener noreferrer" target="_blank">PICKBAN.APP</a> is a new and improved version of Qrindr that will receive more regular updates.
+            </div>
             <div className={"content mx-2 my-6"}>
                 <div style={{ backgroundImage: "url('assets/bg_1.png')", backgroundSize: 'cover' }} className={"p-16 rounded shadow-md"}>
-                    <div className={"text-4xl text-white font-bold"}>Qrindr - the <span className={"text-red-500"}>best</span> match creation tool</div>
+                    <div className={"text-4xl text-white font-bold"}>Qrindr - the former <span className={"text-red-500"}>best</span> match creation tool</div>
                     <div className={"text-gray-300 text-base"}>
                         <div>We have created over <span className={"font-semibold"}>{statistics.totalMatches}</span> matches for esports players and teams.</div>
                     </div>
@@ -65,18 +51,6 @@ const Home = () => {
                     <FontAwesomeIcon icon={faGithub} /> <span className={"font-semibold"}>Latest Commit: </span> <a href={GitHub.URL} target={"_blank"} rel="noopener noreferrer">{GitHub.SHA}</a> on {GitHub.DATE}
                 </div>
             )}
-            <div className={"content my-6"}>
-                <div className={"text-xl mx-2 text-white font-semibold tracking-wide pb-3 mb-3 border-b border-gray-800"}>Supported Games</div>
-                <div className="flex flex-wrap mt-2">
-                    {supported.map((item) => (
-                        <div key={item.key} className={"w-1/3 px-2"}>
-                            <a key={item.key} href={item.url}>
-                                <img src={`assets/${item.key}.png`} alt={item.key} className={"w-full h-auto rounded shadow-md border border-transparent transition ease-in-out duration-300 hover:opacity-70"} />
-                            </a>
-                        </div>
-                    ))}
-                </div>
-            </div>
 
             <div className={"content my-6"}>
                 <div className={"text-xl mx-2 text-white font-semibold tracking-wide pb-3 mb-3 border-b border-gray-800"}>Recent Matches</div>
